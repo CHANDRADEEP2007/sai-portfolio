@@ -313,13 +313,13 @@ const DATA = {
     location: "USA",
     period: "Apr 2024 – Present",
     highlights: [
-      "Built a Unified Intake Portal that gives teams one central place to access all product offerings across different internal sites—eliminating tool-switching and saving meaningful time each day.",
+      "Built a Unified Intake Portal that gives teams one central place to access all product offerings across different internal sites, eliminating tool-switching and saving meaningful time each day.",
       "Led development of a central Product Definition Platform that replaced several disconnected UIs, giving the organization one consistent view of products and removing duplicate engineering work.",
-      "Introduced API-driven dynamic UI generation so product data flows automatically into client-facing sites—making launches faster and updates more accurate.",
-      "Built a workflow engine to guide how product data, documents, and approvals move through the organization—improving efficiency, audit control, and compliance tracking.",
-      "Launched a no-code self-service product builder so non-technical teams can create or update product definitions without waiting on developers—freeing engineering capacity and speeding changes.",
+      "Introduced API-driven dynamic UI generation so product data flows automatically into client-facing sites, making launches faster and updates more accurate.",
+      "Built a workflow engine to guide how product data, documents, and approvals move through the organization— improving efficiency, audit control, and compliance tracking.",
+      "Launched a no-code self-service product builder so non-technical teams can create or update product definitions without waiting on developers, freeing engineering capacity and speeding changes.",
       "Standardized reusable components and templates, leading to ~50% less engineering effort and quicker launches across multiple lines of business.",
-      "Set up A/B testing and adoption analytics to see how teams use new features and used those insights to smooth UX friction and lift completion rates.",
+      "Set up A/B testing and adoption analytics to see how teams use new features and use those insights to smooth UX friction and lift completion rates.",
       "Hosted quarterly product health reviews with business and client teams and folded the feedback directly into the roadmap.",
       "Presented adoption trends and platform impact to senior leadership, helping shape priorities for the next phases of product growth."
     ]
@@ -332,7 +332,7 @@ const DATA = {
     highlights: [
       "Partnered across teams to build a unified analytics environment that connected Salesforce, Redshift, and Azure Synapse into a single source of truth.",
       "Designed and maintained automated PySpark + SQL + Airflow pipelines to process millions of records with high reliability and low downtime.",
-      "Developed modular dbt transformation models that turned raw data into clean, analytics-ready tables—reducing refresh time and increasing trust in metrics.",
+      "Developed modular DBT transformation models that turned raw data into clean, analytics-ready tables—reducing refresh time and increasing trust in metrics.",
       "Delivered 20+ interactive dashboards in Tableau/Qlik, giving leadership instant visibility into product performance, pipeline growth, and adoption.",
       "Automated manual reporting tasks in Airflow, cutting routine data prep by ~70% and improving refresh accuracy.",
       "Worked with Product & Operations on funnel and behavioral analyses to pinpoint adoption gaps and adjust feature strategy.",
