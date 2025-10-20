@@ -542,8 +542,8 @@ function HomePage() {
       <SectionTitle title={`Hi, I'm ${identity.name}`} intro={identity.title} />
       <div className="rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-sm ring-1 ring-indigo-100 backdrop-blur">
         <p className="max-w-3xl text-sm text-slate-700">
-          I build AI-enabled product experiences that turn raw data into decisions.
-          Recent work includes multi-agent analytics, onboarding recommendations, and risk detection models.
+          Platform Product Manager with a strong foundation in data and analytics engineering. I build scalable, API-first platforms that power self-service experiences and intelligent workflows across business lines. 
+          I’m passionate about turning complex data architecture into intuitive products that enable teams to move faster, make better decisions, and measure impact through clear adoption and KPI frameworks.
         </p>
 
         {/* KPI tiles */}
