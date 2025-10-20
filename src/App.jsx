@@ -46,7 +46,7 @@ const PALETTE = {
 const DATA = {
   identity: {
     name: "Venkata Sai Chandradeep Telaprolu",
-    title: "AI Product Manager · Advanced Analytics · LLM Applications",
+    title: "Data Strategy | Platform Product Management | Product Intelligence ",
     location: "USA",
     email: "chandradeep.msba@gmail.com",
     phone: "502-298-6263",
