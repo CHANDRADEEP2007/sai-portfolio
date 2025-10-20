@@ -307,73 +307,62 @@ const DATA = {
      EXPERIENCE (with added bullets)
      =========================== */
   experience: [
-    {
-      company: "J.P. Morgan Chase & Co.",
-      role: "Senior Product Manager (AI & Advanced Analytics) — Payments",
-      location: "USA",
-      period: "Apr 2024 – Present",
-      highlights: [
-        "Built a tool that recommends the best payment products inside clients’ systems, cutting setup time by ~30%.",
-        "Added an AI chat (multi-agent) so anyone can ask “How were payments last week?”; ~60% weekly use.",
-        "Trained on ~10M transactions; answer accuracy rose from 78% to 93%.",
-        "Models flag likely drop-offs; timely nudges kept ~25% more users on track.",
-        "Replaced weekly spreadsheets with live dashboards, saving ~4,000 analyst hours/year.",
-        "Embedded an AI help widget across pages so answers are one click away.",
-        "Established and maintained strong relationships with key stakeholders.",
-        "Used clear, proactive communication to surface needs, evaluate options, and drive projects to successful outcomes.",
-        "Led strategic initiatives that enhanced system capabilities and user satisfaction; mentored team members and partner developers.",
-      ],
-    },
-    {
-      company: "J.P. Morgan Chase & Co.",
-      role: "Data Analytics Lead — Commercial Banking",
-      location: "USA",
-      period: "Aug 2022 – Mar 2024",
-      highlights: [
-        "Built a central data hub and live dashboards (minutes vs days).",
-        "Revenue/pricing forecasts guided a $150M product plan.",
-        "Unified sales/marketing/finance data; query time ↓ 70%.",
-        "Experiments lifted CSAT by 12 points; coached 6 analysts.",
-        "Collaborated cross-functionally to establish business objectives and design the product roadmap.",
-        "Identified trends, variances, and KPIs; delivered well-organized stakeholder presentations and trainings.",
-      ],
-    },
-    {
-      company: "Yum! Brands",
-      role: "Data Analyst — Market Strategy",
-      location: "USA",
-      period: "Oct 2021 – Jun 2022",
-      highlights: [
-        "Real-time dashboards for 40k restaurants; ~6% sales boost.",
-        "Promo forecasts within ~3%, improving ~$25M allocation.",
-        "Automated data checks (errors ↓ 35%); wait time ↓ ~18s.",
-        "Managed promotional strategies and stakeholder relations to strengthen business operations.",
-        "Enhanced ROI and satisfaction by monitoring performance data (Salesforce/BI) and building interactive dashboards for real-time KPIs.",
-        "Advanced Microsoft Office and visualization tools for exec-ready analyses and decks.",
-      ],
-    },
-    {
-      company: "University of Louisville",
-      role: "Graduate BI Intern — Office of Admissions",
-      location: "USA",
-      period: "Aug 2021 – Oct 2021",
-      highlights: [
-        "Predicted enrollment with ~87% accuracy, guiding ~$1M in scholarship offers.",
-      ],
-    },
-    {
-      company: "Reguss Consulting (India)",
-      role: "Analytics Consultant",
-      location: "India",
-      period: "Jun 2020 – Jul 2021",
-      highlights: [
-        "Automated hourly data flows (from weekly).",
-        "Lead-scoring & churn models tripled quality leads.",
-        "Dashboards cut slide-making time by ~30%.",
-        "Standardized metrics across teams.",
-        "Partnered with stakeholders to capture requirements and optimize delivery; mentored interns and junior analysts.",
-      ],
-    },
+  {
+    company: "J.P. Morgan Chase & Co.",
+    role: "Platform Product Manager — Payments",
+    location: "USA",
+    period: "Apr 2024 – Present",
+    highlights: [
+      "Built a Unified Intake Portal that gives teams one central place to access all product offerings across different internal sites—eliminating tool-switching and saving meaningful time each day.",
+      "Led development of a central Product Definition Platform that replaced several disconnected UIs, giving the organization one consistent view of products and removing duplicate engineering work.",
+      "Introduced API-driven dynamic UI generation so product data flows automatically into client-facing sites—making launches faster and updates more accurate.",
+      "Built a workflow engine to guide how product data, documents, and approvals move through the organization—improving efficiency, audit control, and compliance tracking.",
+      "Launched a no-code self-service product builder so non-technical teams can create or update product definitions without waiting on developers—freeing engineering capacity and speeding changes.",
+      "Standardized reusable components and templates, leading to ~50% less engineering effort and quicker launches across multiple lines of business.",
+      "Set up A/B testing and adoption analytics to see how teams use new features and used those insights to smooth UX friction and lift completion rates.",
+      "Hosted quarterly product health reviews with business and client teams and folded the feedback directly into the roadmap.",
+      "Presented adoption trends and platform impact to senior leadership, helping shape priorities for the next phases of product growth."
+    ]
+  },
+  {
+    company: "J.P. Morgan Chase & Co.",
+    role: "Analytics Solutions — Product Sales",
+    location: "USA",
+    period: "Aug 2022 – Mar 2024",
+    highlights: [
+      "Partnered across teams to build a unified analytics environment that connected Salesforce, Redshift, and Azure Synapse into a single source of truth.",
+      "Designed and maintained automated PySpark + SQL + Airflow pipelines to process millions of records with high reliability and low downtime.",
+      "Developed modular dbt transformation models that turned raw data into clean, analytics-ready tables—reducing refresh time and increasing trust in metrics.",
+      "Delivered 20+ interactive dashboards in Tableau/Qlik, giving leadership instant visibility into product performance, pipeline growth, and adoption.",
+      "Automated manual reporting tasks in Airflow, cutting routine data prep by ~70% and improving refresh accuracy.",
+      "Worked with Product & Operations on funnel and behavioral analyses to pinpoint adoption gaps and adjust feature strategy.",
+      "Defined North-Star metrics and KPI frameworks that became the standard across multiple business units."
+    ]
+  },
+  {
+    company: "Yum! Brands",
+    role: "Data Analyst",
+    location: "USA",
+    period: "Oct 2021 – Jun 2022",
+    highlights: [
+      "Built Python + Tableau dashboards that helped regional leaders monitor daily sales, promotion impact, and store-level performance.",
+      "Ran forecasting and cannibalization analyses to understand how new offers affected existing items—informing smarter campaign design.",
+      "Automated data pipelines and quality checks with Airflow, reducing reporting turnaround by ~35%.",
+      "Shared insights with marketing and operations to fine-tune promotional timing and store execution."
+    ]
+  },
+  {
+    company: "Reguss Consulting (India)",
+    role: "Analytics Consultant",
+    location: "India",
+    period: "Jun 2020 – Oct 2021",
+    highlights: [
+      "Built predictive lead-scoring models that helped sales teams focus on high-potential prospects and improve conversion.",
+      "Automated recurring reporting with SQL, PySpark, and Airflow—cutting turnaround by ~30% and improving consistency.",
+      "Created KPI scorecards and marketing dashboards that made campaign ROI visible to leadership.",
+      "Guided clients from manual Excel workflows to a fully automated analytics stack for real-time visibility and faster decisions."
+    ]
+  },
     {
       company: "Dell Technologies",
       role: "Business Development Intern (Data-focused)",
