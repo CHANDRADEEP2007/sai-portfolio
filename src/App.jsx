@@ -46,7 +46,7 @@ const PALETTE = {
 const DATA = {
   identity: {
     name: "Venkata Sai Chandradeep Telaprolu",
-    title: "Platform Product Management | Data Strategy | Product Intelligence",
+    title: "Platform & Digital Product Leader — AI Workflows, APIs, STP",
     location: "USA",
     email: "chandradeep.msba@gmail.com",
     phone: "502-298-6263",
@@ -225,6 +225,108 @@ const DATA = {
     },
   ],
 
+  caseStudies: [
+    {
+      title: "Fast-Track Onboarding Platform (Digital Banking)",
+      summary:
+        "Reduced onboarding from 72 hours–1 week to under 1 hour by unifying intake, rules, and approvals into a single platform flow.",
+      context:
+        "Multi-team onboarding across payments, risk, compliance, and operations with fragmented intake and review steps.",
+      problem:
+        "Manual, error-prone submissions led to high rework, slow approvals, and low straight-through processing.",
+      solution:
+        "Unified intake portal, reusable product definitions, and a workflow engine to guide data + approvals end-to-end.",
+      metrics: [
+        "Onboarding time: 72 hours–1 week → < 1 hour",
+        "Submission failures: ↓ 90%",
+        "Rework: ↓ 62%",
+        "Scale: 45 clients / 15 products → 180 clients / 45 sub-products",
+      ],
+      tradeoffs:
+        "Scoped to high-volume flows first; retained manual review for low-confidence cases to protect risk posture.",
+      aiExtension: [
+        "Intake Quality Copilot to validate KYC/KYB data before submission.",
+        "Risk-aware suggestions with confidence + explanation and a manual-review fallback.",
+        "STP KPI: % of applications auto-approved with auditable decision logs.",
+      ],
+    },
+    {
+      title: "Catalog Product Definition Layer (Single Source of Truth)",
+      summary:
+        "Created a single catalog of product definitions and rules with self-serve authoring and API propagation.",
+      context:
+        "48+ products, 15+ downstream API integrations, and multiple onboarding systems needing consistent definitions.",
+      problem:
+        "Definitions were scattered across teams, creating ticket backlogs and inconsistent client experiences.",
+      solution:
+        "Central definition platform with governance, reusable components, and API-driven UI generation.",
+      metrics: [
+        "Onboarding tickets: ↓ 80% for the segment",
+        "Launch velocity: faster product updates via self-serve changes",
+        "Engineering effort: ↓ ~50% via reusable components",
+      ],
+      tradeoffs:
+        "Delayed advanced analytics to ship core governance and authoring workflow first.",
+      aiExtension: [
+        "Catalog Copilot to suggest field definitions, rules, and downstream impacts.",
+        "Automated approval routing for risk/finance/compliance-sensitive fields.",
+        "STP KPI: % of catalog changes propagating to downstream systems without manual coordination.",
+      ],
+    },
+    {
+      title: "Payments & Checkout Analytics (Digital Ordering)",
+      summary:
+        "Improved checkout completion by diagnosing gateway declines, timeouts, and retry behavior.",
+      context:
+        "High-volume digital ordering funnels with multiple payment gateways and tender types.",
+      problem:
+        "Low visibility into drop-off reasons and slow iteration on fixes.",
+      solution:
+        "Instrumented funnel, analyzed failure patterns, and launched targeted experiments.",
+      metrics: [
+        "Completion rate: improved via experiment-driven fixes",
+        "Operational insights: real-time visibility into failures",
+      ],
+      tradeoffs:
+        "Focused on highest-impact tender types before expanding to long-tail payment methods.",
+      aiExtension: [
+        "Experiment Planner to propose hypotheses, variants, and instrumentation events.",
+        "Real-time alerting with suggested remediation playbooks for ops + risk teams.",
+      ],
+    },
+  ],
+
+  aiWork: [
+    {
+      title: "Intake Quality Copilot",
+      description:
+        "Validates onboarding requests, flags missing fields, and suggests routing paths before submission.",
+      howItWorks:
+        "Synthetic intake data + rule checks, with AI suggestions grounded to published definitions and audit logs.",
+    },
+    {
+      title: "Catalog Definition Copilot",
+      description:
+        "Proposes catalog fields, validation rules, and downstream system impacts from a short product brief.",
+      howItWorks:
+        "Definition templates + impact graph of APIs/events with approval routing for risk-sensitive changes.",
+    },
+    {
+      title: "Experiment Planner (Payments)",
+      description:
+        "Suggests experiment variants, metrics, and instrumentation for checkout failure hotspots.",
+      howItWorks:
+        "Failure diagnostics + event schema checklist to ensure learnings are attributable and auditable.",
+    },
+    {
+      title: "STP Orchestration",
+      description:
+        "Tracks straight-through processing across onboarding and catalog changes with guardrails and SLAs.",
+      howItWorks:
+        "Event-driven workflow monitoring + human-in-the-loop checkpoints for low-confidence cases.",
+    },
+  ],
+
   research: [
     {
       title: "Ms. TROMM: An Intelligent Styler Recommendation System",
@@ -293,6 +395,15 @@ const DATA = {
       area: "Cloud",
       url: "https://www.credly.com/badges/a0f5519a-88b0-4fa4-a65e-ac5772d0edeb",
     },
+  ],
+
+  toolsMethods: [
+    "LLMs + RAG",
+    "API design + data contracts",
+    "Event-driven architecture",
+    "Experimentation + instrumentation",
+    "Workflow automation + governance",
+    "Observability + quality monitoring",
   ],
 
   skills: [
@@ -494,9 +605,7 @@ const accuracyBeforeAfter = [
 /* ---------------- Router + Pages ---------------- */
 const ROUTES = [
   "home",
-  "experience_resume",
-  "projects",
-  "research",
+  "experience",
   "certifications",
   "contact",
 ];
@@ -523,9 +632,7 @@ function TopNav({ current }) {
         </div>
         <div className="flex flex-wrap gap-2">
           {link("home", "Home")}
-          {link("experience_resume", "Experience & Resume")}
-          {link("projects", "Projects")}
-          {link("research", "Research")}
+          {link("experience", "Experience")}
           {link("certifications", "Certifications")}
           {link("contact", "Contact")}
         </div>
@@ -539,18 +646,39 @@ function HomePage() {
   const { identity } = DATA;
   const focusAreas = [
     "Platform product strategy",
-    "Data/AI enablement",
-    "Self-serve workflows",
-    "Adoption + KPI frameworks",
+    "AI-enabled workflow automation",
+    "API-first operating models",
+    "Straight-through processing (STP)",
   ];
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <SectionTitle title={`Hi, I'm ${identity.name}`} intro={identity.title} />
       <div className="rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-sm ring-1 ring-indigo-100 backdrop-blur">
         <p className="max-w-3xl text-sm text-slate-700">
-          Platform Product Manager with a foundation in data and analytics engineering. I build API-first platforms that power self-service experiences, intelligent workflows, and trusted metrics across business lines.
-          I focus on turning complex data architecture into intuitive product surfaces so teams move faster, make sharper decisions, and measure impact through clear adoption and KPI frameworks.
+          Platform and digital product leader building AI-enabled workflow platforms that turn manual processes into straight-through, API-driven journeys. I focus on reusable primitives, data contracts, and governance so teams can move faster, reduce rework, and ship measurable impact at scale.
         </p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <button
+            className="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white"
+            onClick={() => scrollToSection("case-studies")}
+            type="button"
+          >
+            View Platform Case Studies
+          </button>
+          <button
+            className="rounded-full border px-4 py-2 text-xs font-semibold"
+            onClick={() => scrollToSection("ai-work")}
+            type="button"
+          >
+            Explore AI & Automation Work
+          </button>
+        </div>
         <div className="mt-4 flex flex-wrap gap-2">
           {focusAreas.map((area) => (
             <Pill key={area}>{area}</Pill>
@@ -560,18 +688,18 @@ function HomePage() {
         {/* KPI tiles */}
         <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3">
           <Stat
-            label="AI agents boosted answer accuracy"
-            value="78% → 93%"
+            label="Onboarding time reduced"
+            value="< 1 hour"
             className="bg-gradient-to-br from-indigo-50 to-indigo-100 border-indigo-200"
           />
           <Stat
-            label="Recommender cut onboarding time"
-            value="↓ ~30%"
+            label="Submission failures reduced"
+            value="↓ 90%"
             className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-emerald-200"
           />
           <Stat
-            label="New features: weekly adoption"
-            value="~60%"
+            label="Rework reduction"
+            value="↓ 62%"
             className="bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200"
           />
         </div>
@@ -638,110 +766,24 @@ function HomePage() {
             </ChartCard>
           </LazyRender>
         </div>
-      </div>
-    </div>
-  );
-}
 
-function ProjectsPage() {
-  const [tab, setTab] = useState("professional"); // 'professional' | 'personal'
-  return (
-    <div className="mx-auto max-w-7xl px-4 py-10">
-      <SectionTitle title="Notable Projects" intro="I work on many things — here are highlights." />
-      <div className="mb-5 flex gap-2">
-        <button
-          onClick={() => setTab("professional")}
-          className={`rounded-full border px-3 py-1.5 text-xs font-medium ${tab === "professional" ? "bg-slate-900 text-white" : ""}`}
-        >
-          Professional projects
-        </button>
-        <button
-          onClick={() => setTab("personal")}
-          className={`rounded-full border px-3 py-1.5 text-xs font-medium ${tab === "personal" ? "bg-slate-900 text-white" : ""}`}
-        >
-          Personal projects
-        </button>
-      </div>
-
-      {tab === "professional" ? (
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          {DATA.projects.map((p) => (
-            <ProjectCard key={p.name} p={p} />
-          ))}
+        <div id="ai-work" className="mt-10">
+          <SectionTitle
+            title="AI Work & Automation"
+            intro="Platform-first demos that show how AI supports straight-through processing and governed workflows."
+          />
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            {DATA.aiWork.map((item) => (
+              <Card key={item.title} title={item.title}>
+                <p className="text-sm text-gray-700">{item.description}</p>
+                <div className="mt-3 text-xs text-slate-600">
+                  <span className="font-semibold text-slate-700">How it works:</span>{" "}
+                  {item.howItWorks}
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          {DATA.huggingface.map((h) => (
-            <Card
-              key={h.name}
-              title={`${h.name} — ${h.type}`}
-              action={<LinkButton href={h.url}>Open</LinkButton>}
-              footer={<div className="text-gray-500">{h.tags.join(" · ")}</div>}
-            >
-              <p className="text-sm">{h.description}</p>
-              <div className="mt-2 text-sm text-gray-700">
-                <span className="font-medium">Tech:</span> {h.tech.join(", ")}
-              </div>
-              <div className="mt-2 text-sm text-gray-700">
-                <span className="font-medium">Code:</span> {h.codeSummary}
-              </div>
-            </Card>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-function ProjectCard({ p }) {
-  const m = p.metrics || {};
-  return (
-    <Card
-      title={p.name}
-      action={
-        <div className="flex gap-2">
-          {p.links.writeup && <LinkButton href={p.links.writeup}>Case study</LinkButton>}
-          {p.links.demo && <LinkButton href={p.links.demo}>Demo</LinkButton>}
-          {p.links.repo && <LinkButton href={p.links.repo}>Code</LinkButton>}
-        </div>
-      }
-      footer={<div className="text-gray-500">{p.role}</div>}
-    >
-      <p>{p.summary}</p>
-      <ul className="mt-3 list-disc space-y-1 pl-5">
-        {p.impact.map((i) => (
-          <li key={i}>{i}</li>
-        ))}
-      </ul>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {"adoptionRate" in m && <Pill>Adoption: {m.adoptionRate}% weekly</Pill>}
-        {"accuracy" in m && <Pill>Accuracy: {m.accuracy}%</Pill>}
-        {"baselineAccuracy" in m && "postAccuracy" in m && (
-          <Pill>Accuracy (before→after): {m.baselineAccuracy}% → {m.postAccuracy}%</Pill>
-        )}
-        {"onboardingTimeReductionPct" in m && <Pill>Onboarding time: ↓ {m.onboardingTimeReductionPct}%</Pill>}
-        {"timeSavedHours" in m && m.timeSavedHours > 0 && (
-          <Pill>Hours saved/yr: {m.timeSavedHours.toLocaleString()}</Pill>
-        )}
-      </div>
-    </Card>
-  );
-}
-
-function ResearchPage() {
-  return (
-    <div className="mx-auto max-w-7xl px-4 py-10">
-      <SectionTitle title="Research & Publications" intro="Short abstracts for each paper." />
-      <div className="grid grid-cols-1 gap-5">
-        {DATA.research.map((p) => (
-          <Card
-            key={p.title}
-            title={p.title}
-            action={p.url ? <LinkButton href={p.url}>Read paper</LinkButton> : null}
-            footer={<div className="text-gray-500">{p.venue}</div>}
-          >
-            <p className="text-sm text-gray-700">{p.abstract}</p>
-          </Card>
-        ))}
       </div>
     </div>
   );
@@ -750,7 +792,18 @@ function ResearchPage() {
 function CertificationsPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
-      <SectionTitle title="Certifications" intro="Verifiable credentials supporting hands-on expertise." />
+      <SectionTitle
+        title="Certifications"
+        intro="Verifiable credentials supporting platform, data, and AI product leadership."
+      />
+      <div className="mb-6 rounded-2xl border border-slate-200 bg-white/90 p-5 text-sm text-slate-700">
+        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Tools & Methods</div>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {DATA.toolsMethods.map((item) => (
+            <Pill key={item}>{item}</Pill>
+          ))}
+        </div>
+      </div>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {DATA.certifications.map((c) => (
           <Card
@@ -770,34 +823,75 @@ function CertificationsPage() {
 }
 
 /* -------- Experience & Resume -------- */
-function ExperienceResumePage() {
+function ExperiencePage() {
   const { identity } = DATA;
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
-      <SectionTitle title="Experience & Resume" intro="Full CV view with roles, certifications, publications, and tools." />
+      <SectionTitle
+        title="Experience"
+        intro="Platform-focused case studies with AI/automation extensions and measurable impact."
+      />
 
       <div className="mb-6 flex flex-wrap items-center gap-3">
-        <a className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-medium underline decoration-dotted" href={identity.links.resume} download>
-          Download PDF <ArrowUpRight className="h-3.5 w-3.5" />
+        <a
+          className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-medium underline decoration-dotted"
+          href={identity.links.resume}
+          download
+        >
+          Download Resume PDF <ArrowUpRight className="h-3.5 w-3.5" />
         </a>
         <a className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-medium underline decoration-dotted" href="#/contact">
-          Contact
+          Discuss Platform Roles
         </a>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2 space-y-5">
-          {DATA.experience.map((e) => (
-            <Card key={`${e.company}-${e.period}`} title={`${e.company} — ${e.role}`}
-              footer={<div className="text-gray-500">{e.location} · {e.period}</div>}>
-              <ul className="list-disc space-y-1 pl-5">
-                {e.highlights.map((h) => <li key={h}>{h}</li>)}
-              </ul>
+      <div id="case-studies" className="grid grid-cols-1 gap-6 lg:grid-cols-[2fr_1fr]">
+        <div className="space-y-6">
+          {DATA.caseStudies.map((study) => (
+            <Card
+              key={study.title}
+              title={study.title}
+              footer={<div className="text-gray-500">Platform case study</div>}
+            >
+              <div className="rounded-xl border border-indigo-100 bg-indigo-50/70 p-4 text-xs text-slate-700">
+                <div className="text-xs font-semibold uppercase tracking-wide text-indigo-600">10-second summary</div>
+                <p className="mt-2">{study.summary}</p>
+              </div>
+              <div className="mt-4 space-y-3 text-sm text-gray-700">
+                <p><span className="font-semibold text-slate-800">Context:</span> {study.context}</p>
+                <p><span className="font-semibold text-slate-800">Problem:</span> {study.problem}</p>
+                <p><span className="font-semibold text-slate-800">Solution:</span> {study.solution}</p>
+                <div>
+                  <div className="font-semibold text-slate-800">Metrics:</div>
+                  <ul className="mt-2 list-disc space-y-1 pl-5">
+                    {study.metrics.map((metric) => (
+                      <li key={metric}>{metric}</li>
+                    ))}
+                  </ul>
+                </div>
+                <p><span className="font-semibold text-slate-800">Trade-offs:</span> {study.tradeoffs}</p>
+              </div>
+              <div className="mt-4 rounded-xl border border-emerald-100 bg-emerald-50/60 p-4 text-xs text-slate-700">
+                <div className="text-xs font-semibold uppercase tracking-wide text-emerald-600">AI & Automation Extension</div>
+                <ul className="mt-2 list-disc space-y-1 pl-5">
+                  {study.aiExtension.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </Card>
           ))}
         </div>
 
         <div className="space-y-5">
+          <Card title="Product Leadership Artifacts">
+            <ul className="space-y-2 text-sm text-gray-700">
+              <li>Platform strategy and investment roadmap</li>
+              <li>API contracts and data governance models</li>
+              <li>Workflow orchestration and STP guardrails</li>
+              <li>Rollout plans, enablement, and adoption analytics</li>
+            </ul>
+          </Card>
           <Card title="Tools & Stack">
             <ul className="space-y-2">
               {DATA.tools.map((g) => (
@@ -807,22 +901,6 @@ function ExperienceResumePage() {
                 </li>
               ))}
             </ul>
-          </Card>
-
-          <Card title="Project KPIs (snapshot)">
-            <div className="h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={projectBarData} margin={{ left: 10, right: 10, top: 10, bottom: 10 }}>
-                  <CartesianGrid stroke={PALETTE.grayGrid} strokeDasharray="3 3" />
-                  <XAxis dataKey="project" tick={{ fontSize: 10 }} />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="adoption" name="Adoption %" fill={PALETTE.emerald} />
-                  <Bar dataKey="accuracy" name="Accuracy %" fill={PALETTE.indigo} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
           </Card>
         </div>
       </div>
@@ -834,7 +912,10 @@ function ContactPage() {
   const { identity } = DATA;
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
-      <SectionTitle title="Contact" intro="Happy to connect and share more details or demos." />
+      <SectionTitle
+        title="Contact"
+        intro="Open to Platform PM, AI PM, and Data Products opportunities. Happy to share case studies or demos."
+      />
       <div className="rounded-2xl border bg-white/90 p-6 text-sm backdrop-blur">
         <div className="grid gap-4 md:grid-cols-2">
           <div className="space-y-2">
@@ -843,6 +924,14 @@ function ContactPage() {
             <div className="flex items-center gap-2"><MapPin className="h-4 w-4" />{identity.location}</div>
           </div>
           <div className="space-y-2">
+            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs text-slate-700">
+              <div className="font-semibold text-slate-800">Role-fit prompts</div>
+              <ul className="mt-2 list-disc space-y-1 pl-5">
+                <li>Discuss Platform PM roles</li>
+                <li>Explore AI PM opportunities</li>
+                <li>Data Products & Payments roles</li>
+              </ul>
+            </div>
             <a className="block underline" href={identity.links.linkedin}><Linkedin className="mr-1 inline h-4 w-4" />LinkedIn</a>
             <a className="block underline" href={identity.links.huggingface}><BookOpen className="mr-1 inline h-4 w-4" />Hugging Face</a>
             <a className="block underline" href={identity.links.resume} download>Resume (PDF)</a>
@@ -856,9 +945,7 @@ function ContactPage() {
 /* ---------------- App shell ---------------- */
 const PAGES = {
   home: HomePage,
-  experience_resume: ExperienceResumePage,
-  projects: ProjectsPage,
-  research: ResearchPage,
+  experience: ExperiencePage,
   certifications: CertificationsPage,
   contact: ContactPage,
 };
