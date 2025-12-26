@@ -516,6 +516,29 @@ function HomePage() {
             className="bg-gradient-to-br from-violet-50 to-violet-100 border-violet-200"
           />
         </div>
+        <div className="mt-6">
+          <h3 className="text-lg font-semibold text-slate-900">Additional Platform Impact</h3>
+          <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
+            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                <span className="text-base text-blue-600" aria-hidden="true">🔗</span>
+                Unified Intake Platform
+              </div>
+              <p className="mt-2 text-sm text-slate-700">
+                Single entry point across multiple digital platforms with AI-powered role-based personalization, reducing intake drop-offs by 14%.
+              </p>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                <span className="text-base text-purple-600" aria-hidden="true">📊</span>
+                Sales Analytics Data Platform
+              </div>
+              <p className="mt-2 text-sm text-slate-700">
+                Owned CRM → Redshift Sales Analytics Platform with governance (RBAC, lineage) to support reporting and ML use cases.
+              </p>
+            </div>
+          </div>
+        </div>
         <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-slate-700">
           <li>
             Unified Intake Platform: Single entry point across multiple digital platforms with AI-powered role-based personalization, reducing intake drop-offs by 14%.
