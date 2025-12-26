@@ -539,6 +539,14 @@ function HomePage() {
             </div>
           </div>
         </div>
+        <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-slate-700">
+          <li>
+            Unified Intake Platform: Single entry point across multiple digital platforms with AI-powered role-based personalization, reducing intake drop-offs by 14%.
+          </li>
+        </ul>
+        <p className="mt-4 text-xs text-slate-600">
+          Owned CRM → Redshift Sales Analytics Platform with governance (RBAC, lineage) to support reporting and ML use cases.
+        </p>
 
         <div id="ai-work" className="mt-10">
           <SectionTitle
