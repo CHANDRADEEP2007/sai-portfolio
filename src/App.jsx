@@ -1,52 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
-import {
-  ResponsiveContainer,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar,
-  BarChart,
-  Bar,
-  PieChart,
-  Pie,
-  Cell,
-  XAxis,
-  YAxis,
-} from "recharts";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Linkedin,
-  BookOpen,
-  ArrowUpRight,
-  Info,
-} from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Mail, Phone, MapPin, Linkedin, ArrowUpRight } from "lucide-react";
 
 /* ============================================================================
    Portfolio SPA — colorful & clear
    ==========================================================================*/
 
-const PALETTE = {
-  indigo: "#6366F1",
-  violet: "#8B5CF6",
-  fuchsia: "#D946EF",
-  sky: "#0EA5E9",
-  emerald: "#10B981",
-  amber: "#F59E0B",
-  rose: "#F43F5E",
-  slate: "#64748B",
-  grayGrid: "#E5E7EB",
-};
-
 const DATA = {
   identity: {
     name: "Venkata Sai Chandradeep Telaprolu",
-    title: "Platform & Digital Product Leader — AI Workflows, APIs, STP",
     location: "USA",
     email: "chandradeep.msba@gmail.com",
     phone: "502-298-6263",
@@ -54,315 +15,132 @@ const DATA = {
       resume: "/resume.pdf",
       linkedin:
         "https://www.linkedin.com/in/venkata-sai-chandradeep-telaprolu-b0a568154/",
-      huggingface: "https://huggingface.co/SaiCD",
     },
   },
 
-  /* ---------------- Professional projects ---------------- */
+  /* ---------------- Project case studies ---------------- */
   projects: [
     {
-      name: "Banker Performance Ranking Dashboards",
-      role: "Data Analytics Lead — Commercial Banking",
-      summary:
-        "Unifies CRM, revenue, pipeline, and service data to compute weekly KPIs and rank bankers. Interactive dashboards show rankings with drilldowns and filters. Automated SQL & Python jobs detect data anomalies and alert owners.",
-      impact: [
-        "Multi-source ingestion (CRM, Finance, Servicing)",
-        "Weekly ranking + cohort filters (region, segment, tenure)",
-        "Automated anomaly detection (SQL + Python) with email alerts",
-      ],
-      links: { demo: "", repo: "", writeup: "" },
-      metrics: {},
-    },
-    {
-      name: "Product Definition Developer",
-      role: "Senior PM — Payments",
-      summary:
-        "Agent extracts the current definition, applies prompt-based updates, and auto-creates JIRA for multi-team approvals; flags cross-impacts and notifies backend teams for mapping.",
-      impact: [
-        "Parses definition, highlights gaps, proposes redlines",
-        "Auto-JIRA with approvers (Eng, Risk, Legal)",
-        "Cross-impact detection + backend mapping notifications",
-        "Auditable change & approval trail",
-      ],
-      links: { demo: "", repo: "", writeup: "" },
-      metrics: { adoptionRate: 72, accuracy: 60, timeSavedHours: 3000 },
-    },
-    {
-      name: "Payments Product Recommender",
-      role: "Senior PM — Payments",
-      summary:
-        "Context-aware next-best-action during onboarding; setup time ↓ ~30%, adoption ↑.",
-      impact: [
-        "Setup time ↓ ~30%",
-        "Weekly adoption ~60%",
-        "Discovery → launch; analytics + UX experiments",
-      ],
-      links: { demo: "", repo: "", writeup: "" },
-      metrics: {
-        adoptionRate: 60,
-        onboardingTimeReductionPct: 30,
-        onboardingTimeIndexBefore: 100,
-        onboardingTimeIndexAfter: 70,
-      },
-    },
-    {
-      name: "Conversational Analytics Assistant (Multi-Agent)",
-      role: "Senior PM — Payments",
-      summary:
-        "Natural-language answers over multi-source data; accuracy ↑ 78% → 93% after training on ~10M transactions.",
-      impact: [
-        "6/10 users weekly",
-        "Accuracy ↑ 78% → 93%",
-        "Live insights replace static reporting",
-      ],
-      links: { demo: "", repo: "", writeup: "" },
-      metrics: {
-        adoptionRate: 60,
-        baselineAccuracy: 78,
-        postAccuracy: 93,
-        accuracy: 93,
-        timeSavedHours: 4000,
-      },
-    },
-    {
-      name: "Onboarding Drop-off Prediction",
-      role: "Senior PM — Payments",
-      summary:
-        "Signals at-risk users during onboarding; targeted nudges kept ~25% more users on track.",
-      impact: ["Retention lift ~25%", "Experimentation center for PMs"],
-      links: { demo: "", repo: "", writeup: "" },
-      metrics: { adoptionRate: 45, accuracy: 68, timeSavedHours: 800, csatLift: 8 },
-    },
-    {
-      name: "Restaurant Network Ops Console",
-      role: "Data Analyst — Yum! Brands",
-      summary:
-        "Ops dashboards + promo forecasting for ~40k stores; sales ↑ ~6%, promo MAPE ~3%, wait ↓ ~18s.",
-      impact: ["Sales ↑ ~6%", "Promo MAPE ~3%", "Drive-thru wait ↓ 18s"],
-      links: { demo: "", repo: "", writeup: "" },
-      metrics: { adoptionRate: 55, accuracy: 97, timeSavedHours: 1200, csatLift: 10 },
-    },
-  ],
-
-  /* ---------------- Tools & Stack (filled) ---------------- */
-  tools: [
-    {
-      group: "AI/ML",
-      items: [
-        "LLM integration (OpenAI, Azure OpenAI)",
-        "Prompt engineering & fine-tuning (LangChain, Hugging Face)",
-        "Recommendation systems",
-        "NLP",
-        "A/B & causal testing",
-        "scikit-learn",
-        "PyTorch",
-      ],
-    },
-    {
-      group: "Analytics & BI",
-      items: [
-        "SQL (Snowflake, Redshift, Synapse)",
-        "Python",
-        "R",
-        "Tableau",
-        "Power BI",
-        "Looker/QuickSight",
-        "Alteryx",
-      ],
-    },
-    {
-      group: "Cloud/Data Platforms",
-      items: [
-        "AWS (Redshift, Glue, S3)",
-        "Azure Synapse",
-        "ETL orchestration (Airflow, dbt)",
-        "Data modeling & governance",
-        "Hive",
-      ],
-    },
-    {
-      group: "Product Tools",
-      items: [
-        "Roadmapping",
-        "Backlog & sprint management (Jira, Azure DevOps)",
-        "UX feedback loops",
-        "Experiment design",
-      ],
-    },
-  ],
-
-  /* ---------------- Personal projects (Hugging Face) ---------------- */
-  huggingface: [
-    {
-      name: "PDF Summary AI Agent",
-      type: "Space",
-      url: "https://huggingface.co/spaces/SaiCD/pdf-summary-ai-agent",
-      description: "PDF → structured summaries with citations.",
-      tech: ["Python", "Gradio", "Transformers", "Embeddings", "FAISS"],
-      codeSummary:
-        "Parses PDFs, chunks with embeddings, retrieves context, and synthesizes concise summaries with section anchors; Gradio for UI.",
-      tags: ["Agent", "Summarization", "Gradio"],
-    },
-    {
-      name: "SaiSpace Chatbot",
-      type: "Space",
-      url: "https://huggingface.co/spaces/SaiCD/saispace",
-      description: "Prompt/guardrails patterns for a general chatbot.",
-      tech: ["Python", "Gradio", "Prompt routing", "Safety prompts"],
-      codeSummary:
-        "Implements prompt templates, guardrails, and small tools; shows few-shot prompting and response moderation.",
-      tags: ["Chatbot", "LLM", "Gradio"],
-    },
-    {
-      name: "FLAN-T5 Large — Fine-tuned AI Assistant",
-      type: "Model",
-      url: "https://huggingface.co/SaiCD/flan-t5-large-finetuned-ai-assistant",
-      description: "Instruction-tuned FLAN-T5 for concise enterprise Q&A.",
-      tech: ["Transformers", "Datasets", "PEFT/LoRA"],
-      codeSummary:
-        "Fine-tunes FLAN-T5 on instruction/answer pairs; exports weights and tokenizer for inference.",
-      tags: ["Fine-tune", "FLAN-T5", "Instruction"],
-    },
-  ],
-
-  caseStudies: [
-    {
-      title: "Fast-Track Onboarding Platform (Digital Banking)",
-      summary:
-        "Reduced onboarding from 72 hours–1 week to under 1 hour by unifying intake, rules, and approvals into a single platform flow.",
+      id: "fast-track-onboarding-stp",
+      title: "Fast-Track Onboarding STP (Digital Banking Platform)",
       context:
-        "Multi-team onboarding across payments, risk, compliance, and operations with fragmented intake and review steps.",
+        "Digital banking onboarding across web and mobile for startup and mid-market clients, covering Wires, ACH, RTP, and Check Deposits with back-office integrations.",
+      role: "Product owner responsible for workflow design, prioritization, adoption, and cross-functional delivery.",
       problem:
-        "Manual, error-prone submissions led to high rework, slow approvals, and low straight-through processing.",
+        "Onboarding was slow and manual (72 hours–1 week) due to repeated handoffs, missing information, and inconsistent data capture, leading to high rework and support load.",
       solution:
-        "Unified intake portal, reusable product definitions, and a workflow engine to guide data + approvals end-to-end.",
-      metrics: [
-        "Onboarding time: 72 hours–1 week → < 1 hour",
-        "Submission failures: ↓ 90%",
-        "Rework: ↓ 62%",
-        "Scale: 45 clients / 15 products → 180 clients / 45 sub-products",
+        "Standardized onboarding workflow with upfront validation, pre-populated fields, guided data capture, and automated assignment/acceptance steps tied to back-office APIs.",
+      stpAutomation:
+        "Moved validation and routing to straight-through paths, reduced manual gatekeeping, and introduced self-serve definition updates for routine changes.",
+      impact: [
+        "Onboarding time reduced from 72 hours–1 week to under 1 hour.",
+        "Submission failures reduced by 90% and rework lowered by 62%.",
+        "Onboarding tickets reduced by 80% for the supported segment.",
+        "Scaled adoption from 45 clients/15 products to 180 clients/45 sub-products.",
+        "Improved release stability by reducing workflow breakages and cycle-time variance.",
       ],
-      tradeoffs:
-        "Scoped to high-volume flows first; retained manual review for low-confidence cases to protect risk posture.",
-      aiExtension: [
-        "Intake Quality Copilot to validate KYC/KYB data before submission.",
-        "Risk-aware suggestions with confidence + explanation and a manual-review fallback.",
-        "STP KPI: % of applications auto-approved with auditable decision logs.",
+      aiGuardrails: [
+        "Intake Quality Copilot suggests missing fields, detects inconsistencies, and recommends next-best actions.",
+        "Confidence thresholds prevent auto-writes; recommendations only at low confidence.",
+        "Audit trail and human override required for approvals and edge cases.",
       ],
+      learnings:
+        "Optimized for speed while preserving controls with clear approvals; routed low-confidence cases to manual review.",
     },
     {
-      title: "Catalog Product Definition Layer (Single Source of Truth)",
-      summary:
-        "Created a single catalog of product definitions and rules with self-serve authoring and API propagation.",
+      id: "catalog-product-definition-layer",
+      title: "Catalog / Product Definition Layer (Single Source of Truth)",
       context:
         "48+ products, 15+ downstream API integrations, and multiple onboarding systems needing consistent definitions.",
+      role: "Platform PM leading governance, reusable components, and definition propagation.",
       problem:
-        "Definitions were scattered across teams, creating ticket backlogs and inconsistent client experiences.",
+        "Definitions were scattered across teams, creating ticket backlogs, inconsistent experiences, and duplicate builds.",
       solution:
-        "Central definition platform with governance, reusable components, and API-driven UI generation.",
-      metrics: [
-        "Onboarding tickets: ↓ 80% for the segment",
-        "Launch velocity: faster product updates via self-serve changes",
-        "Engineering effort: ↓ ~50% via reusable components",
+        "Central definition platform with reusable components, governance workflows, and API-driven propagation across channels.",
+      stpAutomation:
+        "Standardized rules and automated propagation so changes published once flowed to downstream systems.",
+      impact: [
+        "Onboarding tickets reduced by 80% for the supported segment.",
+        "Faster product updates through self-serve changes and shared components.",
+        "Engineering effort reduced by ~50% via reusable templates.",
       ],
-      tradeoffs:
-        "Delayed advanced analytics to ship core governance and authoring workflow first.",
-      aiExtension: [
-        "Catalog Copilot to suggest field definitions, rules, and downstream impacts.",
+      aiGuardrails: [
+        "Catalog Copilot suggests field definitions, rules, and downstream impacts.",
         "Automated approval routing for risk/finance/compliance-sensitive fields.",
-        "STP KPI: % of catalog changes propagating to downstream systems without manual coordination.",
+        "Audit logs and human approval for high-impact changes.",
       ],
+      learnings:
+        "Shipped governance and authoring workflows first, then expanded analytics to drive adoption.",
     },
     {
-      title: "Payments & Checkout Analytics (Digital Ordering)",
-      summary:
-        "Improved checkout completion by diagnosing gateway declines, timeouts, and retry behavior.",
+      id: "prompt-driven-authoring-tool",
+      title: "Prompt-Driven Authoring Tool for Product Owners",
       context:
-        "High-volume digital ordering funnels with multiple payment gateways and tender types.",
+        "Self-serve authoring for product definitions to reduce manual ticketing and accelerate onboarding updates.",
+      role: "PM owner for workflow design, AI assist, and governance.",
       problem:
-        "Low visibility into drop-off reasons and slow iteration on fixes.",
+        "Product owners depended on engineering tickets for definition updates, slowing launches and increasing rework.",
       solution:
-        "Instrumented funnel, analyzed failure patterns, and launched targeted experiments.",
-      metrics: [
-        "Completion rate: improved via experiment-driven fixes",
-        "Operational insights: real-time visibility into failures",
+        "Prompt-driven authoring with validation, change previews, and automated Jira creation for multi-team approvals.",
+      stpAutomation:
+        "Automated routine definition updates and approvals, reducing manual handoffs for standard changes.",
+      impact: [
+        "Onboarding tickets reduced by 80% for supported changes.",
+        "Definition updates moved from weeks to days with controlled governance.",
+        "Improved adoption with guided templates and guardrails.",
       ],
-      tradeoffs:
+      aiGuardrails: [
+        "Confidence scoring for suggested edits with manual approval required for high-risk fields.",
+        "Audit trail for every change with rollback and override options.",
+      ],
+      learnings:
+        "Balanced speed with compliance by separating low-risk templates from high-risk approvals.",
+    },
+    {
+      id: "checkout-funnel-optimization",
+      title: "Checkout Funnel Optimization (Yum!)",
+      context:
+        "Digital ordering funnel across web and mobile with multiple payment gateways and tender types.",
+      role: "Associate PM focused on instrumentation, analysis, and experimentation.",
+      problem:
+        "Drop-offs, declines, and timeouts were hard to diagnose with limited instrumentation.",
+      solution:
+        "Instrumented funnel events, analyzed failure patterns by device/browser/gateway, and ran experiments on messaging and retry flows.",
+      stpAutomation:
+        "Automated failure classification and routing to accelerate diagnosis and reduce manual triage.",
+      impact: [
+        "Improved checkout completion via targeted experiments and fixes.",
+        "Real-time visibility into failures for faster operational response.",
+      ],
+      aiGuardrails: [
+        "Experiment Planner suggests hypotheses and instrumentation with required tracking checklists.",
+        "Alerts include recommended remediation playbooks with human validation.",
+      ],
+      learnings:
         "Focused on highest-impact tender types before expanding to long-tail payment methods.",
-      aiExtension: [
-        "Experiment Planner to propose hypotheses, variants, and instrumentation events.",
-        "Real-time alerting with suggested remediation playbooks for ops + risk teams.",
+    },
+    {
+      id: "automated-analytics-pipelines",
+      title: "Automated Analytics Pipelines (Reguss Consulting)",
+      context:
+        "Marketing and sales analytics with recurring reporting across multiple business units.",
+      role: "Analytics consultant automating data pipelines and KPI frameworks.",
+      problem:
+        "Manual reporting slowed decision-making and created inconsistent KPI definitions.",
+      solution:
+        "Automated SQL/PySpark/Airflow pipelines with standardized KPI scorecards and dashboards.",
+      stpAutomation:
+        "Scheduled workflows and data quality checks replaced manual reporting cycles.",
+      impact: [
+        "Report turnaround time reduced by 30%.",
+        "Improved consistency with shared KPI hierarchies and scorecards.",
       ],
-    },
-  ],
-
-  aiWork: [
-    {
-      title: "Intake Quality Copilot",
-      description:
-        "Validates onboarding requests, flags missing fields, and suggests routing paths before submission.",
-      howItWorks:
-        "Synthetic intake data + rule checks, with AI suggestions grounded to published definitions and audit logs.",
-    },
-    {
-      title: "Catalog Definition Copilot",
-      description:
-        "Proposes catalog fields, validation rules, and downstream system impacts from a short product brief.",
-      howItWorks:
-        "Definition templates + impact graph of APIs/events with approval routing for risk-sensitive changes.",
-    },
-    {
-      title: "Experiment Planner (Payments)",
-      description:
-        "Suggests experiment variants, metrics, and instrumentation for checkout failure hotspots.",
-      howItWorks:
-        "Failure diagnostics + event schema checklist to ensure learnings are attributable and auditable.",
-    },
-    {
-      title: "STP Orchestration",
-      description:
-        "Tracks straight-through processing across onboarding and catalog changes with guardrails and SLAs.",
-      howItWorks:
-        "Event-driven workflow monitoring + human-in-the-loop checkpoints for low-confidence cases.",
-    },
-  ],
-
-  research: [
-    {
-      title: "Ms. TROMM: An Intelligent Styler Recommendation System",
-      venue: "IJSRED · 2025",
-      url: "https://doi.org/10.5281/zenodo.14677436",
-      abstract:
-        "Designs a personalized laundry assistant that recommends wash cycles and fabric care using rule-based context and historical preferences, reducing user errors and improving garment outcomes.",
-    },
-    {
-      title:
-        "Analyzing URL Structure for Machine Learning: Feature Engineering and Classification Applications",
-      venue: "IJSRED · 2025",
-      url: "https://doi.org/10.5281/zenodo.14677428",
-      abstract:
-        "Tokenizes and engineers URL components (host, path, params) to improve phishing/malware detection; compares models and shows structure-aware features boost accuracy.",
-    },
-    {
-      title: "Analyzing Customer Reviews and Ratings",
-      venue: "IJSRED · 2025",
-      url: "https://doi.org/10.5281/zenodo.14677474",
-      abstract:
-        "Blends sentiment with review-trust signals to summarize opinions and filter anomalies, correlating better with sales than raw star ratings.",
-    },
-    {
-      title: "Impact of the Global Financial Crisis on the South African Economy",
-      venue: "IJSRED · 2025",
-      url: "https://doi.org/10.5281/zenodo.14677496",
-      abstract:
-        "Quantifies 2008-crisis effects across sectors using macro indicators with OLS and Random Forests; highlights uneven recovery and policy implications.",
-    },
-    {
-      title: "Continuous Architecting for Data Applications",
-      venue: "IJSRED · 2025",
-      url: "https://doi.org/10.5281/zenodo.14677391",
-      abstract:
-        "Presents an iterative architecture method for analytics platforms that evolves pipelines safely via guardrails, reducing downtime and controlling cost/complexity.",
+      aiGuardrails: [
+        "Data quality checks with alerting before publishing reports.",
+        "Human review for outlier flags or pipeline failures.",
+      ],
+      learnings:
+        "Prioritized reliable automation to build trust before expanding advanced analytics.",
     },
   ],
 
@@ -397,94 +175,99 @@ const DATA = {
     },
   ],
 
-  toolsMethods: [
-    "LLMs + RAG",
-    "API design + data contracts",
-    "Event-driven architecture",
-    "Experimentation + instrumentation",
-    "Workflow automation + governance",
-    "Observability + quality monitoring",
-  ],
-
-  skills: [
-    { area: "AI/ML", score: 88 },
-    { area: "Product", score: 85 },
-    { area: "Analytics", score: 90 },
-    { area: "Cloud/Data", score: 82 },
-    { area: "Experimentation", score: 80 },
+  aiHighlights: [
+    {
+      title: "Intake Quality Copilot",
+      description: "Improve submission quality before routing by catching missing fields.",
+    },
+    {
+      title: "Product Definition Copilot",
+      description: "Draft reusable definitions and flag downstream impacts for approval.",
+    },
+    {
+      title: "Experiment Planner",
+      description: "Propose hypotheses, variants, and instrumentation for checkout fixes.",
+    },
+    {
+      title: "Ops Insights",
+      description: "Surface STP coverage, bottlenecks, and guardrail exceptions.",
+    },
   ],
 
   /* ===========================
      EXPERIENCE (with added bullets)
      =========================== */
   experience: [
-  {
-    company: "J.P. Morgan Chase & Co.",
-    role: "Platform Product Manager — Payments",
-    location: "USA",
-    period: "Apr 2024 – Present",
-    highlights: [
-      "Built a Unified Intake Portal that gives teams one central place to access all product offerings across different internal sites, eliminating tool-switching and saving meaningful time each day.",
-      "Led development of a central Product Definition Platform that replaced several disconnected UIs, giving the organization one consistent view of products and removing duplicate engineering work.",
-      "Introduced API-driven dynamic UI generation so product data flows automatically into client-facing sites, making launches faster and updates more accurate.",
-      "Built a workflow engine to guide how product data, documents, and approvals move through the organization— improving efficiency, audit control, and compliance tracking.",
-      "Launched a no-code self-service product builder so non-technical teams can create or update product definitions without waiting on developers, freeing engineering capacity and speeding changes.",
-      "Standardized reusable components and templates, leading to ~50% less engineering effort and quicker launches across multiple lines of business.",
-      "Set up A/B testing and adoption analytics to see how teams use new features and use those insights to smooth UX friction and lift completion rates.",
-      "Hosted quarterly product health reviews with business and client teams and folded the feedback directly into the roadmap.",
-      "Presented adoption trends and platform impact to senior leadership, helping shape priorities for the next phases of product growth."
-    ]
-  },
-  {
-    company: "J.P. Morgan Chase & Co.",
-    role: "Analytics Solutions — Product Sales",
-    location: "USA",
-    period: "Aug 2022 – Mar 2024",
-    highlights: [
-      "Partnered across teams to build a unified analytics environment that connected Salesforce, Redshift, and Azure Synapse into a single source of truth.",
-      "Designed and maintained automated PySpark + SQL + Airflow pipelines to process millions of records with high reliability and low downtime.",
-      "Developed modular DBT transformation models that turned raw data into clean, analytics-ready tables—reducing refresh time and increasing trust in metrics.",
-      "Delivered 20+ interactive dashboards in Tableau/Qlik, giving leadership instant visibility into product performance, pipeline growth, and adoption.",
-      "Automated manual reporting tasks in Airflow, cutting routine data prep by ~70% and improving refresh accuracy.",
-      "Worked with Product & Operations on funnel and behavioral analyses to pinpoint adoption gaps and adjust feature strategy.",
-      "Defined North-Star metrics and KPI frameworks that became the standard across multiple business units."
-    ]
-  },
-  {
-    company: "Yum! Brands",
-    role: "Data Analyst",
-    location: "USA",
-    period: "Oct 2021 – Jun 2022",
-    highlights: [
-      "Built Python + Tableau dashboards that helped regional leaders monitor daily sales, promotion impact, and store-level performance.",
-      "Ran forecasting and cannibalization analyses to understand how new offers affected existing items—informing smarter campaign design.",
-      "Automated data pipelines and quality checks with Airflow, reducing reporting turnaround by ~35%.",
-      "Shared insights with marketing and operations to fine-tune promotional timing and store execution."
-    ]
-  },
-  {
-    company: "Reguss Consulting (India)",
-    role: "Analytics Consultant",
-    location: "India",
-    period: "Jun 2020 – Oct 2021",
-    highlights: [
-      "Built predictive lead-scoring models that helped sales teams focus on high-potential prospects and improve conversion.",
-      "Automated recurring reporting with SQL, PySpark, and Airflow—cutting turnaround by ~30% and improving consistency.",
-      "Created KPI scorecards and marketing dashboards that made campaign ROI visible to leadership.",
-      "Guided clients from manual Excel workflows to a fully automated analytics stack for real-time visibility and faster decisions."
-    ]
-  },
+    {
+      company: "J.P. Morgan Chase & Co.",
+      role: "Platform Product Manager — Payments",
+      location: "USA",
+      period: "Apr 2024 - Present",
+      scope:
+        "Own fast-track onboarding for JPMorgan’s Digital Banking platform (web + app), enabling activation for Wires, ACH, RTP, and Check Deposits across dependent APIs and back-office systems.",
+      outcomes: [
+        "Drove straight-through onboarding by pre-populating required fields and adding upfront validation; reduced submission failures by 90% and rework by 62%.",
+        "Cut onboarding cycle time from ~72 hours–1 week to under 1 hour by removing manual handoffs and standardizing workflow execution.",
+        "Improved release predictability by automating assignment and acceptance steps; reduced workflow breakages and lowered cycle-time variance.",
+        "Scaled adoption from 45 clients/15 products to 180 clients/45 sub-products; supported 48 products and 15 back-office API integrations.",
+        "Owned the Catalog/Product Definition layer as a single source of truth across onboarding systems to reduce duplicate builds and engineering spend.",
+        "Built a self-serve, prompt-driven authoring tool for Product Owners; reduced onboarding tickets by 80% for the supported segment.",
+        "Enabled publish-once, reuse-everywhere by integrating definition changes across onboarding platforms for consistent experiences.",
+      ],
+      tags: ["Platform", "Digital", "AI", "STP", "Automation", "Governance"],
+      projectLinks: [
+        { label: "Fast-Track Onboarding STP", id: "fast-track-onboarding-stp" },
+        { label: "Catalog/Product Definition Layer", id: "catalog-product-definition-layer" },
+        { label: "Prompt-Driven Authoring Tool", id: "prompt-driven-authoring-tool" },
+      ],
+    },
+    {
+      company: "Yum! Brands (USA)",
+      role: "Product Analyst (Associate Product Manager)",
+      location: "USA",
+      period: "Oct 2021 - Jun 2022",
+      scope:
+        "Owned the checkout funnel view (menu → cart → checkout → payment → confirmation) across web and mobile to surface drop-offs and guide payments improvements.",
+      outcomes: [
+        "Analyzed declines, timeouts, and retries by device/browser/order type and gateway response; translated insights into engineering priorities.",
+        "Partnered with engineering to improve tracking/instrumentation so release impact could be measured confidently.",
+        "Supported A/B tests and pilots (error messaging, retries, saved payment, guest flow) and shared results to guide rollouts.",
+        "Balanced customer experience with payments controls and reliability by aligning Product, Design, Ops, and Risk/Compliance.",
+        "Delivered dashboards and launch readouts to support roadmap and sprint decisions.",
+      ],
+      tags: ["Digital", "Analytics", "Payments", "Experimentation"],
+      projectLinks: [{ label: "Checkout Funnel Optimization", id: "checkout-funnel-optimization" }],
+    },
+    {
+      company: "Reguss Consulting (India)",
+      role: "Analytics Consultant",
+      location: "India",
+      period: "Jun 2020 - Oct 2021",
+      scope:
+        "Built analytics platforms for marketing and sales teams, focusing on automation and KPI governance.",
+      outcomes: [
+        "Built lead-scoring models and campaign dashboards to focus sales on high-propensity clients.",
+        "Automated data pipelines using SQL, PySpark, and Airflow; reduced report turnaround time by 30%.",
+        "Created KPI hierarchies and scorecards for marketing and sales performance tracking.",
+        "Helped business leaders shift from manual reporting to automated analytics workflows.",
+      ],
+      tags: ["Automation", "Analytics", "Data Products"],
+      projectLinks: [{ label: "Automated Analytics Pipelines", id: "automated-analytics-pipelines" }],
+    },
     {
       company: "Dell Technologies",
-      role: "Business Development Intern (Data-focused)",
-      location: "Bangalore, India",
-      period: "Dec 2018 – Dec 2019",
-      highlights: [
-        "SQL-based lead scoring; territory heatmaps & cohorts across 3 BUs.",
-        "Automated pipeline dashboards (Excel/Power BI), saving ~6 hrs/week.",
-        "Win/loss analysis informed pricing/package tweaks; pipeline +8%.",
-        "Built trusted relationships with sales and marketing stakeholders; supported planning and project tracking.",
+      role: "Business Development Intern — Sales",
+      location: "USA",
+      period: "Jan 2019 - Jan 2020",
+      scope:
+        "Supported sales segmentation, territory planning, and forecasting with TAM/SAM sizing and competitive mapping.",
+      outcomes: [
+        "Built weekly pipeline and forecast views (Excel/Power BI from CRM) to improve stage hygiene and forecast accuracy.",
+        "Assisted win/loss reviews, tagging reasons and surfacing pricing/packaging patterns to inform sales plays.",
+        "Created enablement assets (battlecards, one-pagers, ROI inputs) to sharpen messaging and speed deals.",
       ],
+      tags: ["Go-to-Market", "Analytics"],
+      projectLinks: [],
     },
   ],
 };
@@ -532,80 +315,11 @@ const Stat = ({ label, value, className = "" }) => (
     <div className="mt-1 text-xl font-semibold">{value}</div>
   </div>
 );
-const ChartCard = ({ title, caption, children }) => (
-  <div className="rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-sm backdrop-blur">
-    <div className="mb-2 text-sm font-semibold">{title}</div>
-    <div className="h-64 w-full">{children}</div>
-    {caption && (
-      <div className="mt-2 flex items-start gap-2 text-xs text-slate-600">
-        <Info className="mt-0.5 h-3.5 w-3.5" />
-        <p>{caption}</p>
-      </div>
-    )}
-  </div>
-);
-function LazyRender({ height = 256, children }) {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setVisible(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-  return (
-    <div ref={ref} style={{ minHeight: height }}>
-      {visible ? (
-        children
-      ) : (
-        <div className="h-full w-full animate-pulse rounded-xl bg-slate-100" style={{ minHeight: height }} />
-      )}
-    </div>
-  );
-}
-
-/* ---------------- Derived datasets ---------------- */
-// Exclude Banker Performance Ranking Dashboards from KPI chart
-const projectBarData = DATA.projects
-  .filter((p) => p.name !== "Banker Performance Ranking Dashboards")
-  .map((p) => ({
-    project: p.name,
-    adoption: (p.metrics && p.metrics.adoptionRate) || 0,
-    accuracy: (p.metrics && p.metrics.accuracy) || 0,
-  }));
-
-const certificationSlices = Object.values(
-  DATA.certifications.reduce((acc, c) => {
-    acc[c.area] = acc[c.area] || { name: c.area, value: 0 };
-    acc[c.area].value += 1;
-    return acc;
-  }, {})
-);
-
-const assistant = DATA.projects.find((p) =>
-  p.name.includes("Conversational Analytics Assistant")
-);
-const accuracyBeforeAfter = [
-  { stage: "Before", accuracy: assistant?.metrics?.baselineAccuracy ?? 0 },
-  {
-    stage: "After",
-    accuracy: assistant?.metrics?.postAccuracy ?? assistant?.metrics?.accuracy ?? 0,
-  },
-];
-
 /* ---------------- Router + Pages ---------------- */
 const ROUTES = [
   "home",
   "experience",
+  "projects",
   "certifications",
   "contact",
 ];
@@ -633,6 +347,7 @@ function TopNav({ current }) {
         <div className="flex flex-wrap gap-2">
           {link("home", "Home")}
           {link("experience", "Experience")}
+          {link("projects", "Projects")}
           {link("certifications", "Certifications")}
           {link("contact", "Contact")}
         </div>
@@ -644,49 +359,36 @@ function TopNav({ current }) {
 /* ---------------- Pages ---------------- */
 function HomePage() {
   const { identity } = DATA;
-  const focusAreas = [
-    "Platform product strategy",
-    "AI-enabled workflow automation",
-    "API-first operating models",
-    "Straight-through processing (STP)",
-  ];
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
-      <SectionTitle title={`Hi, I'm ${identity.name}`} intro={identity.title} />
+      <SectionTitle
+        title="Sai Chandradeep"
+        intro="Platform + Digital Product Manager leader driving AI-enabled automation, straight-through processing, and reduction of manual work."
+      />
       <div className="rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-sm ring-1 ring-indigo-100 backdrop-blur">
         <p className="max-w-3xl text-sm text-slate-700">
-          Platform and digital product leader building AI-enabled workflow platforms that turn manual processes into straight-through, API-driven journeys. I focus on reusable primitives, data contracts, and governance so teams can move faster, reduce rework, and ship measurable impact at scale.
+          I build platform and digital journeys that convert manual intake into reliable, API-driven workflows. My focus is on reusable primitives, data contracts, and governance so teams can move faster, reduce rework, and ship measurable impact at scale.
         </p>
         <div className="mt-5 flex flex-wrap gap-3">
-          <button
+          <a
             className="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white"
-            onClick={() => scrollToSection("case-studies")}
-            type="button"
+            href="#/experience"
           >
-            View Platform Case Studies
-          </button>
-          <button
-            className="rounded-full border px-4 py-2 text-xs font-semibold"
-            onClick={() => scrollToSection("ai-work")}
-            type="button"
-          >
-            Explore AI & Automation Work
-          </button>
-        </div>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {focusAreas.map((area) => (
-            <Pill key={area}>{area}</Pill>
-          ))}
+            View Experience
+          </a>
+          <a className="rounded-full border px-4 py-2 text-xs font-semibold" href="#/projects">
+            View Projects
+          </a>
+          <a className="rounded-full border px-4 py-2 text-xs font-semibold" href={identity.links.resume} download>
+            Download Resume
+          </a>
+          <a className="rounded-full border px-4 py-2 text-xs font-semibold" href={identity.links.linkedin}>
+            LinkedIn
+          </a>
         </div>
 
         {/* KPI tiles */}
-        <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3">
+        <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
           <Stat
             label="Onboarding time reduced"
             value="< 1 hour"
@@ -702,84 +404,34 @@ function HomePage() {
             value="↓ 62%"
             className="bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200"
           />
+          <Stat
+            label="Onboarding tickets reduced"
+            value="↓ 80%"
+            className="bg-gradient-to-br from-rose-50 to-rose-100 border-rose-200"
+          />
         </div>
-
-        <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-3">
-          <LazyRender height={256}>
-            <ChartCard
-              title="Assistant accuracy: before vs after"
-              caption="Before = baseline model; After = after fine-tuning on ~10M transactions and evaluation improvements using the same test set."
-            >
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={accuracyBeforeAfter}
-                  margin={{ left: 10, right: 10, top: 10, bottom: 10 }}
-                >
-                  <CartesianGrid stroke={PALETTE.grayGrid} strokeDasharray="3 3" />
-                  <XAxis dataKey="stage" />
-                  <YAxis domain={[0, 100]} />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="accuracy" name="Accuracy (%)" fill={PALETTE.indigo} />
-                </BarChart>
-              </ResponsiveContainer>
-            </ChartCard>
-          </LazyRender>
-
-          <LazyRender height={256}>
-            <ChartCard title="Skills radar">
-              <ResponsiveContainer width="100%" height="100%">
-                <RadarChart
-                  data={DATA.skills}
-                  outerRadius="64%"
-                  margin={{ left: 50, right: 50, top: 24, bottom: 24 }}
-                >
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="area" tick={{ fontSize: 12 }} />
-                  <PolarRadiusAxis angle={30} domain={[0, 100]} />
-                  <Radar
-                    dataKey="score"
-                    name="Proficiency"
-                    stroke={PALETTE.violet}
-                    fill={PALETTE.violet}
-                    fillOpacity={0.35}
-                  />
-                  <Legend />
-                </RadarChart>
-              </ResponsiveContainer>
-            </ChartCard>
-          </LazyRender>
-
-          <LazyRender height={256}>
-            <ChartCard title="Certifications by area">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie data={certificationSlices} dataKey="value" nameKey="name" outerRadius={90} label>
-                    {certificationSlices.map((_, i) => (
-                      <Cell key={i} fill={[PALETTE.indigo, PALETTE.emerald, PALETTE.sky, PALETTE.fuchsia, PALETTE.amber][i % 5]} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                  <Legend />
-                </PieChart>
-              </ResponsiveContainer>
-            </ChartCard>
-          </LazyRender>
+        <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+          <Stat
+            label="Scale proof"
+            value="45 → 180 clients | 15 → 45 sub-products"
+            className="bg-gradient-to-br from-sky-50 to-sky-100 border-sky-200"
+          />
+          <Stat
+            label="Integrations supported"
+            value="48 products · 15 back-office APIs"
+            className="bg-gradient-to-br from-violet-50 to-violet-100 border-violet-200"
+          />
         </div>
 
         <div id="ai-work" className="mt-10">
           <SectionTitle
-            title="AI Work & Automation"
-            intro="Platform-first demos that show how AI supports straight-through processing and governed workflows."
+            title="AI + Automation Highlights"
+            intro="Productized AI capabilities that improve intake quality, authoring speed, and operational visibility."
           />
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-            {DATA.aiWork.map((item) => (
+            {DATA.aiHighlights.map((item) => (
               <Card key={item.title} title={item.title}>
                 <p className="text-sm text-gray-700">{item.description}</p>
-                <div className="mt-3 text-xs text-slate-600">
-                  <span className="font-semibold text-slate-700">How it works:</span>{" "}
-                  {item.howItWorks}
-                </div>
               </Card>
             ))}
           </div>
@@ -796,14 +448,6 @@ function CertificationsPage() {
         title="Certifications"
         intro="Verifiable credentials supporting platform, data, and AI product leadership."
       />
-      <div className="mb-6 rounded-2xl border border-slate-200 bg-white/90 p-5 text-sm text-slate-700">
-        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Tools & Methods</div>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {DATA.toolsMethods.map((item) => (
-            <Pill key={item}>{item}</Pill>
-          ))}
-        </div>
-      </div>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {DATA.certifications.map((c) => (
           <Card
@@ -824,85 +468,149 @@ function CertificationsPage() {
 
 /* -------- Experience & Resume -------- */
 function ExperiencePage() {
-  const { identity } = DATA;
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <SectionTitle
         title="Experience"
-        intro="Platform-focused case studies with AI/automation extensions and measurable impact."
+        intro="Role-based leadership scope and outcomes across platform, digital, and automation initiatives."
       />
-
-      <div className="mb-6 flex flex-wrap items-center gap-3">
-        <a
-          className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-medium underline decoration-dotted"
-          href={identity.links.resume}
-          download
-        >
-          Download Resume PDF <ArrowUpRight className="h-3.5 w-3.5" />
-        </a>
-        <a className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-medium underline decoration-dotted" href="#/contact">
-          Discuss Platform Roles
-        </a>
-      </div>
-
-      <div id="case-studies" className="grid grid-cols-1 gap-6 lg:grid-cols-[2fr_1fr]">
-        <div className="space-y-6">
-          {DATA.caseStudies.map((study) => (
-            <Card
-              key={study.title}
-              title={study.title}
-              footer={<div className="text-gray-500">Platform case study</div>}
-            >
-              <div className="rounded-xl border border-indigo-100 bg-indigo-50/70 p-4 text-xs text-slate-700">
-                <div className="text-xs font-semibold uppercase tracking-wide text-indigo-600">10-second summary</div>
-                <p className="mt-2">{study.summary}</p>
-              </div>
-              <div className="mt-4 space-y-3 text-sm text-gray-700">
-                <p><span className="font-semibold text-slate-800">Context:</span> {study.context}</p>
-                <p><span className="font-semibold text-slate-800">Problem:</span> {study.problem}</p>
-                <p><span className="font-semibold text-slate-800">Solution:</span> {study.solution}</p>
-                <div>
-                  <div className="font-semibold text-slate-800">Metrics:</div>
-                  <ul className="mt-2 list-disc space-y-1 pl-5">
-                    {study.metrics.map((metric) => (
-                      <li key={metric}>{metric}</li>
-                    ))}
-                  </ul>
-                </div>
-                <p><span className="font-semibold text-slate-800">Trade-offs:</span> {study.tradeoffs}</p>
-              </div>
-              <div className="mt-4 rounded-xl border border-emerald-100 bg-emerald-50/60 p-4 text-xs text-slate-700">
-                <div className="text-xs font-semibold uppercase tracking-wide text-emerald-600">AI & Automation Extension</div>
-                <ul className="mt-2 list-disc space-y-1 pl-5">
-                  {study.aiExtension.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        <div className="space-y-5">
-          <Card title="Product Leadership Artifacts">
-            <ul className="space-y-2 text-sm text-gray-700">
-              <li>Platform strategy and investment roadmap</li>
-              <li>API contracts and data governance models</li>
-              <li>Workflow orchestration and STP guardrails</li>
-              <li>Rollout plans, enablement, and adoption analytics</li>
-            </ul>
-          </Card>
-          <Card title="Tools & Stack">
-            <ul className="space-y-2">
-              {DATA.tools.map((g) => (
-                <li key={g.group}>
-                  <span className="font-medium">{g.group}:</span>{" "}
-                  <span className="text-gray-700">{g.items.join(", ")}</span>
-                </li>
+      <div className="space-y-6">
+        {DATA.experience.map((role) => (
+          <Card
+            key={`${role.company}-${role.role}`}
+            title={`${role.company} · ${role.role}`}
+            footer={<div className="text-gray-500">{role.period} · {role.location}</div>}
+          >
+            <p className="text-sm text-gray-700">
+              <span className="font-semibold text-slate-800">Leadership scope:</span> {role.scope}
+            </p>
+            <div className="mt-4">
+              <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Outcomes</div>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-gray-700">
+                {role.outcomes.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {role.tags.map((tag) => (
+                <Pill key={tag}>{tag}</Pill>
               ))}
-            </ul>
+            </div>
+            {role.projectLinks.length > 0 ? (
+              <div className="mt-4 flex flex-wrap gap-2 text-xs">
+                <span className="text-slate-600">Related projects:</span>
+                {role.projectLinks.map((link) => (
+                  <LinkButton key={link.id} href={`#/projects?project=${link.id}`}>
+                    {link.label}
+                  </LinkButton>
+                ))}
+              </div>
+            ) : null}
           </Card>
-        </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ProjectsPage() {
+  const getProjectFromHash = () => {
+    if (typeof window === "undefined") return "";
+    const [, query] = window.location.hash.split("?");
+    if (!query) return "";
+    const params = new URLSearchParams(query);
+    return params.get("project") || "";
+  };
+  const [activeId, setActiveId] = useState(() => getProjectFromHash());
+
+  useEffect(() => {
+    const onHashChange = () => {
+      if (window.location.hash.startsWith("#/projects")) {
+        setActiveId(getProjectFromHash());
+      }
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
+  const toggleProject = (id) => {
+    const nextId = activeId === id ? "" : id;
+    setActiveId(nextId);
+    window.location.hash = nextId ? `#/projects?project=${nextId}` : "#/projects";
+  };
+
+  return (
+    <div className="mx-auto max-w-7xl px-4 py-10">
+      <SectionTitle
+        title="Projects"
+        intro="Deep case studies with context, problems, solutions, STP automation, and AI guardrails."
+      />
+      <div className="space-y-4">
+        {DATA.projects.map((project) => {
+          const isOpen = activeId === project.id;
+          return (
+            <div key={project.id} className="rounded-2xl border border-slate-200 bg-white/90 shadow-sm">
+              <button
+                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                onClick={() => toggleProject(project.id)}
+                aria-expanded={isOpen}
+                aria-controls={`project-${project.id}`}
+                type="button"
+              >
+                <div>
+                  <div className="text-base font-semibold text-slate-900">{project.title}</div>
+                  <div className="text-xs text-slate-600">{project.role}</div>
+                </div>
+                <span className="text-xs font-semibold text-indigo-600">
+                  {isOpen ? "Hide details" : "View case study"}
+                </span>
+              </button>
+              {isOpen ? (
+                <div id={`project-${project.id}`} className="border-t border-slate-200 px-5 py-5 text-sm text-slate-700">
+                  <div className="space-y-4">
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Context</div>
+                      <p className="mt-2">{project.context}</p>
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Problem</div>
+                      <p className="mt-2">{project.problem}</p>
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Solution</div>
+                      <p className="mt-2">{project.solution}</p>
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">STP & Automation</div>
+                      <p className="mt-2">{project.stpAutomation}</p>
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Impact</div>
+                      <ul className="mt-2 list-disc space-y-1 pl-5">
+                        {project.impact.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">AI Guardrails</div>
+                      <ul className="mt-2 list-disc space-y-1 pl-5">
+                        {project.aiGuardrails.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Learnings / Tradeoffs</div>
+                      <p className="mt-2">{project.learnings}</p>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
@@ -914,7 +622,7 @@ function ContactPage() {
     <div className="mx-auto max-w-7xl px-4 py-10">
       <SectionTitle
         title="Contact"
-        intro="Open to Platform PM, AI PM, and Data Products opportunities. Happy to share case studies or demos."
+        intro="Open to conversations about Platform PM, AI PM, Data Products, and FinTech opportunities."
       />
       <div className="rounded-2xl border bg-white/90 p-6 text-sm backdrop-blur">
         <div className="grid gap-4 md:grid-cols-2">
@@ -933,7 +641,6 @@ function ContactPage() {
               </ul>
             </div>
             <a className="block underline" href={identity.links.linkedin}><Linkedin className="mr-1 inline h-4 w-4" />LinkedIn</a>
-            <a className="block underline" href={identity.links.huggingface}><BookOpen className="mr-1 inline h-4 w-4" />Hugging Face</a>
             <a className="block underline" href={identity.links.resume} download>Resume (PDF)</a>
           </div>
         </div>
@@ -946,6 +653,7 @@ function ContactPage() {
 const PAGES = {
   home: HomePage,
   experience: ExperiencePage,
+  projects: ProjectsPage,
   certifications: CertificationsPage,
   contact: ContactPage,
 };
@@ -975,12 +683,12 @@ function App() {
 function useHashRoute(defaultRoute = "home") {
   const [route, setRoute] = useState(() => {
     const h = (typeof window !== "undefined" && window.location.hash) || "#";
-    const r = h.replace(/^#\/?/, "");
+    const r = h.replace(/^#\/?/, "").split("?")[0];
     return ROUTES.includes(r) ? r : defaultRoute;
   });
   useEffect(() => {
     const onHash = () => {
-      const r = window.location.hash.replace(/^#\/?/, "");
+      const r = window.location.hash.replace(/^#\/?/, "").split("?")[0];
       setRoute(ROUTES.includes(r) ? r : defaultRoute);
       window.scrollTo({ top: 0, behavior: "auto" });
     };
