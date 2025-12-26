@@ -156,93 +156,15 @@ const DATA = {
         "Built a governed analytics data product by defining metadata, data dictionaries, ingestion requirements, and analytics-ready models in Amazon Redshift.",
       stpAutomation:
         "Standardized data ingestion and modeling pipelines to eliminate manual report creation and ad-hoc data pulls.",
+      aiEnablement: [
+        "Enabled ML and Analytics teams to consume clean, governed sales data for modeling and advanced insights without rework.",
+      ],
       impact: [
         "Established a single source of truth for Payments sales reporting.",
         "Reduced manual reporting effort and clarification cycles.",
         "Improved adoption and trust across Sales, Analytics, and ML teams.",
       ],
-      aiEnablement: [
-        "Enabled ML and Analytics teams to consume clean, governed sales data for modeling and advanced insights without rework.",
-      ],
       learnings: "Aligned CRM definitions with analytics consumption to prevent rework.",
-      ],
-      aiGuardrails: [
-        "Catalog Copilot suggests field definitions, rules, and downstream impacts.",
-        "Automated approval routing for risk/finance/compliance-sensitive fields.",
-        "Audit logs and human approval for high-impact changes.",
-      ],
-      learnings:
-        "Shipped governance and authoring workflows first, then expanded analytics to drive adoption.",
-    },
-    {
-      id: "prompt-driven-authoring-tool",
-      title: "Prompt-Driven Authoring Tool for Product Owners",
-      context:
-        "Self-serve authoring for product definitions to reduce manual ticketing and accelerate onboarding updates.",
-      role: "PM owner for workflow design, AI assist, and governance.",
-      problem:
-        "Product owners depended on engineering tickets for definition updates, slowing launches and increasing rework.",
-      solution:
-        "Prompt-driven authoring with validation, change previews, and automated Jira creation for multi-team approvals.",
-      stpAutomation:
-        "Automated routine definition updates and approvals, reducing manual handoffs for standard changes.",
-      impact: [
-        "Onboarding tickets reduced by 80% for supported changes.",
-        "Definition updates moved from weeks to days with controlled governance.",
-        "Improved adoption with guided templates and guardrails.",
-      ],
-      aiGuardrails: [
-        "Confidence scoring for suggested edits with manual approval required for high-risk fields.",
-        "Audit trail for every change with rollback and override options.",
-      ],
-      learnings:
-        "Balanced speed with compliance by separating low-risk templates from high-risk approvals.",
-    },
-    {
-      id: "checkout-funnel-optimization",
-      title: "Checkout Funnel Optimization (Yum!)",
-      context:
-        "Digital ordering funnel across web and mobile with multiple payment gateways and tender types.",
-      role: "Associate PM focused on instrumentation, analysis, and experimentation.",
-      problem:
-        "Drop-offs, declines, and timeouts were hard to diagnose with limited instrumentation.",
-      solution:
-        "Instrumented funnel events, analyzed failure patterns by device/browser/gateway, and ran experiments on messaging and retry flows.",
-      stpAutomation:
-        "Automated failure classification and routing to accelerate diagnosis and reduce manual triage.",
-      impact: [
-        "Improved checkout completion via targeted experiments and fixes.",
-        "Real-time visibility into failures for faster operational response.",
-      ],
-      aiGuardrails: [
-        "Experiment Planner suggests hypotheses and instrumentation with required tracking checklists.",
-        "Alerts include recommended remediation playbooks with human validation.",
-      ],
-      learnings:
-        "Focused on highest-impact tender types before expanding to long-tail payment methods.",
-    },
-    {
-      id: "automated-analytics-pipelines",
-      title: "Automated Analytics Pipelines (Reguss Consulting)",
-      context:
-        "Marketing and sales analytics with recurring reporting across multiple business units.",
-      role: "Analytics consultant automating data pipelines and KPI frameworks.",
-      problem:
-        "Manual reporting slowed decision-making and created inconsistent KPI definitions.",
-      solution:
-        "Automated SQL/PySpark/Airflow pipelines with standardized KPI scorecards and dashboards.",
-      stpAutomation:
-        "Scheduled workflows and data quality checks replaced manual reporting cycles.",
-      impact: [
-        "Report turnaround time reduced by 30%.",
-        "Improved consistency with shared KPI hierarchies and scorecards.",
-      ],
-      aiGuardrails: [
-        "Data quality checks with alerting before publishing reports.",
-        "Human review for outlier flags or pipeline failures.",
-      ],
-      learnings:
-        "Prioritized reliable automation to build trust before expanding advanced analytics.",
     },
   ],
 
@@ -299,7 +221,7 @@ const DATA = {
     },
     {
       title: "Governed Analytics Platforms",
-      description: "Enable AI and automation with trusted, reusable data foundations.",
+      description: "Governed analytics platforms enabling AI and automation.",
     },
   ],
 
@@ -717,13 +639,10 @@ function ProjectsPage() {
                 <div id={`project-${project.id}`} className="border-t border-slate-200 px-5 py-5 text-sm text-slate-700">
                   <div className="space-y-4">
                     <div>
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Context</div>
-                  {project.associatedRole ? (
-                    <p className="mt-2 text-xs font-semibold text-slate-500">{project.associatedRole}</p>
-                  ) : null}
-                  <p className="mt-2">{project.context}</p>
-                </div>
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Context</div>
+                      {project.associatedRole ? (
+                        <p className="mt-2 text-xs font-semibold text-slate-500">{project.associatedRole}</p>
+                      ) : null}
                       <p className="mt-2">{project.context}</p>
                     </div>
                     <div>
@@ -766,12 +685,6 @@ function ProjectsPage() {
                           </ul>
                         </>
                       )}
-                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">AI Guardrails</div>
-                      <ul className="mt-2 list-disc space-y-1 pl-5">
-                        {project.aiGuardrails.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
                     </div>
                     <div>
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Learnings / Tradeoffs</div>
