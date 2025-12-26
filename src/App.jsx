@@ -453,6 +453,80 @@ function TopNav({ current }) {
 /* ---------------- Pages ---------------- */
 function HomePage() {
   const { identity } = DATA;
+  const [showResumeTooltip, setShowResumeTooltip] = useState(false);
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const resumeButtonRef = React.useRef(null);
+  const resumeTooltipTimerRef = React.useRef(null);
+  const resumeModalRef = React.useRef(null);
+  const resumeCloseButtonRef = React.useRef(null);
+  const wasResumeModalOpen = React.useRef(false);
+
+  const closeResumeModal = () => {
+    setIsResumeModalOpen(false);
+  };
+
+  const handleResumeMouseEnter = () => {
+    setShowResumeTooltip(true);
+    if (resumeTooltipTimerRef.current) {
+      clearTimeout(resumeTooltipTimerRef.current);
+    }
+    resumeTooltipTimerRef.current = setTimeout(() => {
+      setShowResumeTooltip(false);
+    }, 2500);
+  };
+
+  const handleResumeMouseLeave = () => {
+    setShowResumeTooltip(false);
+    if (resumeTooltipTimerRef.current) {
+      clearTimeout(resumeTooltipTimerRef.current);
+      resumeTooltipTimerRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    if (!isResumeModalOpen) {
+      if (wasResumeModalOpen.current) {
+        resumeButtonRef.current?.focus();
+      }
+      wasResumeModalOpen.current = false;
+      return undefined;
+    }
+    wasResumeModalOpen.current = true;
+    resumeCloseButtonRef.current?.focus();
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeResumeModal();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const focusableElements = resumeModalRef.current?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusableElements || focusableElements.length === 0) return;
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isResumeModalOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (resumeTooltipTimerRef.current) {
+        clearTimeout(resumeTooltipTimerRef.current);
+      }
+    };
+  }, []);
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <SectionTitle
@@ -473,9 +547,31 @@ function HomePage() {
           <a className="rounded-full border px-4 py-2 text-xs font-semibold" href="#/projects">
             View Projects
           </a>
-          <a className="rounded-full border px-4 py-2 text-xs font-semibold" href={identity.links.resume} download>
-            Download Resume
-          </a>
+          <div className="relative">
+            <button
+              ref={resumeButtonRef}
+              className="rounded-full border px-4 py-2 text-xs font-semibold"
+              type="button"
+              aria-label="Download resume (coming soon)"
+              aria-describedby={showResumeTooltip ? "resume-tooltip" : undefined}
+              onClick={() => setIsResumeModalOpen(true)}
+              onMouseEnter={handleResumeMouseEnter}
+              onMouseLeave={handleResumeMouseLeave}
+              onFocus={handleResumeMouseEnter}
+              onBlur={handleResumeMouseLeave}
+            >
+              Download Resume
+            </button>
+            {showResumeTooltip ? (
+              <div
+                id="resume-tooltip"
+                role="tooltip"
+                className="absolute -top-9 left-1/2 -translate-x-1/2 rounded-md bg-slate-900 px-2.5 py-1 text-xs text-white shadow-lg"
+              >
+                Coming soon.
+              </div>
+            ) : null}
+          </div>
           <a className="rounded-full border px-4 py-2 text-xs font-semibold" href={identity.links.linkedin}>
             LinkedIn
           </a>
@@ -539,14 +635,37 @@ function HomePage() {
             </div>
           </div>
         </div>
-        <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-slate-700">
-          <li>
-            Unified Intake Platform: Single entry point across multiple digital platforms with AI-powered role-based personalization, reducing intake drop-offs by 14%.
-          </li>
-        </ul>
-        <p className="mt-4 text-xs text-slate-600">
-          Owned CRM → Redshift Sales Analytics Platform with governance (RBAC, lineage) to support reporting and ML use cases.
-        </p>
+
+        {isResumeModalOpen ? (
+          <div
+            className="fixed inset-0 z-20 flex items-center justify-center bg-black/40 px-4 py-6"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="resume-modal-title"
+            onClick={closeResumeModal}
+          >
+            <div
+              ref={resumeModalRef}
+              className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <h3 id="resume-modal-title" className="text-lg font-semibold text-slate-900">
+                Download resume
+              </h3>
+              <p className="mt-2 text-sm text-slate-700">Coming soon.</p>
+              <div className="mt-6 flex justify-end">
+                <button
+                  ref={resumeCloseButtonRef}
+                  type="button"
+                  className="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white"
+                  onClick={closeResumeModal}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : null}
 
         <div id="ai-work" className="mt-10">
           <SectionTitle
