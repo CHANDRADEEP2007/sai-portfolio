@@ -230,6 +230,21 @@ const DATA = {
     },
   ],
 
+  education: [
+    {
+      degree: "Executive MBA, University of the Cumberlands",
+      location: "Williamsburg, Kentucky",
+    },
+    {
+      degree: "MS, Business Analytics, University of Louisville",
+      location: "Louisville, Kentucky",
+    },
+    {
+      degree: "B. Tech, Computer Science, Bharath University",
+      location: "Chennai, India",
+    },
+  ],
+
   aiHighlights: [
     {
       title: "Intake Quality Copilot",
@@ -758,6 +773,18 @@ function ExperiencePage() {
             ) : null}
           </Card>
         ))}
+      </div>
+      <div className="mt-8">
+        <Card title="Education">
+          <div className="space-y-4 text-sm text-gray-700">
+            {DATA.education.map((item) => (
+              <div key={item.degree}>
+                <div className="font-semibold text-slate-800">{item.degree}</div>
+                <div className="text-gray-600">{item.location}</div>
+              </div>
+            ))}
+          </div>
+        </Card>
       </div>
     </div>
   );
