@@ -166,6 +166,34 @@ const DATA = {
       ],
       learnings: "Aligned CRM definitions with analytics consumption to prevent rework.",
     },
+    {
+      id: "unified-product-intake-platform-ai-personalization",
+      title: "Unified Product Intake Platform with AI Personalization",
+      context:
+        "Users had to navigate multiple digital platforms to discover and request products.",
+      role: "Platform PM leading unified intake discovery and AI personalization.",
+      problem:
+        "A fragmented discovery experience led to duplicated effort and high drop-off rates during intake.",
+      solution:
+        "Designed a Unified Intake UI aggregating products from multiple platforms into a single experience.",
+      platformSignal: [
+        "One entry point → multiple underlying systems.",
+        "Shared capability adopted across teams and organizations.",
+      ],
+      digitalExperienceImpact:
+        "Reduced tool hopping and simplified a multi-step digital journey.",
+      stpAutomation:
+        "Built an AI bot that personalizes recommendations: Individual Contributors see role-relevant products; Managers see team-level options and insights.",
+      aiEnablement: [
+        "Applied AI for role-based personalization, embedded directly into workflows.",
+      ],
+      impact: [
+        "Reduced intake flow drop-offs by 14%.",
+        "Drove cross-org adoption (add team/org counts when available).",
+      ],
+      learnings: "Scaled role-based personalization while keeping discovery consistent.",
+      associatedRoleFooter: "Associated Role: Platform Product Manager – J.P. Morgan Chase & Co.",
+    },
   ],
 
   certifications: [
@@ -223,6 +251,10 @@ const DATA = {
       title: "Governed Analytics Platforms",
       description: "Governed analytics platforms enabling AI and automation.",
     },
+    {
+      title: "Role-based AI Personalization",
+      description: "Role-based AI personalization embedded directly into platform workflows.",
+    },
   ],
 
   /* ===========================
@@ -242,6 +274,7 @@ const DATA = {
         "Improved release predictability by automating assignment and acceptance steps; reduced workflow breakages and lowered cycle-time variance.",
         "Scaled adoption from 45 clients/15 products to 180 clients/45 sub-products; supported 48 products and 15 back-office API integrations.",
         "Owned the Catalog/Product Definition layer as a single source of truth across onboarding systems to reduce duplicate builds and engineering spend.",
+        "Designed and launched a Unified Product Intake platform consolidating discovery and requests across multiple digital platforms, including AI-powered role-based personalization to reduce drop-offs and drive cross-org adoption.",
         "Built a self-serve, prompt-driven authoring tool for Product Owners; reduced onboarding tickets by 80% for the supported segment.",
         "Enabled publish-once, reuse-everywhere by integrating definition changes across onboarding platforms for consistent experiences.",
       ],
@@ -423,7 +456,7 @@ function HomePage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <SectionTitle
-        title="Sai Chandradeep"
+        title="Venkata Sai Chandradeep Telaprolu"
         intro="Platform + Digital Product Manager leader driving AI-enabled automation, straight-through processing, and reduction of manual work."
       />
       <div className="rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-sm ring-1 ring-indigo-100 backdrop-blur">
@@ -483,9 +516,29 @@ function HomePage() {
             className="bg-gradient-to-br from-violet-50 to-violet-100 border-violet-200"
           />
         </div>
-        <p className="mt-4 text-xs text-slate-600">
-          Owned CRM → Redshift Sales Analytics Platform with governance (RBAC, lineage) to support reporting and ML use cases.
-        </p>
+        <div className="mt-6">
+          <h3 className="text-lg font-semibold text-slate-900">Additional Platform Impact</h3>
+          <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
+            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                <span className="text-base text-blue-600" aria-hidden="true">🔗</span>
+                Unified Intake Platform
+              </div>
+              <p className="mt-2 text-sm text-slate-700">
+                Single entry point across multiple digital platforms with AI-powered role-based personalization, reducing intake drop-offs by 14%.
+              </p>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                <span className="text-base text-purple-600" aria-hidden="true">📊</span>
+                Sales Analytics Data Platform
+              </div>
+              <p className="mt-2 text-sm text-slate-700">
+                Owned CRM → Redshift Sales Analytics Platform with governance (RBAC, lineage) to support reporting and ML use cases.
+              </p>
+            </div>
+          </div>
+        </div>
 
         <div id="ai-work" className="mt-10">
           <SectionTitle
@@ -653,6 +706,24 @@ function ProjectsPage() {
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Solution</div>
                       <p className="mt-2">{project.solution}</p>
                     </div>
+                    {project.platformSignal ? (
+                      <div>
+                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Platform Signal</div>
+                        <ul className="mt-2 list-disc space-y-1 pl-5">
+                          {project.platformSignal.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+                    {project.digitalExperienceImpact ? (
+                      <div>
+                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          Digital Experience Impact
+                        </div>
+                        <p className="mt-2">{project.digitalExperienceImpact}</p>
+                      </div>
+                    ) : null}
                     <div>
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">STP & Automation</div>
                       <p className="mt-2">{project.stpAutomation}</p>
@@ -690,6 +761,11 @@ function ProjectsPage() {
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Learnings / Tradeoffs</div>
                       <p className="mt-2">{project.learnings}</p>
                     </div>
+                    {project.associatedRoleFooter ? (
+                      <div className="text-xs font-semibold text-slate-500">
+                        {project.associatedRoleFooter}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               ) : null}
@@ -720,14 +796,6 @@ function ContactPage() {
             <div className="flex items-center gap-2"><MapPin className="h-4 w-4" />{identity.location}</div>
           </div>
           <div className="space-y-2">
-            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-xs text-slate-700">
-              <div className="font-semibold text-slate-800">Role-fit prompts</div>
-              <ul className="mt-2 list-disc space-y-1 pl-5">
-                <li>Discuss Platform PM roles</li>
-                <li>Explore AI PM opportunities</li>
-                <li>Data Products & Payments roles</li>
-              </ul>
-            </div>
             <a className="block underline" href={identity.links.linkedin}><Linkedin className="mr-1 inline h-4 w-4" />LinkedIn</a>
             <a className="block underline" href={identity.links.resume} download>Resume (PDF)</a>
           </div>
