@@ -46,7 +46,7 @@ const PALETTE = {
 const DATA = {
   identity: {
     name: "Venkata Sai Chandradeep Telaprolu",
-    title: "Data Strategy | Platform Product Management | Product Intelligence ",
+    title: "Platform Product Management | Data Strategy | Product Intelligence",
     location: "USA",
     email: "chandradeep.msba@gmail.com",
     phone: "502-298-6263",
@@ -537,14 +537,25 @@ function TopNav({ current }) {
 /* ---------------- Pages ---------------- */
 function HomePage() {
   const { identity } = DATA;
+  const focusAreas = [
+    "Platform product strategy",
+    "Data/AI enablement",
+    "Self-serve workflows",
+    "Adoption + KPI frameworks",
+  ];
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <SectionTitle title={`Hi, I'm ${identity.name}`} intro={identity.title} />
       <div className="rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-sm ring-1 ring-indigo-100 backdrop-blur">
         <p className="max-w-3xl text-sm text-slate-700">
-          Platform Product Manager with a strong foundation in data and analytics engineering. I build scalable, API-first platforms that power self-service experiences and intelligent workflows across business lines. 
-          I’m passionate about turning complex data architecture into intuitive products that enable teams to move faster, make better decisions, and measure impact through clear adoption and KPI frameworks.
+          Platform Product Manager with a foundation in data and analytics engineering. I build API-first platforms that power self-service experiences, intelligent workflows, and trusted metrics across business lines.
+          I focus on turning complex data architecture into intuitive product surfaces so teams move faster, make sharper decisions, and measure impact through clear adoption and KPI frameworks.
         </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {focusAreas.map((area) => (
+            <Pill key={area}>{area}</Pill>
+          ))}
+        </div>
 
         {/* KPI tiles */}
         <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-3">
