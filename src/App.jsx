@@ -142,30 +142,6 @@ const DATA = {
       learnings:
         "Prioritized reliable automation to build trust before expanding advanced analytics.",
     },
-    {
-      id: "payments-sales-analytics-data-platform",
-      title: "Payments Sales Analytics Data Platform (CRM → Redshift)",
-      associatedRole:
-        "Associated Role: Product Manager, Analytics Solutions – JPMC (Aug 2022 – Mar 2024)",
-      context:
-        "Enterprise Payments Sales organization requiring trusted, reusable sales data across multiple Lines of Business.",
-      role: "Product Manager owning CRM-to-Redshift analytics data product delivery.",
-      problem:
-        "Sales data fragmented across CRM objects with inconsistent definitions, manual reporting effort, and limited reuse for analytics and ML.",
-      solution:
-        "Built a governed analytics data product by defining metadata, data dictionaries, ingestion requirements, and analytics-ready models in Amazon Redshift.",
-      stpAutomation:
-        "Standardized data ingestion and modeling pipelines to eliminate manual report creation and ad-hoc data pulls.",
-      impact: [
-        "Established a single source of truth for Payments sales reporting.",
-        "Reduced manual reporting effort and clarification cycles.",
-        "Improved adoption and trust across Sales, Analytics, and ML teams.",
-      ],
-      aiGuardrails: [
-        "Enabled ML and Analytics teams to consume clean, governed sales data for modeling and advanced insights without rework.",
-      ],
-      learnings: "Aligned CRM definitions with analytics consumption to prevent rework.",
-    },
   ],
 
   certifications: [
@@ -219,10 +195,6 @@ const DATA = {
       title: "Ops Insights",
       description: "Surface STP coverage, bottlenecks, and guardrail exceptions.",
     },
-    {
-      title: "Governed Analytics Platforms",
-      description: "Enable AI and automation with trusted, reusable data foundations.",
-    },
   ],
 
   /* ===========================
@@ -250,36 +222,6 @@ const DATA = {
         { label: "Fast-Track Onboarding STP", id: "fast-track-onboarding-stp" },
         { label: "Catalog/Product Definition Layer", id: "catalog-product-definition-layer" },
         { label: "Prompt-Driven Authoring Tool", id: "prompt-driven-authoring-tool" },
-      ],
-    },
-    {
-      company: "J.P. Morgan Chase & Co. – Product Sales",
-      role: "Product Manager, Analytics Solutions",
-      location: "USA",
-      period: "Aug 2022 – Mar 2024",
-      scope:
-        "Owned the Payments sales data product end-to-end from CRM source systems through ingestion, modeling, and publishing in Amazon Redshift as a single reliable source for sales reporting.",
-      outcomes: [
-        "Partnered with CRM Product Owners to understand sales objects and processes; defined metadata and data dictionaries and coordinated extraction into the data platform.",
-        "Wrote and prioritized user stories for CRM and ingestion teams; collaborated with data engineering to model datasets and publish analytics-ready views.",
-        "Embedded governance by design by working with data stewards on quality and lineage, and implementing RBAC/IAM and row-level security across Lines of Business.",
-        "Participated in product strategy discussions and translated sales data into insights supporting sales leaders and transformation initiatives.",
-        "Managed the Jira backlog and continuously re-prioritized stories to deliver the highest-value analytics capabilities first.",
-        "Monitored usage and adoption and guided teams to the right datasets to ensure the data product delivered measurable business impact.",
-        "Hosted bi-weekly working sessions with Analytics and ML/Data Science teams to clarify field definitions, introduce new data, and coordinate fixes with CRM, Tech, and platform owners.",
-      ],
-      tags: [
-        "Data Platform",
-        "Analytics Product",
-        "Governance & Security",
-        "AI Readiness",
-        "Sales Enablement",
-      ],
-      projectLinks: [
-        {
-          label: "Payments Sales Analytics Data Platform",
-          id: "payments-sales-analytics-data-platform",
-        },
       ],
     },
     {
@@ -639,12 +581,9 @@ function ProjectsPage() {
                 <div id={`project-${project.id}`} className="border-t border-slate-200 px-5 py-5 text-sm text-slate-700">
                   <div className="space-y-4">
                     <div>
-                  <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Context</div>
-                  {project.associatedRole ? (
-                    <p className="mt-2 text-xs font-semibold text-slate-500">{project.associatedRole}</p>
-                  ) : null}
-                  <p className="mt-2">{project.context}</p>
-                </div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Context</div>
+                      <p className="mt-2">{project.context}</p>
+                    </div>
                     <div>
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Problem</div>
                       <p className="mt-2">{project.problem}</p>
