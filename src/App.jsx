@@ -933,6 +933,26 @@ function ProjectsPage() {
 
 function ContactPage() {
   const { identity } = DATA;
+  const [showResumeNotice, setShowResumeNotice] = useState(false);
+  const resumeNoticeTimerRef = React.useRef(null);
+
+  const triggerResumeNotice = () => {
+    setShowResumeNotice(true);
+    if (resumeNoticeTimerRef.current) {
+      clearTimeout(resumeNoticeTimerRef.current);
+    }
+    resumeNoticeTimerRef.current = setTimeout(() => {
+      setShowResumeNotice(false);
+    }, 2000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (resumeNoticeTimerRef.current) {
+        clearTimeout(resumeNoticeTimerRef.current);
+      }
+    };
+  }, []);
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <SectionTitle
@@ -951,7 +971,21 @@ function ContactPage() {
           </div>
           <div className="space-y-2">
             <a className="block underline" href={identity.links.linkedin}><Linkedin className="mr-1 inline h-4 w-4" />LinkedIn</a>
-            <a className="block underline" href={identity.links.resume} download>Resume (PDF)</a>
+            <div className="relative inline-block">
+              <button
+                type="button"
+                className="block underline"
+                onClick={triggerResumeNotice}
+                onFocus={triggerResumeNotice}
+              >
+                Resume (PDF)
+              </button>
+              {showResumeNotice ? (
+                <span className="absolute left-0 top-6 rounded-md bg-slate-900 px-2 py-1 text-xs text-white shadow-lg">
+                  Coming Soon
+                </span>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
