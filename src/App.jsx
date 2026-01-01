@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Mail, Phone, MapPin, Linkedin, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, ArrowUpRight, BookOpen } from "lucide-react";
 
 /* ============================================================================
    Portfolio SPA — colorful & clear
@@ -50,6 +50,8 @@ const DATA = {
     {
       id: "catalog-product-definition-layer",
       title: "Catalog / Product Definition Layer (Single Source of Truth)",
+      backstoryUrl:
+        "https://medium.com/@chandradeepsai96/how-i-went-from-data-warehouses-to-building-a-product-platform-815709b0ebcd",
       context:
         "48+ products, 15+ downstream API integrations, and multiple onboarding systems needing consistent definitions.",
       role: "Platform PM leading governance, reusable components, and definition propagation.",
@@ -75,6 +77,8 @@ const DATA = {
     {
       id: "prompt-driven-authoring-tool",
       title: "Prompt-Driven Authoring Tool for Product Owners",
+      backstoryUrl:
+        "https://medium.com/@chandradeepsai96/how-i-went-from-data-warehouses-to-building-a-product-platform-815709b0ebcd",
       context:
         "Self-serve authoring for product definitions to reduce manual ticketing and accelerate onboarding updates.",
       role: "PM owner for workflow design, AI assist, and governance.",
@@ -169,6 +173,8 @@ const DATA = {
     {
       id: "unified-product-intake-platform-ai-personalization",
       title: "Unified Product Intake Platform with AI Personalization",
+      backstoryUrl:
+        "https://medium.com/@chandradeepsai96/one-door-many-systems-designing-a-product-access-hub-experience-b0246cb08239?postPublishedType=repub",
       context:
         "Users had to navigate multiple digital platforms to discover and request products.",
       role: "Platform PM leading unified intake discovery and AI personalization.",
@@ -827,21 +833,35 @@ function ProjectsPage() {
           const isOpen = activeId === project.id;
           return (
             <div key={project.id} className="rounded-2xl border border-slate-200 bg-white/90 shadow-sm">
-              <button
-                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
-                onClick={() => toggleProject(project.id)}
-                aria-expanded={isOpen}
-                aria-controls={`project-${project.id}`}
-                type="button"
-              >
-                <div>
-                  <div className="text-base font-semibold text-slate-900">{project.title}</div>
-                  <div className="text-xs text-slate-600">{project.role}</div>
-                </div>
-                <span className="text-xs font-semibold text-indigo-600">
-                  {isOpen ? "Hide details" : "View case study"}
-                </span>
-              </button>
+              <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4">
+                <button
+                  className="flex min-w-0 flex-1 items-center gap-4 text-left"
+                  onClick={() => toggleProject(project.id)}
+                  aria-expanded={isOpen}
+                  aria-controls={`project-${project.id}`}
+                  type="button"
+                >
+                  <span className="text-xs font-semibold text-indigo-600">
+                    {isOpen ? "Hide details" : "View case study"}
+                  </span>
+                  <div className="min-w-0">
+                    <div className="truncate text-base font-semibold text-slate-900">{project.title}</div>
+                    <div className="text-xs text-slate-600">{project.role}</div>
+                  </div>
+                </button>
+                {project.backstoryUrl ? (
+                  <a
+                    className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                    href={project.backstoryUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <BookOpen className="h-3.5 w-3.5" />
+                    Backstory
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                ) : null}
+              </div>
               {isOpen ? (
                 <div id={`project-${project.id}`} className="border-t border-slate-200 px-5 py-5 text-sm text-slate-700">
                   <div className="space-y-4">
