@@ -173,6 +173,8 @@ const DATA = {
     {
       id: "unified-product-intake-platform-ai-personalization",
       title: "Unified Product Intake Platform with AI Personalization",
+      backstoryUrl:
+        "https://medium.com/@chandradeepsai96/one-door-many-systems-designing-a-product-access-hub-experience-b0246cb08239?postPublishedType=repub",
       context:
         "Users had to navigate multiple digital platforms to discover and request products.",
       role: "Platform PM leading unified intake discovery and AI personalization.",
