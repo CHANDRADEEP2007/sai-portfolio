@@ -15,6 +15,7 @@ const DATA = {
       resume: "/resume.pdf",
       linkedin:
         "https://www.linkedin.com/in/venkata-sai-chandradeep-telaprolu-b0a568154/",
+      medium: "https://medium.com/@chandradeepsai96",
     },
   },
 
@@ -597,6 +598,9 @@ function HomePage() {
           <a className="rounded-full border px-4 py-2 text-xs font-semibold" href={identity.links.linkedin}>
             LinkedIn
           </a>
+          <a className="rounded-full border px-4 py-2 text-xs font-semibold" href={identity.links.medium}>
+            Medium
+          </a>
         </div>
 
         {/* KPI tiles */}
@@ -1003,6 +1007,10 @@ function ContactPage() {
           </div>
           <div className="space-y-2">
             <a className="block underline" href={identity.links.linkedin}><Linkedin className="mr-1 inline h-4 w-4" />LinkedIn</a>
+            <a className="block underline" href={identity.links.medium}>
+              <BookOpen className="mr-1 inline h-4 w-4" />
+              Medium
+            </a>
             <div className="relative inline-block">
               <button
                 type="button"
