@@ -52,6 +52,7 @@ const DATA = {
       title: "Catalog / Product Definition Layer (Single Source of Truth)",
       backstoryUrl:
         "https://medium.com/@chandradeepsai96/how-i-went-from-data-warehouses-to-building-a-product-platform-815709b0ebcd",
+      mvpUrl: "https://chandradeep2007.github.io/product-definition-developer/",
       context:
         "48+ products, 15+ downstream API integrations, and multiple onboarding systems needing consistent definitions.",
       role: "Platform PM leading governance, reusable components, and definition propagation.",
@@ -858,6 +859,17 @@ function ProjectsPage() {
                   >
                     <BookOpen className="h-3.5 w-3.5" />
                     Backstory
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                ) : null}
+                {project.mvpUrl ? (
+                  <a
+                    className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700 transition hover:border-slate-300 hover:text-slate-900"
+                    href={project.mvpUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    MVP
                     <ArrowUpRight className="h-3.5 w-3.5" />
                   </a>
                 ) : null}
