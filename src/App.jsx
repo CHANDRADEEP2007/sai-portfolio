@@ -15,7 +15,6 @@ const DATA = {
       resume: "/resume.pdf",
       linkedin:
         "https://www.linkedin.com/in/venkata-sai-chandradeep-telaprolu-b0a568154/",
-      medium: "https://medium.com/@chandradeepsai96",
     },
   },
 
@@ -23,12 +22,10 @@ const DATA = {
   projects: [
     {
       id: "fast-track-onboarding-stp",
-      title: "Fast-Track Onboarding for Digital Banking",
+      title: "Fast-Track Onboarding STP (Digital Banking Platform)",
       context:
         "Digital banking onboarding across web and mobile for startup and mid-market clients, covering Wires, ACH, RTP, and Check Deposits with back-office integrations.",
-      role: "Platform Product Manager – J.P. Morgan Payments",
-      summary:
-        "Cut onboarding from ~72 hours–1 week to under 1 hour for startups and mid-market clients, while scaling adoption to 180+ clients and 45 sub-products.",
+      role: "Product owner responsible for workflow design, prioritization, adoption, and cross-functional delivery.",
       problem:
         "Onboarding was slow and manual (72 hours–1 week) due to repeated handoffs, missing information, and inconsistent data capture, leading to high rework and support load.",
       solution:
@@ -36,16 +33,11 @@ const DATA = {
       stpAutomation:
         "Moved validation and routing to straight-through paths, reduced manual gatekeeping, and introduced self-serve definition updates for routine changes.",
       impact: [
-        "Reduced onboarding time from ~72 hours–1 week to under 1 hour for target clients.",
-        "Reduced onboarding submission failures by 90% using pre-populated fields and upfront validation.",
-        "Lowered rework by 62% with automated assignment and acceptance steps.",
-        "Scaled adoption from 45 clients / 15 products to 180 clients / 45 sub-products; now supports 48 products and 15 back-office API integrations.",
-        "Drove platform usage across 1,500+ users and 68 teams globally.",
-      ],
-      ownership: [
-        "Own the catalog/product definition layer as a single source of truth for onboarding systems, reducing duplicate builds and engineering spend.",
-        "Built a self-serve, prompt-driven authoring tool for product owners, cutting onboarding tickets by ~80% for the segment.",
-        "Enabled publish-once, reuse-everywhere definitions across onboarding platforms with automated approvals and notifications.",
+        "Onboarding time reduced from 72 hours–1 week to under 1 hour.",
+        "Submission failures reduced by 90% and rework lowered by 62%.",
+        "Onboarding tickets reduced by 80% for the supported segment.",
+        "Scaled adoption from 45 clients/15 products to 180 clients/45 sub-products.",
+        "Improved release stability by reducing workflow breakages and cycle-time variance.",
       ],
       aiGuardrails: [
         "Intake Quality Copilot suggests missing fields, detects inconsistencies, and recommends next-best actions.",
@@ -111,12 +103,10 @@ const DATA = {
     },
     {
       id: "checkout-funnel-optimization",
-      title: "Digital Ordering & Payments – Checkout Funnel",
+      title: "Checkout Funnel Optimization (Yum!)",
       context:
         "Digital ordering funnel across web and mobile with multiple payment gateways and tender types.",
-      role: "Product Analyst (Acting Associate PM) – Yum! Brands",
-      summary:
-        "Owned the end-to-end checkout funnel and payment analytics across web and mobile to improve payment completion.",
+      role: "Associate PM focused on instrumentation, analysis, and experimentation.",
       problem:
         "Drop-offs, declines, and timeouts were hard to diagnose with limited instrumentation.",
       solution:
@@ -124,9 +114,8 @@ const DATA = {
       stpAutomation:
         "Automated failure classification and routing to accelerate diagnosis and reduce manual triage.",
       impact: [
-        "Owned the funnel from menu → cart → checkout → payment → confirmation, surfacing drop-offs and root causes.",
-        "Analyzed declines, timeouts, and retries by device, browser, tender type, and gateway response; turned insights into engineering priorities.",
-        "Supported A/B tests for error messaging, retries, and saved payment/guest flows; delivered dashboards and launch readouts to influence roadmap and sprints.",
+        "Improved checkout completion via targeted experiments and fixes.",
+        "Real-time visibility into failures for faster operational response.",
       ],
       aiGuardrails: [
         "Experiment Planner suggests hypotheses and instrumentation with required tracking checklists.",
@@ -160,14 +149,12 @@ const DATA = {
     },
     {
       id: "payments-sales-analytics-data-platform",
-      title: "Payments Sales Data Product (CRM → Redshift)",
+      title: "Payments Sales Analytics Data Platform (CRM → Redshift)",
       associatedRole:
         "Associated Role: Product Manager, Analytics Solutions – JPMC (Aug 2022 – Mar 2024)",
       context:
         "Enterprise Payments Sales organization requiring trusted, reusable sales data across multiple Lines of Business.",
-      role: "Product Manager, Analytics Solutions – J.P. Morgan",
-      summary:
-        "Owned the payments sales data product end-to-end, from CRM sources through Redshift modeling, as a single reliable source for sales reporting.",
+      role: "Product Manager owning CRM-to-Redshift analytics data product delivery.",
       problem:
         "Sales data fragmented across CRM objects with inconsistent definitions, manual reporting effort, and limited reuse for analytics and ML.",
       solution:
@@ -178,10 +165,9 @@ const DATA = {
         "Enabled ML and Analytics teams to consume clean, governed sales data for modeling and advanced insights without rework.",
       ],
       impact: [
-        "Partnered with CRM product owners to understand objects and processes; designed extraction into Amazon Redshift.",
-        "Defined metadata and data dictionaries; modeled datasets and views aligned to analytics and reporting needs.",
-        "Embedded governance with stewards and implemented RBAC/IAM plus row-level security so each line of business saw only its data.",
-        "Guided analytics and ML teams to the right datasets, ensuring the data product drove actual sales and transformation outcomes.",
+        "Established a single source of truth for Payments sales reporting.",
+        "Reduced manual reporting effort and clarification cycles.",
+        "Improved adoption and trust across Sales, Analytics, and ML teams.",
       ],
       learnings: "Aligned CRM definitions with analytics consumption to prevent rework.",
     },
@@ -299,34 +285,43 @@ const DATA = {
   experience: [
     {
       company: "J.P. Morgan Chase & Co.",
-      role: "Platform Product Manager — J.P. Morgan Payments",
+      role: "Platform Product Manager — Payments",
       location: "USA",
       period: "Apr 2024 - Present",
       scope:
         "Own fast-track onboarding for JPMorgan’s Digital Banking platform (web + app), enabling activation for Wires, ACH, RTP, and Check Deposits across dependent APIs and back-office systems.",
       outcomes: [
-        "Reduced onboarding time from ~72 hours–1 week to under 1 hour, while scaling adoption to 180+ clients and 45 sub-products.",
-        "Reduced submission failures by 90% and rework by 62% through pre-populated fields, upfront validation, and automated workflows.",
-        "Owned the catalog/product definition layer as a single source of truth; built self-serve authoring and publish-once reuse for onboarding systems.",
+        "Drove straight-through onboarding by pre-populating required fields and adding upfront validation; reduced submission failures by 90% and rework by 62%.",
+        "Cut onboarding cycle time from ~72 hours–1 week to under 1 hour by removing manual handoffs and standardizing workflow execution.",
+        "Improved release predictability by automating assignment and acceptance steps; reduced workflow breakages and lowered cycle-time variance.",
+        "Scaled adoption from 45 clients/15 products to 180 clients/45 sub-products; supported 48 products and 15 back-office API integrations.",
+        "Owned the Catalog/Product Definition layer as a single source of truth across onboarding systems to reduce duplicate builds and engineering spend.",
+        "Designed and launched a Unified Product Intake platform consolidating discovery and requests across multiple digital platforms, including AI-powered role-based personalization to reduce drop-offs and drive cross-org adoption.",
+        "Built a self-serve, prompt-driven authoring tool for Product Owners; reduced onboarding tickets by 80% for the supported segment.",
+        "Enabled publish-once, reuse-everywhere by integrating definition changes across onboarding platforms for consistent experiences.",
       ],
       tags: ["Platform", "Digital", "AI", "STP", "Automation", "Governance"],
       projectLinks: [
-        { label: "Fast-Track Onboarding", id: "fast-track-onboarding-stp" },
+        { label: "Fast-Track Onboarding STP", id: "fast-track-onboarding-stp" },
         { label: "Catalog/Product Definition Layer", id: "catalog-product-definition-layer" },
         { label: "Prompt-Driven Authoring Tool", id: "prompt-driven-authoring-tool" },
       ],
     },
     {
       company: "J.P. Morgan Chase & Co. – Product Sales",
-      role: "Product Manager, Analytics Solutions — J.P. Morgan",
+      role: "Product Manager, Analytics Solutions",
       location: "USA",
       period: "Aug 2022 – Mar 2024",
       scope:
         "Owned the Payments sales data product end-to-end from CRM source systems through ingestion, modeling, and publishing in Amazon Redshift as a single reliable source for sales reporting.",
       outcomes: [
-        "Partnered with CRM product owners to understand objects and processes; designed extraction into Amazon Redshift.",
-        "Defined metadata and data dictionaries; modeled datasets and views aligned to analytics and reporting needs.",
-        "Embedded governance with stewards and implemented RBAC/IAM plus row-level security for each line of business.",
+        "Partnered with CRM Product Owners to understand sales objects and processes; defined metadata and data dictionaries and coordinated extraction into the data platform.",
+        "Wrote and prioritized user stories for CRM and ingestion teams; collaborated with data engineering to model datasets and publish analytics-ready views.",
+        "Embedded governance by design by working with data stewards on quality and lineage, and implementing RBAC/IAM and row-level security across Lines of Business.",
+        "Participated in product strategy discussions and translated sales data into insights supporting sales leaders and transformation initiatives.",
+        "Managed the Jira backlog and continuously re-prioritized stories to deliver the highest-value analytics capabilities first.",
+        "Monitored usage and adoption and guided teams to the right datasets to ensure the data product delivered measurable business impact.",
+        "Hosted bi-weekly working sessions with Analytics and ML/Data Science teams to clarify field definitions, introduce new data, and coordinate fixes with CRM, Tech, and platform owners.",
       ],
       tags: [
         "Data Platform",
@@ -337,22 +332,24 @@ const DATA = {
       ],
       projectLinks: [
         {
-          label: "Payments Sales Data Product",
+          label: "Payments Sales Analytics Data Platform",
           id: "payments-sales-analytics-data-platform",
         },
       ],
     },
     {
       company: "Yum! Brands (USA)",
-      role: "Product Analyst (Acting Associate PM) — Yum! Brands",
+      role: "Product Analyst (Associate Product Manager)",
       location: "USA",
       period: "Oct 2021 - Jun 2022",
       scope:
         "Owned the checkout funnel view (menu → cart → checkout → payment → confirmation) across web and mobile to surface drop-offs and guide payments improvements.",
       outcomes: [
-        "Owned the funnel from menu → cart → checkout → payment → confirmation, surfacing drop-offs and root causes.",
-        "Analyzed declines, timeouts, and retries by device, browser, tender type, and gateway response; turned insights into engineering priorities.",
-        "Supported A/B tests for error messaging, retries, and saved payment/guest flows; delivered dashboards and launch readouts.",
+        "Analyzed declines, timeouts, and retries by device/browser/order type and gateway response; translated insights into engineering priorities.",
+        "Partnered with engineering to improve tracking/instrumentation so release impact could be measured confidently.",
+        "Supported A/B tests and pilots (error messaging, retries, saved payment, guest flow) and shared results to guide rollouts.",
+        "Balanced customer experience with payments controls and reliability by aligning Product, Design, Ops, and Risk/Compliance.",
+        "Delivered dashboards and launch readouts to support roadmap and sprint decisions.",
       ],
       tags: ["Digital", "Analytics", "Payments", "Experimentation"],
       projectLinks: [{ label: "Checkout Funnel Optimization", id: "checkout-funnel-optimization" }],
@@ -478,16 +475,87 @@ function TopNav({ current }) {
 /* ---------------- Pages ---------------- */
 function HomePage() {
   const { identity } = DATA;
+  const [showResumeTooltip, setShowResumeTooltip] = useState(false);
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const resumeButtonRef = React.useRef(null);
+  const resumeTooltipTimerRef = React.useRef(null);
+  const resumeModalRef = React.useRef(null);
+  const resumeCloseButtonRef = React.useRef(null);
+  const wasResumeModalOpen = React.useRef(false);
+
+  const closeResumeModal = () => {
+    setIsResumeModalOpen(false);
+  };
+
+  const handleResumeMouseEnter = () => {
+    setShowResumeTooltip(true);
+    if (resumeTooltipTimerRef.current) {
+      clearTimeout(resumeTooltipTimerRef.current);
+    }
+    resumeTooltipTimerRef.current = setTimeout(() => {
+      setShowResumeTooltip(false);
+    }, 2500);
+  };
+
+  const handleResumeMouseLeave = () => {
+    setShowResumeTooltip(false);
+    if (resumeTooltipTimerRef.current) {
+      clearTimeout(resumeTooltipTimerRef.current);
+      resumeTooltipTimerRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    if (!isResumeModalOpen) {
+      if (wasResumeModalOpen.current) {
+        resumeButtonRef.current?.focus();
+      }
+      wasResumeModalOpen.current = false;
+      return undefined;
+    }
+    wasResumeModalOpen.current = true;
+    resumeCloseButtonRef.current?.focus();
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeResumeModal();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const focusableElements = resumeModalRef.current?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusableElements || focusableElements.length === 0) return;
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isResumeModalOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (resumeTooltipTimerRef.current) {
+        clearTimeout(resumeTooltipTimerRef.current);
+      }
+    };
+  }, []);
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <SectionTitle
-        title="Platform Product Manager – Digital • AI • Data"
-        intro="Platform PM with 5+ years building ML/AI, onboarding, catalog/metadata, payments/checkout, and data platforms across JPMorgan and Yum! Brands."
+        title="Venkata Sai Chandradeep Telaprolu"
+        intro="Platform + Digital Product Manager leader driving AI-enabled automation, straight-through processing, and reduction of manual work."
       />
       <div className="rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-sm ring-1 ring-indigo-100 backdrop-blur">
-        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-          Venkata Sai Chandradeep Telaprolu
-        </p>
         <p className="max-w-3xl text-sm text-slate-700">
           I build platform and digital journeys that convert manual intake into reliable, API-driven workflows. My focus is on reusable primitives, data contracts, and governance so teams can move faster, reduce rework, and ship measurable impact at scale.
         </p>
@@ -501,69 +569,125 @@ function HomePage() {
           <a className="rounded-full border px-4 py-2 text-xs font-semibold" href="#/projects">
             View Projects
           </a>
-          <a
-            className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold"
-            href={identity.links.medium}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <BookOpen className="h-4 w-4" />
-            Download Resume
-          </a>
-          <a
-            className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold"
-            href={identity.links.linkedin}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Linkedin className="h-4 w-4" />
+          <div className="relative">
+            <button
+              ref={resumeButtonRef}
+              className="rounded-full border px-4 py-2 text-xs font-semibold"
+              type="button"
+              aria-label="Download resume (coming soon)"
+              aria-describedby={showResumeTooltip ? "resume-tooltip" : undefined}
+              onClick={() => setIsResumeModalOpen(true)}
+              onMouseEnter={handleResumeMouseEnter}
+              onMouseLeave={handleResumeMouseLeave}
+              onFocus={handleResumeMouseEnter}
+              onBlur={handleResumeMouseLeave}
+            >
+              Download Resume
+            </button>
+            {showResumeTooltip ? (
+              <div
+                id="resume-tooltip"
+                role="tooltip"
+                className="absolute -top-9 left-1/2 -translate-x-1/2 rounded-md bg-slate-900 px-2.5 py-1 text-xs text-white shadow-lg"
+              >
+                Coming soon.
+              </div>
+            ) : null}
+          </div>
+          <a className="rounded-full border px-4 py-2 text-xs font-semibold" href={identity.links.linkedin}>
             LinkedIn
-          </a>
-          <a
-            className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold"
-            href={identity.links.medium}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <BookOpen className="h-4 w-4" />
-            Medium
           </a>
         </div>
 
         {/* KPI tiles */}
-        <div className="mt-6">
-          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-            Impact at a glance
-          </div>
-          <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
           <Stat
-            label="Onboarding time"
-            value="~72 hours–1 week → < 1 hour"
+            label="Onboarding time reduced"
+            value="< 1 hour"
             className="bg-gradient-to-br from-indigo-50 to-indigo-100 border-indigo-200"
           />
           <Stat
-            label="Submission failures"
-            value="↓ 90% with pre-filled + validation"
+            label="Submission failures reduced"
+            value="↓ 90%"
             className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-emerald-200"
           />
           <Stat
             label="Rework reduction"
-            value="↓ 62% with automation"
+            value="↓ 62%"
             className="bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200"
           />
           <Stat
-            label="Adoption scale"
-            value="45 → 180 clients · 15 → 45 sub-products"
+            label="Onboarding tickets reduced"
+            value="↓ 80%"
             className="bg-gradient-to-br from-rose-50 to-rose-100 border-rose-200"
           />
-          </div>
         </div>
-        <div className="mt-8">
-          <SectionTitle
-            title="About"
-            intro="Platform PM with 5+ years in digital product roles across JPMorgan and Yum! Brands. Focus areas include onboarding, payments/checkout, catalog/metadata, workflow automation, and AI-enabled platforms. Tech fluency spans Redshift/SQL, dbt, Airflow, feature stores & ML handoffs, RBAC/row-level security, and observability with SLAs."
+        <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+          <Stat
+            label="Scale proof"
+            value="45 → 180 clients | 15 → 45 sub-products"
+            className="bg-gradient-to-br from-sky-50 to-sky-100 border-sky-200"
+          />
+          <Stat
+            label="Integrations supported"
+            value="48 products · 15 back-office APIs"
+            className="bg-gradient-to-br from-violet-50 to-violet-100 border-violet-200"
           />
         </div>
+        <div className="mt-6">
+          <h3 className="text-lg font-semibold text-slate-900">Additional Platform Impact</h3>
+          <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
+            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                <span className="text-base text-blue-600" aria-hidden="true">🔗</span>
+                Unified Intake Platform
+              </div>
+              <p className="mt-2 text-sm text-slate-700">
+                Single entry point across multiple digital platforms with AI-powered role-based personalization, reducing intake drop-offs by 14%.
+              </p>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+              <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
+                <span className="text-base text-purple-600" aria-hidden="true">📊</span>
+                Sales Analytics Data Platform
+              </div>
+              <p className="mt-2 text-sm text-slate-700">
+                Owned CRM → Redshift Sales Analytics Platform with governance (RBAC, lineage) to support reporting and ML use cases.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {isResumeModalOpen ? (
+          <div
+            className="fixed inset-0 z-20 flex items-center justify-center bg-black/40 px-4 py-6"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="resume-modal-title"
+            onClick={closeResumeModal}
+          >
+            <div
+              ref={resumeModalRef}
+              className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <h3 id="resume-modal-title" className="text-lg font-semibold text-slate-900">
+                Download resume
+              </h3>
+              <p className="mt-2 text-sm text-slate-700">Coming soon.</p>
+              <div className="mt-6 flex justify-end">
+                <button
+                  ref={resumeCloseButtonRef}
+                  type="button"
+                  className="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white"
+                  onClick={closeResumeModal}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : null}
 
         <div id="ai-work" className="mt-10">
           <SectionTitle
@@ -619,7 +743,7 @@ function ExperiencePage() {
     <div className="mx-auto max-w-7xl px-4 py-10">
       <SectionTitle
         title="Experience"
-        intro="Resume-aligned roles and outcomes across platform, digital, and data product leadership."
+        intro="Role-based leadership scope and outcomes across platform, digital, and automation initiatives."
       />
       <div className="space-y-6">
         {DATA.experience.map((role) => (
@@ -724,9 +848,6 @@ function ProjectsPage() {
                   <div className="min-w-0">
                     <div className="truncate text-base font-semibold text-slate-900">{project.title}</div>
                     <div className="text-xs text-slate-600">{project.role}</div>
-                    {project.summary ? (
-                      <div className="mt-1 text-xs text-slate-600">{project.summary}</div>
-                    ) : null}
                   </div>
                 </button>
                 {project.backstoryUrl ? (
@@ -801,16 +922,6 @@ function ProjectsPage() {
                         ))}
                       </ul>
                     </div>
-                    {project.ownership ? (
-                      <div>
-                        <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Platform Ownership</div>
-                        <ul className="mt-2 list-disc space-y-1 pl-5">
-                          {project.ownership.map((item) => (
-                            <li key={item}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
                     <div>
                       {project.aiEnablement ? (
                         <>
@@ -854,6 +965,26 @@ function ProjectsPage() {
 
 function ContactPage() {
   const { identity } = DATA;
+  const [showResumeNotice, setShowResumeNotice] = useState(false);
+  const resumeNoticeTimerRef = React.useRef(null);
+
+  const triggerResumeNotice = () => {
+    setShowResumeNotice(true);
+    if (resumeNoticeTimerRef.current) {
+      clearTimeout(resumeNoticeTimerRef.current);
+    }
+    resumeNoticeTimerRef.current = setTimeout(() => {
+      setShowResumeNotice(false);
+    }, 2000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (resumeNoticeTimerRef.current) {
+        clearTimeout(resumeNoticeTimerRef.current);
+      }
+    };
+  }, []);
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
       <SectionTitle
@@ -871,33 +1002,22 @@ function ContactPage() {
             <div className="flex items-center gap-2"><MapPin className="h-4 w-4" />{identity.location}</div>
           </div>
           <div className="space-y-2">
-            <a
-              className="inline-flex items-center gap-1 underline"
-              href={identity.links.linkedin}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Linkedin className="h-4 w-4" />
-              LinkedIn
-            </a>
-            <a
-              className="inline-flex items-center gap-1 underline"
-              href={identity.links.medium}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <BookOpen className="h-4 w-4" />
-              Download Resume
-            </a>
-            <a
-              className="inline-flex items-center gap-1 underline"
-              href={identity.links.medium}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <BookOpen className="h-4 w-4" />
-              Medium
-            </a>
+            <a className="block underline" href={identity.links.linkedin}><Linkedin className="mr-1 inline h-4 w-4" />LinkedIn</a>
+            <div className="relative inline-block">
+              <button
+                type="button"
+                className="block underline"
+                onClick={triggerResumeNotice}
+                onFocus={triggerResumeNotice}
+              >
+                Resume (PDF)
+              </button>
+              {showResumeNotice ? (
+                <span className="absolute left-0 top-6 rounded-md bg-slate-900 px-2 py-1 text-xs text-white shadow-lg">
+                  Coming Soon
+                </span>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
