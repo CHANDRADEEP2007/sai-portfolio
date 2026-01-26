@@ -24,9 +24,18 @@ const DATA = {
     {
       id: "fast-track-onboarding-stp",
       title: "Fast-Track Onboarding STP (Digital Banking Platform)",
+      technicalFocus:
+        "Technical Focus: Workflow orchestration, upfront validation, API-driven straight-through processing",
       context:
         "Digital banking onboarding across web and mobile for startup and mid-market clients, covering Wires, ACH, RTP, and Check Deposits with back-office integrations.",
       role: "Product owner responsible for workflow design, prioritization, adoption, and cross-functional delivery.",
+      technicalSummary: {
+        systemType: "Workflow Automation Platform",
+        coreComponents: "Workflow engine, validation services, definition store, orchestration APIs",
+        keyInterfaces: "Client onboarding apps, internal APIs, back-office systems",
+        governanceControls: "RBAC, approval workflows, schema validation, audit trails",
+        scale: "180+ enterprise clients, 45+ sub-products, 15+ back-office APIs",
+      },
       problem:
         "Onboarding was slow and manual (72 hours–1 week) due to repeated handoffs, missing information, and inconsistent data capture, leading to high rework and support load.",
       solution:
@@ -51,12 +60,21 @@ const DATA = {
     {
       id: "catalog-product-definition-layer",
       title: "Catalog / Product Definition Layer (Single Source of Truth)",
+      technicalFocus:
+        "Technical Focus: Metadata management, schema governance, definition propagation across platforms",
       backstoryUrl:
         "https://medium.com/@chandradeepsai96/how-i-went-from-data-warehouses-to-building-a-product-platform-815709b0ebcd",
       mvpUrl: "https://chandradeep2007.github.io/product-definition-developer/",
       context:
         "48+ products, 15+ downstream API integrations, and multiple onboarding systems needing consistent definitions.",
       role: "Platform PM leading governance, reusable components, and definition propagation.",
+      technicalSummary: {
+        systemType: "Platform Data Product",
+        coreComponents: "Metadata store, schema registry, definition APIs, approval workflows",
+        keyInterfaces: "Onboarding systems, downstream APIs, authoring tools",
+        governanceControls: "RBAC, approvals, schema validation, lineage",
+        scale: "48+ products, 15+ downstream API integrations, multi-team consumers",
+      },
       problem:
         "Definitions were scattered across teams, creating ticket backlogs, inconsistent experiences, and duplicate builds.",
       solution:
@@ -79,11 +97,20 @@ const DATA = {
     {
       id: "prompt-driven-authoring-tool",
       title: "Prompt-Driven Authoring Tool for Product Owners",
+      technicalFocus:
+        "Technical Focus: Prompt-assisted authoring, approval workflows, RBAC-enforced publishing",
       backstoryUrl:
         "https://medium.com/@chandradeepsai96/how-i-went-from-data-warehouses-to-building-a-product-platform-815709b0ebcd",
       context:
         "Self-serve authoring for product definitions to reduce manual ticketing and accelerate onboarding updates.",
       role: "PM owner for workflow design, AI assist, and governance.",
+      technicalSummary: {
+        systemType: "Workflow Automation",
+        coreComponents: "Prompting layer, validation engine, approval routing, change preview",
+        keyInterfaces: "Product owners, Jira workflows, downstream definition APIs",
+        governanceControls: "RBAC, audit logs, approvals, rollback controls",
+        scale: "Cross-team definition updates with controlled governance",
+      },
       problem:
         "Product owners depended on engineering tickets for definition updates, slowing launches and increasing rework.",
       solution:
@@ -105,9 +132,18 @@ const DATA = {
     {
       id: "checkout-funnel-optimization",
       title: "Checkout Funnel Optimization (Yum!)",
+      technicalFocus:
+        "Technical Focus: Instrumentation, event taxonomy, payment gateway failure analysis",
       context:
         "Digital ordering funnel across web and mobile with multiple payment gateways and tender types.",
       role: "Associate PM focused on instrumentation, analysis, and experimentation.",
+      technicalSummary: {
+        systemType: "Digital Experience Analytics",
+        coreComponents: "Event instrumentation, funnel dashboards, experimentation framework",
+        keyInterfaces: "Web/mobile clients, payment gateways, analytics pipeline",
+        governanceControls: "Tracking standards, experiment guardrails, monitoring alerts",
+        scale: "High-volume ordering funnels across web and mobile",
+      },
       problem:
         "Drop-offs, declines, and timeouts were hard to diagnose with limited instrumentation.",
       solution:
@@ -128,9 +164,18 @@ const DATA = {
     {
       id: "automated-analytics-pipelines",
       title: "Automated Analytics Pipelines (Reguss Consulting)",
+      technicalFocus:
+        "Technical Focus: Automated pipelines, KPI governance, data quality monitoring",
       context:
         "Marketing and sales analytics with recurring reporting across multiple business units.",
       role: "Analytics consultant automating data pipelines and KPI frameworks.",
+      technicalSummary: {
+        systemType: "Data Product / Analytics Platform",
+        coreComponents: "SQL/PySpark pipelines, Airflow orchestration, KPI scorecards",
+        keyInterfaces: "Data sources, BI dashboards, business stakeholder reports",
+        governanceControls: "Data quality checks, KPI definitions, publishing workflows",
+        scale: "Multi-business unit reporting with standardized KPIs",
+      },
       problem:
         "Manual reporting slowed decision-making and created inconsistent KPI definitions.",
       solution:
@@ -151,11 +196,20 @@ const DATA = {
     {
       id: "payments-sales-analytics-data-platform",
       title: "Payments Sales Analytics Data Platform (CRM → Redshift)",
+      technicalFocus:
+        "Technical Focus: CRM ingestion, governed analytics models, RBAC-secured data access",
       associatedRole:
         "Associated Role: Product Manager, Analytics Solutions – JPMC (Aug 2022 – Mar 2024)",
       context:
         "Enterprise Payments Sales organization requiring trusted, reusable sales data across multiple Lines of Business.",
       role: "Product Manager owning CRM-to-Redshift analytics data product delivery.",
+      technicalSummary: {
+        systemType: "Data Product Platform",
+        coreComponents: "CRM ingestion, Redshift models, metadata catalogs, data dictionaries",
+        keyInterfaces: "CRM systems, analytics consumers, ML/AI teams",
+        governanceControls: "RBAC, row-level security, lineage, quality checks",
+        scale: "Multi-Line of Business analytics with reusable sales datasets",
+      },
       problem:
         "Sales data fragmented across CRM objects with inconsistent definitions, manual reporting effort, and limited reuse for analytics and ML.",
       solution:
@@ -175,11 +229,20 @@ const DATA = {
     {
       id: "unified-product-intake-platform-ai-personalization",
       title: "Unified Product Intake Platform with AI Personalization",
+      technicalFocus:
+        "Technical Focus: Unified intake APIs, role-based personalization, cross-platform reuse",
       backstoryUrl:
         "https://medium.com/@chandradeepsai96/one-door-many-systems-designing-a-product-access-hub-experience-b0246cb08239?postPublishedType=repub",
       context:
         "Users had to navigate multiple digital platforms to discover and request products.",
       role: "Platform PM leading unified intake discovery and AI personalization.",
+      technicalSummary: {
+        systemType: "Platform / Workflow Automation",
+        coreComponents: "Unified intake APIs, personalization engine, workflow routing",
+        keyInterfaces: "Multiple digital platforms, internal product catalogs, users",
+        governanceControls: "RBAC, approval workflows, usage monitoring",
+        scale: "Cross-org intake reuse with platform-level adoption",
+      },
       problem:
         "A fragmented discovery experience led to duplicated effort and high drop-off rates during intake.",
       solution:
@@ -301,6 +364,12 @@ const DATA = {
         "Built a self-serve, prompt-driven authoring tool for Product Owners; reduced onboarding tickets by 80% for the supported segment.",
         "Enabled publish-once, reuse-everywhere by integrating definition changes across onboarding platforms for consistent experiences.",
       ],
+      technicalOwnership: [
+        "Owned API-driven onboarding workflows spanning client-facing applications and dependent back-office systems.",
+        "Defined and governed product definitions, schemas, and contracts used across multiple onboarding platforms.",
+        "Partnered with backend engineering, architecture, and security teams to embed validation, access controls, and straight-through processing.",
+        "Ensured consistency, reuse, and backward compatibility as platforms scaled across products and clients.",
+      ],
       tags: ["Platform", "Digital", "AI", "STP", "Automation", "Governance"],
       projectLinks: [
         { label: "Fast-Track Onboarding STP", id: "fast-track-onboarding-stp" },
@@ -323,6 +392,12 @@ const DATA = {
         "Managed the Jira backlog and continuously re-prioritized stories to deliver the highest-value analytics capabilities first.",
         "Monitored usage and adoption and guided teams to the right datasets to ensure the data product delivered measurable business impact.",
         "Hosted bi-weekly working sessions with Analytics and ML/Data Science teams to clarify field definitions, introduce new data, and coordinate fixes with CRM, Tech, and platform owners.",
+      ],
+      technicalOwnership: [
+        "Owned CRM-to-Redshift data product interfaces, ingestion logic, and analytics-ready data models.",
+        "Defined metadata, data dictionaries, and quality checks in partnership with data engineering and governance teams.",
+        "Implemented RBAC and row-level security to support multi-line-of-business analytics use cases.",
+        "Enabled downstream AI and ML teams by publishing reliable, well-governed datasets.",
       ],
       tags: [
         "Data Platform",
@@ -560,6 +635,35 @@ function HomePage() {
         <p className="max-w-3xl text-sm text-slate-700">
           I build platform and digital journeys that convert manual intake into reliable, API-driven workflows. My focus is on reusable primitives, data contracts, and governance so teams can move faster, reduce rework, and ship measurable impact at scale.
         </p>
+        <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h3 className="text-base font-semibold text-slate-900">Technical Footprint</h3>
+          <dl className="mt-4 grid gap-4 text-sm text-slate-700 md:grid-cols-2">
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Architecture</dt>
+              <dd className="mt-1">
+                API-first, metadata-driven platforms orchestrating intake, validation, and downstream activation across multiple systems.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Interfaces</dt>
+              <dd className="mt-1">
+                Internal APIs, schema-based data contracts, and reusable workflow primitives enabling publish-once, reuse-everywhere execution.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Governance & Security</dt>
+              <dd className="mt-1">
+                Role-based access control (RBAC), approval workflows, and definition lineage embedded directly into platform flows.
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Scale & Reliability</dt>
+              <dd className="mt-1">
+                180+ enterprise clients, 45+ sub-products, 48 product integrations, and 15 back-office APIs supported with consistent SLAs.
+              </dd>
+            </div>
+          </dl>
+        </div>
         <div className="mt-5 flex flex-wrap gap-3">
           <a
             className="rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white"
@@ -767,6 +871,16 @@ function ExperiencePage() {
                 ))}
               </ul>
             </div>
+            {role.technicalOwnership ? (
+              <div className="mt-4">
+                <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Technical Ownership</div>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-gray-700">
+                  {role.technicalOwnership.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             <div className="mt-4 flex flex-wrap gap-2">
               {role.tags.map((tag) => (
                 <Pill key={tag}>{tag}</Pill>
@@ -852,6 +966,9 @@ function ProjectsPage() {
                   <div className="min-w-0">
                     <div className="truncate text-base font-semibold text-slate-900">{project.title}</div>
                     <div className="text-xs text-slate-600">{project.role}</div>
+                    {project.technicalFocus ? (
+                      <div className="text-xs text-slate-500">{project.technicalFocus}</div>
+                    ) : null}
                   </div>
                 </button>
                 {project.backstoryUrl ? (
@@ -881,6 +998,36 @@ function ProjectsPage() {
               {isOpen ? (
                 <div id={`project-${project.id}`} className="border-t border-slate-200 px-5 py-5 text-sm text-slate-700">
                   <div className="space-y-4">
+                    {project.technicalSummary ? (
+                      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                        <div className="text-sm font-semibold text-slate-900">Technical Summary</div>
+                        <dl className="mt-3 grid gap-3 text-sm text-slate-700 md:grid-cols-2">
+                          <div>
+                            <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">System Type</dt>
+                            <dd className="mt-1">{project.technicalSummary.systemType}</dd>
+                          </div>
+                          <div>
+                            <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Core Components</dt>
+                            <dd className="mt-1">{project.technicalSummary.coreComponents}</dd>
+                          </div>
+                          <div>
+                            <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Key Interfaces</dt>
+                            <dd className="mt-1">{project.technicalSummary.keyInterfaces}</dd>
+                          </div>
+                          <div>
+                            <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Governance & Controls</dt>
+                            <dd className="mt-1">{project.technicalSummary.governanceControls}</dd>
+                          </div>
+                          <div>
+                            <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">Scale</dt>
+                            <dd className="mt-1">{project.technicalSummary.scale}</dd>
+                          </div>
+                        </dl>
+                        <div className="mt-4 rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-5 text-center text-xs font-semibold uppercase tracking-wide text-slate-500">
+                          Architecture Diagram (Placeholder)
+                        </div>
+                      </div>
+                    ) : null}
                     <div>
                       <div className="text-xs font-semibold uppercase tracking-wide text-slate-500">Context</div>
                       {project.associatedRole ? (
