@@ -1191,6 +1191,20 @@ const PAGES = {
 
 function App() {
   const { identity, experience, projects, certifications, aiHighlights } = DATA;
+  const caseStudies = projects.filter((p) => [
+    "fast-track-onboarding-stp",
+    "payments-sales-analytics-data-platform",
+    "checkout-funnel-optimization",
+  ].includes(p.id));
+  const capabilities = [
+    "Platform Product Management",
+    "API Platform Strategy",
+    "AI-Enabled Product Configuration",
+    "Spec-Driven Development",
+    "Data Platform Governance",
+    "Workflow Automation",
+    "Digital Payments Infrastructure",
+  ];
   const stats = [
     { num: "<1h", label: "Onboarding time reduced", detail: "From 72+ hours to under 1 hour" },
     { num: "90%", label: "Submission failure reduction", detail: "Via upfront validation & API-driven STP" },
@@ -1226,7 +1240,7 @@ function App() {
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="#case-studies">Platform Case Studies</a></li>
           <li><a href="#certifications">Certifications</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -1237,7 +1251,10 @@ function App() {
           <p className="hero-label">Platform + Digital Product Manager</p>
           <h1 className="hero-name">Venkata Sai<br /><em>Chandradeep</em><br />Telaprolu</h1>
           <p className="hero-tagline">
-            Leading AI-enabled automation, straight-through processing, and reduction of manual work at enterprise scale.
+            Senior Platform Product Manager — Payments, Data Platforms, and AI-Driven Digital Experiences.
+          </p>
+          <p className="hero-tagline">
+            Building scalable platform products across digital banking, payments, and analytics systems with spec-driven development, API architecture, AI-enabled configuration, and automation at scale.
           </p>
           <div className="hero-cta">
             <a href="#experience" className="btn btn-primary">View Experience</a>
@@ -1292,6 +1309,18 @@ function App() {
         </div>
       </div>
 
+      <div className="full-section">
+        <div className="section-inner">
+          <div className="section-header">
+            <p className="section-eyebrow">Platform Strengths</p>
+            <h2 className="section-title">Platform Product Capabilities</h2>
+          </div>
+          <div className="capabilities-grid">
+            {capabilities.map((cap) => <span key={cap} className="capability-chip">{cap}</span>)}
+          </div>
+        </div>
+      </div>
+
       <div className="full-section" id="experience">
         <div className="section-inner">
           <div className="section-header">
@@ -1324,22 +1353,53 @@ function App() {
         </div>
       </div>
 
-      <div className="full-section" id="projects">
+      <div className="full-section" id="case-studies">
         <div className="section-inner">
           <div className="section-header">
             <p className="section-eyebrow">Case Studies</p>
-            <h2 className="section-title">Projects</h2>
-            <p className="section-sub">Deep case studies with context, problems, solutions, STP automation, and AI guardrails.</p>
+            <h2 className="section-title">Platform Product Case Studies</h2>
+            <p className="section-sub">Structured problem → solution → architecture → impact narratives that show end-to-end platform product ownership.</p>
           </div>
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <article className="project-card" key={project.id}>
-                <div className="project-num">{String(index + 1).padStart(2, "0")}</div>
-                <div className="project-title">{project.title}</div>
-                <div className="project-sub">{project.role}</div>
-                <div className="project-focus">{project.technicalFocus}</div>
+          <div className="case-study-list">
+            {caseStudies.map((study, index) => (
+              <article className="case-study-card" key={study.id}>
+                <div className="project-num">{String(index + 1).padStart(2, "0")} / Case Study</div>
+                <h3 className="project-title">{study.title}</h3>
+                <p className="project-sub">{study.context}</p>
+                <div className="case-grid">
+                  <div>
+                    <div className="outcomes-label">Problem</div>
+                    <p>{study.problem}</p>
+                  </div>
+                  <div>
+                    <div className="outcomes-label">Solution</div>
+                    <p>{study.solution}</p>
+                  </div>
+                </div>
+                <div className="outcomes-label">Impact</div>
+                <ul className="outcomes-list">
+                  {(study.impact || []).map((point) => <li key={point}>{point}</li>)}
+                </ul>
+                <div className="project-focus">{study.technicalFocus}</div>
               </article>
             ))}
+          </div>
+
+          <div className="architecture-block">
+            <div className="outcomes-label">Architecture Visualization</div>
+            <h3 className="project-title">Digital Banking Onboarding Platform — Layered View</h3>
+            <div className="architecture-steps">
+              {[
+                "Client Portal / Product Intake",
+                "AI Personalization Layer",
+                "Product Definition Catalog",
+                "Workflow Orchestration Engine",
+                "API Integration Layer",
+                "Payment Services & Back Office Systems",
+              ].map((step) => (
+                <div key={step} className="arch-step">{step}</div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
