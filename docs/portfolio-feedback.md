@@ -23,3 +23,8 @@ The direction is strong: premium visual style, clear hierarchy, and strong metri
 ## Mobile/readability notes
 - `ai-grid` goes to 2 columns under 768px; for smaller phones, consider 1 column below ~480px.
 - Ensure nav link spacing remains tappable for long names on smaller widths.
+
+
+## Change impact
+- This documentation update does not modify React components, HTML templates, CSS, or runtime behavior.
+- Therefore, no UI was updated by this change.
