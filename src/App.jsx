@@ -1190,21 +1190,265 @@ const PAGES = {
 };
 
 function App() {
-  const [route] = useHashRoute("home");
-  useEffect(() => { runDiagnostics(); }, []);
-  const Page = PAGES[route] || HomePage;
-
+  const { identity, experience, projects, certifications, aiHighlights } = DATA;
+  const caseStudies = projects.filter((p) => [
+    "fast-track-onboarding-stp",
+    "payments-sales-analytics-data-platform",
+    "checkout-funnel-optimization",
+  ].includes(p.id));
+  const capabilities = [
+    "Platform Product Management",
+    "API Platform Strategy",
+    "AI-Enabled Product Configuration",
+    "Spec-Driven Development",
+    "Data Platform Governance",
+    "Workflow Automation",
+    "Digital Payments Infrastructure",
+  ];
+  const stats = [
+    { num: "<1h", label: "Onboarding time reduced", detail: "From 72+ hours to under 1 hour" },
+    { num: "90%", label: "Submission failure reduction", detail: "Via upfront validation & API-driven STP" },
+    { num: "180", label: "Enterprise clients supported", detail: "45 → 180 clients · 15 → 45 sub-products" },
+    { num: "48", label: "Product integrations", detail: "48 products · 15 back-office APIs" },
+  ];
+  const techCards = [
+    {
+      label: "Architecture",
+      content:
+        "API-first, metadata-driven platforms orchestrating intake, validation, and downstream automation across multiple systems.",
+    },
+    {
+      label: "Interfaces",
+      content:
+        "Internal APIs, schema-based data contracts, and reusable workflow primitives enabling publish-once, reuse-everywhere execution.",
+    },
+    {
+      label: "Governance & Security",
+      content:
+        "Role-based access control (RBAC), approval workflows, and definition lineage embedded directly into platform flows.",
+    },
+    {
+      label: "Scale & Reliability",
+      content:
+        "180+ enterprise clients, 45+ sub-products, 48 product integrations and 15 back-office APIs supported with consistent SLAs.",
+    },
+  ];
   return (
-    <main className="min-h-screen bg-gradient-to-br from-indigo-50 via-violet-50 to-fuchsia-50 text-slate-900">
-      <TopNav current={route} />
-      <Page />
-      <footer className="mx-auto max-w-7xl px-4 pb-14">
-        <div className="rounded-2xl border bg-white/90 p-6 text-xs text-gray-600 backdrop-blur">
-          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} V. S. Chandradeep Telaprolu. Built with React & Recharts.</p>
-            <a className="underline" href="#/contact">Get in touch</a>
+    <main>
+      <nav className="portfolio-nav">
+        <a href="#home" className="nav-brand">Sai <span>Chandradeep</span></a>
+        <ul className="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#case-studies">Platform Case Studies</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <section id="home">
+        <div>
+          <p className="hero-label">Platform + Digital Product Manager</p>
+          <h1 className="hero-name">Venkata Sai<br /><em>Chandradeep</em><br />Telaprolu</h1>
+          <p className="hero-tagline">
+            Senior Platform Product Manager — Payments, Data Platforms, and AI-Driven Digital Experiences.
+          </p>
+          <p className="hero-tagline">
+            Building scalable platform products across digital banking, payments, and analytics systems with spec-driven development, API architecture, AI-enabled configuration, and automation at scale.
+          </p>
+          <div className="hero-cta">
+            <a href="#experience" className="btn btn-primary">View Experience</a>
+            <a href="#contact" className="btn btn-outline">Get in Touch</a>
           </div>
         </div>
+        <div className="hero-right">
+          {stats.map((s) => (
+            <div className="stat-card" key={s.label}>
+              <div className="stat-num">{s.num}</div>
+              <div>
+                <div className="stat-label">{s.label}</div>
+                <div className="stat-detail">{s.detail}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="full-section">
+        <div className="section-inner">
+          <div className="section-header">
+            <p className="section-eyebrow">Core Competency</p>
+            <h2 className="section-title">Technical Footprint</h2>
+          </div>
+          <div className="tech-grid">
+            {techCards.map((card) => (
+              <div className="tech-card" key={card.label}>
+                <div className="tech-card-label">{card.label}</div>
+                <div className="tech-card-content">{card.content}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="full-section">
+        <div className="section-inner">
+          <div className="section-header">
+            <p className="section-eyebrow">AI + Automation</p>
+            <h2 className="section-title">Productized AI Capabilities</h2>
+            <p className="section-sub">Built to improve intake quality, authoring speed, and operational visibility.</p>
+          </div>
+          <div className="ai-grid">
+            {aiHighlights.map((item) => (
+              <div className="ai-card" key={item.title}>
+                <div className="ai-card-title">{item.title}</div>
+                <div className="ai-card-desc">{item.description}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="full-section">
+        <div className="section-inner">
+          <div className="section-header">
+            <p className="section-eyebrow">Platform Strengths</p>
+            <h2 className="section-title">Platform Product Capabilities</h2>
+          </div>
+          <div className="capabilities-grid">
+            {capabilities.map((cap) => <span key={cap} className="capability-chip">{cap}</span>)}
+          </div>
+        </div>
+      </div>
+
+      <div className="full-section" id="experience">
+        <div className="section-inner">
+          <div className="section-header">
+            <p className="section-eyebrow">Career</p>
+            <h2 className="section-title">Experience</h2>
+            <p className="section-sub">Role-based leadership scope and outcomes across platform, digital, and automation initiatives.</p>
+          </div>
+          <div className="experience-list">
+            {experience.map((exp) => (
+              <div className="exp-item" key={`${exp.company}-${exp.period}`}>
+                <div className="exp-meta">
+                  <div className="exp-date">{exp.period}</div>
+                  <div className="exp-company">{exp.company}</div>
+                  <div className="exp-location">{exp.location}</div>
+                </div>
+                <div>
+                  <div className="exp-role">{exp.role}</div>
+                  <div className="exp-scope">{exp.scope}</div>
+                  <div className="outcomes-label">Key Outcomes</div>
+                  <ul className="outcomes-list">
+                    {exp.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}
+                  </ul>
+                  <div className="exp-tags">
+                    {(exp.tags || []).map((tag) => <span key={tag} className="tag">{tag}</span>)}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="full-section" id="case-studies">
+        <div className="section-inner">
+          <div className="section-header">
+            <p className="section-eyebrow">Case Studies</p>
+            <h2 className="section-title">Platform Product Case Studies</h2>
+            <p className="section-sub">Structured problem → solution → architecture → impact narratives that show end-to-end platform product ownership.</p>
+          </div>
+          <div className="case-study-list">
+            {caseStudies.map((study, index) => (
+              <article className="case-study-card" key={study.id}>
+                <div className="project-num">{String(index + 1).padStart(2, "0")} / Case Study</div>
+                <h3 className="project-title">{study.title}</h3>
+                <p className="project-sub">{study.context}</p>
+                <div className="case-grid">
+                  <div>
+                    <div className="outcomes-label">Problem</div>
+                    <p>{study.problem}</p>
+                  </div>
+                  <div>
+                    <div className="outcomes-label">Solution</div>
+                    <p>{study.solution}</p>
+                  </div>
+                </div>
+                <div className="outcomes-label">Impact</div>
+                <ul className="outcomes-list">
+                  {(study.impact || []).map((point) => <li key={point}>{point}</li>)}
+                </ul>
+                <div className="project-focus">{study.technicalFocus}</div>
+              </article>
+            ))}
+          </div>
+
+          <div className="architecture-block">
+            <div className="outcomes-label">Architecture Visualization</div>
+            <h3 className="project-title">Digital Banking Onboarding Platform — Layered View</h3>
+            <div className="architecture-steps">
+              {[
+                "Client Portal / Product Intake",
+                "AI Personalization Layer",
+                "Product Definition Catalog",
+                "Workflow Orchestration Engine",
+                "API Integration Layer",
+                "Payment Services & Back Office Systems",
+              ].map((step) => (
+                <div key={step} className="arch-step">{step}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="full-section" id="certifications">
+        <div className="section-inner">
+          <div className="section-header">
+            <p className="section-eyebrow">Credentials</p>
+            <h2 className="section-title">Certifications</h2>
+            <p className="section-sub">Verifiable credentials supporting platform, data, and AI product leadership.</p>
+          </div>
+          <div className="certs-grid">
+            {certifications.map((cert) => (
+              <div className="cert-card" key={cert.name}>
+                <div className="cert-org">{cert.org}</div>
+                <div className="cert-title">{cert.name}</div>
+                <div className="cert-meta">{cert.year} · {cert.area}{cert.tag ? ` · ${cert.tag}` : ""}</div>
+                <a href={cert.url} target="_blank" rel="noopener noreferrer" className="cert-verify">Verify credential ↗</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <section id="contact">
+        <div className="contact-inner">
+          <div className="contact-left">
+            <p className="section-eyebrow">Let's Talk</p>
+            <h2 className="section-title">Get in Touch</h2>
+            <p className="section-sub">Open to Platform PM, Data Product PM, and AI PM roles focused on automation, STP, and AI-enabled workflows.</p>
+            <a href={`mailto:${identity.email}`} className="contact-detail"><span className="contact-icon">✉</span>{identity.email}</a>
+            <a href={`tel:${identity.phone}`} className="contact-detail"><span className="contact-icon">☎</span>{identity.phone}</a>
+            <div className="contact-detail"><span className="contact-icon">📍</span>{identity.location}</div>
+          </div>
+          <div className="contact-right">
+            <a href={identity.links.linkedin} target="_blank" rel="noopener noreferrer" className="contact-link">
+              <div><div className="contact-link-label">Professional Network</div>LinkedIn Profile</div><span>↗</span>
+            </a>
+            <a href={identity.links.medium} target="_blank" rel="noopener noreferrer" className="contact-link">
+              <div><div className="contact-link-label">Writing</div>Medium Articles</div><span>↗</span>
+            </a>
+            <a href={identity.links.resume} className="contact-link">
+              <div><div className="contact-link-label">Document</div>Download Resume (PDF)</div><span>↓</span>
+            </a>
+          </div>
+        </div>
+      </section>
+      <footer>
+        © {new Date().getFullYear()} V. S. Chandradeep Telaprolu · Built with React &amp; Recharts
       </footer>
     </main>
   );
