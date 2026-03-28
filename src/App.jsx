@@ -1396,8 +1396,11 @@ function App() {
                 "Workflow Orchestration Engine",
                 "API Integration Layer",
                 "Payment Services & Back Office Systems",
-              ].map((step) => (
-                <div key={step} className="arch-step">{step}</div>
+              ].map((step, index, arr) => (
+                <React.Fragment key={step}>
+                  <div className="arch-step">{step}</div>
+                  {index < arr.length - 1 ? <div className="arch-arrow" aria-hidden="true">↓</div> : null}
+                </React.Fragment>
               ))}
             </div>
           </div>

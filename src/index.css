@@ -121,6 +121,7 @@ section { min-height: 100vh; padding: 7rem 3rem 5rem; max-width: 1080px; margin:
 .architecture-block { background: var(--teal-light); border: 1px solid rgba(29,107,107,0.2); border-radius: 8px; padding: 1.5rem; margin-top: 1.25rem; }
 .architecture-steps { display: grid; gap: 0.5rem; margin-top: 0.75rem; }
 .arch-step { background: white; border: 1px solid rgba(29,107,107,0.2); border-radius: 4px; padding: 0.6rem 0.8rem; font-size: 0.8rem; color: var(--ink-mid); }
+.arch-arrow { text-align: center; color: var(--teal); font-size: 1.1rem; line-height: 1; margin: -0.1rem 0 0.1rem; }
 
 .capabilities-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .capability-chip { font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.45rem 0.7rem; background: var(--gold-pale); border: 1px solid var(--gold-light); border-radius: 999px; }
