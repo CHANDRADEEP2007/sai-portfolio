@@ -629,12 +629,44 @@ function HomePage() {
     <div className="mx-auto max-w-7xl px-4 py-10">
       <SectionTitle
         title="Venkata Sai Chandradeep Telaprolu"
-        intro="Platform + Digital Product Manager leader driving AI-enabled automation, straight-through processing, and reduction of manual work."
+        intro="Senior Platform Product Manager"
       />
       <div className="rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-sm ring-1 ring-indigo-100 backdrop-blur">
-        <p className="max-w-3xl text-sm text-slate-700">
-          I build platform and digital journeys that convert manual intake into reliable, API-driven workflows. My focus is on reusable primitives, data contracts, and governance so teams can move faster, reduce rework, and ship measurable impact at scale.
+        <p className="text-lg font-semibold text-slate-900">
+          7+ Years Building Platform, Data, and AI-Driven Products
         </p>
+        <p className="mt-1 text-sm font-medium text-slate-700">
+          Payments | Digital Banking | Workflow Automation
+        </p>
+        <p className="max-w-3xl text-sm text-slate-700">
+          Senior Platform Product Manager with 7+ years of experience building scalable payments, data, and workflow automation platforms. Led cross-functional teams to deliver straight-through onboarding and enterprise systems used across digital banking ecosystems.
+        </p>
+        <p className="mt-2 max-w-3xl text-xs text-slate-600">
+          Platform Product Manager · Payments Product Manager · Data Platform Product Manager · AI Product Manager · Digital Banking Platforms
+        </p>
+        {/* Key impact metrics strip */}
+        <div className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
+          <Stat
+            label="Clients onboarded"
+            value="180+"
+            className="bg-gradient-to-br from-indigo-50 to-indigo-100 border-indigo-200"
+          />
+          <Stat
+            label="Products supported"
+            value="45"
+            className="bg-gradient-to-br from-sky-50 to-sky-100 border-sky-200"
+          />
+          <Stat
+            label="Failure reduction"
+            value="90%"
+            className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-emerald-200"
+          />
+          <Stat
+            label="Rework reduction"
+            value="62%"
+            className="bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200"
+          />
+        </div>
         <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           <h3 className="text-base font-semibold text-slate-900">Technical Footprint</h3>
           <dl className="mt-4 grid gap-4 text-sm text-slate-700 md:grid-cols-2">
@@ -707,30 +739,7 @@ function HomePage() {
           </a>
         </div>
 
-        {/* KPI tiles */}
-        <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
-          <Stat
-            label="Onboarding time reduced"
-            value="< 1 hour"
-            className="bg-gradient-to-br from-indigo-50 to-indigo-100 border-indigo-200"
-          />
-          <Stat
-            label="Submission failures reduced"
-            value="↓ 90%"
-            className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-emerald-200"
-          />
-          <Stat
-            label="Rework reduction"
-            value="↓ 62%"
-            className="bg-gradient-to-br from-amber-50 to-amber-100 border-amber-200"
-          />
-          <Stat
-            label="Onboarding tickets reduced"
-            value="↓ 80%"
-            className="bg-gradient-to-br from-rose-50 to-rose-100 border-rose-200"
-          />
-        </div>
-        <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
+        <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
           <Stat
             label="Scale proof"
             value="45 → 180 clients | 15 → 45 sub-products"
@@ -853,6 +862,13 @@ function ExperiencePage() {
         title="Experience"
         intro="Role-based leadership scope and outcomes across platform, digital, and automation initiatives."
       />
+      <div className="mb-6">
+        <Card title="Career Overview">
+          <p className="text-sm text-slate-700">
+            7+ years delivering platform and digital products across payments, data infrastructure, and workflow automation.
+          </p>
+        </Card>
+      </div>
       <div className="space-y-6">
         {DATA.experience.map((role) => (
           <Card
@@ -900,15 +916,14 @@ function ExperiencePage() {
         ))}
       </div>
       <div className="mt-8">
-        <Card title="Education">
-          <div className="space-y-4 text-sm text-gray-700">
+        <Card title="EDUCATION">
+          <ul className="list-disc space-y-2 pl-5 text-sm text-gray-700">
             {DATA.education.map((item) => (
-              <div key={item.degree}>
-                <div className="font-semibold text-slate-800">{item.degree}</div>
-                <div className="text-gray-600">{item.location}</div>
-              </div>
+              <li key={item.degree} className="font-semibold text-slate-800">
+                {item.degree}
+              </li>
             ))}
-          </div>
+          </ul>
         </Card>
       </div>
     </div>
