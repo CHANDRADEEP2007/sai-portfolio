@@ -1,38 +1,1461 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
-    <title>Sai Chandradeep — Portfolio</title>
+<head>
+  <meta charset="UTF-8" />
+  <!-- THEME INIT: runs before CSS paint to prevent flash -->
+  <script>
+    (function(){
+      var h = new Date().getHours();
+      document.documentElement.setAttribute('data-theme', (h >= 6 && h < 19) ? 'light' : 'dark');
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sai Chandradeep Telaprolu — Senior Platform Product Manager</title>
 
-    <!-- Tailwind via CDN for quick local preview (no build step) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Senior Platform Product Manager with 7+ years delivering payments, enterprise commerce, and data platforms across financial services and retail digital products." />
+  <meta name="keywords" content="Platform Product Manager, Payments PM, Data Platform, AI Product Manager, Enterprise Commerce, Retail Tech PM, Checkout Optimization, Workflow Automation, JPMorgan, Yum Brands, Product Management" />
+  <meta name="author" content="Venkata Sai Chandradeep Telaprolu" />
+  <link rel="canonical" href="https://saitelaprolu.com/" />
 
-    <!-- Basic theme color for mobile address bar -->
-    <meta name="theme-color" content="#0f172a" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://saitelaprolu.com/" />
+  <meta property="og:title" content="Sai Chandradeep Telaprolu — Senior Platform Product Manager" />
+  <meta property="og:description" content="7+ years building platform, data, and AI-driven products across payments, enterprise commerce, retail digital, and workflow automation." />
+  <meta property="og:image" content="https://saitelaprolu.com/assets/og-image.jpg" />
 
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-Y3P9F4DPTK"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sai Chandradeep Telaprolu — Senior Platform Product Manager" />
+  <meta name="twitter:description" content="7+ years building platform, data, and AI-driven products across payments, enterprise commerce, retail digital, and workflow automation." />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Venkata Sai Chandradeep Telaprolu",
+    "jobTitle": "Senior Platform Product Manager",
+    "url": "https://saitelaprolu.com",
+    "email": "chandradeep.msba@gmail.com",
+    "telephone": "+1-502-298-6263",
+    "address": { "@type": "PostalAddress", "addressCountry": "US" },
+    "alumniOf": [
+      { "@type": "EducationalOrganization", "name": "University of the Cumberlands" },
+      { "@type": "EducationalOrganization", "name": "University of Louisville" },
+      { "@type": "EducationalOrganization", "name": "Bharath University" }
+    ],
+    "worksFor": { "@type": "Organization", "name": "J.P. Morgan Chase & Co." },
+    "sameAs": ["https://linkedin.com/in/venkata-sai-chandradeep-telaprolu-b0a568154"]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Design Tokens ─────────────────────────────────────────────── */
+    :root, [data-theme="light"] {
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-body: 'Satoshi', 'Work Sans', sans-serif;
+
+      --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+      --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+      --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+      --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+      --text-hero: clamp(3rem,     0.5rem  + 7vw,    8rem);
+
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+      --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+      --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+      --space-16: 4rem; --space-20: 5rem; --space-24: 6rem; --space-32: 8rem;
+
+      --color-bg:              #f7f5f0;
+      --color-surface:         #f9f8f4;
+      --color-surface-2:       #fdfcf9;
+      --color-surface-offset:  #f0ede7;
+      --color-surface-offset-2:#e8e4dc;
+      --color-surface-dynamic: #e0dbd2;
+      --color-divider:         #d8d3ca;
+      --color-border:          #ccc7bc;
+
+      --color-text:         #1e1b14;
+      --color-text-muted:   #6b6760;
+      --color-text-faint:   #aaa79f;
+      --color-text-inverse: #f9f8f4;
+
+      /* Gold accent — matches original site's warm amber */
+      --color-primary:          #b8860b;
+      --color-primary-hover:    #9a700a;
+      --color-primary-active:   #7d5a08;
+      --color-primary-highlight:#f0e4c0;
+
+      --color-success:        #437a22;
+      --color-error:          #a12c7b;
+
+      --radius-sm: 0.375rem; --radius-md: 0.5rem;
+      --radius-lg: 0.75rem; --radius-xl: 1rem;
+      --radius-2xl: 1.5rem; --radius-full: 9999px;
+
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+
+      --shadow-sm: 0 1px 3px oklch(0.18 0.02 80 / 0.06), 0 1px 2px oklch(0.18 0.02 80 / 0.04);
+      --shadow-md: 0 4px 12px oklch(0.18 0.02 80 / 0.08), 0 2px 4px oklch(0.18 0.02 80 / 0.05);
+      --shadow-lg: 0 12px 32px oklch(0.18 0.02 80 / 0.12), 0 4px 8px oklch(0.18 0.02 80 / 0.06);
+
+      --content-narrow: 640px;
+      --content-default: 960px;
+      --content-wide: 1200px;
+
+      --nav-height: 68px;
+    }
+
+    [data-theme="dark"] {
+      --color-bg:              #131210;
+      --color-surface:         #1a1916;
+      --color-surface-2:       #1f1e1b;
+      --color-surface-offset:  #222019;
+      --color-surface-offset-2:#282620;
+      --color-surface-dynamic: #302e27;
+      --color-divider:         #2a2822;
+      --color-border:          #363328;
+      --color-text:            #e8e4dc;
+      --color-text-muted:      #8a8680;
+      --color-text-faint:      #524e48;
+      --color-text-inverse:    #1a1916;
+      --color-primary:         #e8ad3a;
+      --color-primary-hover:   #f0c050;
+      --color-primary-active:  #f5d070;
+      --color-primary-highlight:#3a2f0f;
+      --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.25), 0 1px 2px oklch(0 0 0 / 0.15);
+      --shadow-md: 0 4px 12px oklch(0 0 0 / 0.35), 0 2px 4px oklch(0 0 0 / 0.2);
+      --shadow-lg: 0 12px 32px oklch(0 0 0 / 0.45), 0 4px 8px oklch(0 0 0 / 0.25);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --color-bg:#131210; --color-surface:#1a1916; --color-surface-2:#1f1e1b;
+        --color-surface-offset:#222019; --color-surface-offset-2:#282620;
+        --color-surface-dynamic:#302e27; --color-divider:#2a2822; --color-border:#363328;
+        --color-text:#e8e4dc; --color-text-muted:#8a8680; --color-text-faint:#524e48;
+        --color-text-inverse:#1a1916; --color-primary:#e8ad3a;
+        --color-primary-hover:#f0c050; --color-primary-active:#f5d070;
+        --color-primary-highlight:#3a2f0f;
       }
-      gtag("js", new Date());
+    }
 
-      gtag("config", "G-Y3P9F4DPTK");
-    </script>
-  </head>
-  <body class="bg-slate-50 text-slate-900 min-h-screen">
-    <div id="root"></div>
+    /* ── Base Reset ────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility; scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + var(--space-6));
+      hanging-punctuation: first last;
+    }
+    body {
+      min-height: 100dvh; line-height: 1.65;
+      font-family: var(--font-body); font-size: var(--text-base);
+      color: var(--color-text); background: var(--color-bg);
+      transition: background var(--transition-interactive), color var(--transition-interactive);
+    }
+    img, svg { display: block; max-width: 100%; height: auto; }
+    ul[role="list"] { list-style: none; }
+    input, button, textarea, select { font: inherit; color: inherit; }
+    h1,h2,h3,h4,h5,h6 { text-wrap: balance; line-height: 1.15; font-family: var(--font-display); }
+    p, li { text-wrap: pretty; max-width: 72ch; }
+    ::selection { background: oklch(from var(--color-primary) l c h / 0.2); color: var(--color-text); }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+      }
+    }
+    button { cursor: pointer; background: none; border: none; }
+    a, button, [role="button"] {
+      transition: color var(--transition-interactive), background var(--transition-interactive),
+                  border-color var(--transition-interactive), box-shadow var(--transition-interactive),
+                  opacity var(--transition-interactive);
+    }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
 
-    <!-- Vite entry -->
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    /* ── Scroll Animations ─────────────────────────────────────────── */
+    .fade-in { opacity: 1; }
+    @supports (animation-timeline: scroll()) {
+      .fade-in {
+        opacity: 0;
+        animation: reveal-fade linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+      }
+      .fade-in-delay-1 { animation-delay: 50ms; }
+      .fade-in-delay-2 { animation-delay: 100ms; }
+      .fade-in-delay-3 { animation-delay: 150ms; }
+    }
+    @keyframes reveal-fade { to { opacity: 1; } }
+
+    /* ── Skip Link ─────────────────────────────────────────────────── */
+    .skip-link {
+      position: fixed; top: var(--space-4); left: var(--space-4); z-index: 1000;
+      padding: var(--space-2) var(--space-4); background: var(--color-primary);
+      color: var(--color-text-inverse); font-weight: 600; border-radius: var(--radius-md);
+      transform: translateY(-120%); transition: transform 0.2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    /* ── Navigation ────────────────────────────────────────────────── */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-height);
+      background: oklch(from var(--color-bg) l c h / 0.92);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.07);
+      transition: background var(--transition-interactive), border-color var(--transition-interactive);
+    }
+    .nav-inner {
+      max-width: var(--content-wide); margin-inline: auto;
+      padding-inline: var(--space-6);
+      height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-8);
+    }
+    .nav-logo {
+      font-family: var(--font-display); font-size: var(--text-lg);
+      color: var(--color-text); text-decoration: none; flex-shrink: 0;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span { color: var(--color-primary); }
+    .nav-links { display: flex; align-items: center; gap: var(--space-1); list-style: none; }
+    .nav-links a {
+      font-size: var(--text-sm); font-weight: 500; letter-spacing: 0.03em;
+      color: var(--color-text-muted); text-decoration: none;
+      padding: var(--space-2) var(--space-3); border-radius: var(--radius-md);
+      text-transform: uppercase; font-size: 0.7rem; tracking-wide: 0.05em;
+    }
+    .nav-links a:hover { color: var(--color-text); background: oklch(from var(--color-text) l c h / 0.05); }
+    .nav-links a.active { color: var(--color-primary); }
+    .nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+    .theme-toggle {
+      width: 36px; height: 36px; border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-text-muted); background: transparent;
+      border: 1px solid oklch(from var(--color-text) l c h / 0.1);
+    }
+    .theme-toggle:hover { color: var(--color-text); background: oklch(from var(--color-text) l c h / 0.06); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: var(--space-2); border-radius: var(--radius-md); }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--color-text-muted); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+
+    /* ── Hero ──────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100dvh; padding-top: var(--nav-height);
+      display: grid; place-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 90%, oklch(from var(--color-primary) l c h / 0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 90% 10%, oklch(from var(--color-primary) l c h / 0.05) 0%, transparent 55%);
+    }
+    .hero-inner {
+      max-width: var(--content-wide); margin-inline: auto;
+      padding: var(--space-20) var(--space-6);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--space-16); align-items: center; position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-body); font-size: var(--text-xs);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--color-primary); font-weight: 600;
+      display: flex; align-items: center; gap: var(--space-2);
+      margin-bottom: var(--space-5);
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 28px; height: 1px; background: var(--color-primary);
+    }
+    .hero-name {
+      font-family: var(--font-display); font-size: var(--text-3xl);
+      line-height: 1.05; letter-spacing: -0.02em;
+      color: var(--color-text); margin-bottom: var(--space-5);
+    }
+    .hero-name em { font-style: italic; color: var(--color-primary); display: block; }
+    .hero-desc {
+      font-size: var(--text-base); color: var(--color-text-muted);
+      line-height: 1.7; margin-bottom: var(--space-8); max-width: 52ch;
+    }
+    .hero-tags {
+      display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-8);
+    }
+    .hero-tag {
+      font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.04em;
+      color: var(--color-text-muted); background: oklch(from var(--color-text) l c h / 0.05);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.1);
+      padding: var(--space-1) var(--space-3); border-radius: var(--radius-full);
+    }
+    .hero-ctas { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: var(--space-3) var(--space-6); border-radius: var(--radius-md);
+      background: var(--color-primary); color: var(--color-text-inverse);
+      font-weight: 600; font-size: var(--text-sm); text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .btn-primary:hover { background: var(--color-primary-hover); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: var(--space-3) var(--space-6); border-radius: var(--radius-md);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.15);
+      color: var(--color-text-muted); font-weight: 500; font-size: var(--text-sm);
+      text-decoration: none;
+    }
+    .btn-ghost:hover { color: var(--color-text); border-color: oklch(from var(--color-text) l c h / 0.3); background: oklch(from var(--color-text) l c h / 0.04); }
+
+    /* Hero stats */
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    .stat-card {
+      background: var(--color-surface);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+      border-radius: var(--radius-xl); padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition-interactive), transform var(--transition-interactive);
+    }
+    .stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .stat-number {
+      font-family: var(--font-display); font-size: var(--text-2xl);
+      color: var(--color-primary); line-height: 1; margin-bottom: var(--space-2);
+      font-weight: 400;
+    }
+    .stat-label { font-size: var(--text-sm); color: var(--color-text-muted); font-weight: 500; }
+    .stat-desc { font-size: var(--text-xs); color: var(--color-text-faint); margin-top: var(--space-1); }
+
+    /* ── Section Base ──────────────────────────────────────────────── */
+    .section { padding-block: clamp(var(--space-16), 8vw, var(--space-32)); }
+    .section-inner { max-width: var(--content-wide); margin-inline: auto; padding-inline: var(--space-6); }
+    .section-inner-narrow { max-width: var(--content-default); margin-inline: auto; padding-inline: var(--space-6); }
+    .section-label {
+      font-family: var(--font-body); font-size: var(--text-xs);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--color-primary); font-weight: 600;
+      display: flex; align-items: center; gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .section-label::after {
+      content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--color-primary); opacity: 0.5;
+    }
+    .section-heading {
+      font-family: var(--font-display); font-size: var(--text-2xl);
+      color: var(--color-text); margin-bottom: var(--space-4);
+      letter-spacing: -0.02em;
+    }
+    .section-subtext {
+      font-size: var(--text-base); color: var(--color-text-muted);
+      max-width: 58ch; line-height: 1.7;
+    }
+    .section-header { margin-bottom: var(--space-12); }
+    .divider { height: 1px; background: var(--color-divider); margin-block: 0; }
+
+    /* ── Capabilities (Home) ───────────────────────────────────────── */
+    .capabilities-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+      gap: var(--space-4); margin-top: var(--space-12);
+    }
+    .cap-card {
+      background: var(--color-surface);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+      border-radius: var(--radius-xl); padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition-interactive), transform var(--transition-interactive);
+    }
+    .cap-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .cap-icon {
+      width: 40px; height: 40px; margin-bottom: var(--space-4);
+      color: var(--color-primary);
+    }
+    .cap-title { font-family: var(--font-body); font-size: var(--text-sm); font-weight: 700; margin-bottom: var(--space-2); letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-text); }
+    .cap-desc { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6; }
+
+    /* Technical Footprint */
+    .tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin-top: var(--space-12); }
+    .tech-card {
+      background: var(--color-surface); border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+      border-radius: var(--radius-xl); padding: var(--space-8); box-shadow: var(--shadow-sm);
+    }
+    .tech-card-label { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-3); }
+    .tech-card-text { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7; }
+
+    /* Strength tags */
+    .strength-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-8); }
+    .strength-tag {
+      font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--color-text-muted); border: 1px solid oklch(from var(--color-text) l c h / 0.12);
+      padding: var(--space-2) var(--space-4); border-radius: var(--radius-full);
+      background: var(--color-surface);
+      transition: all var(--transition-interactive);
+    }
+    .strength-tag:hover { border-color: var(--color-primary); color: var(--color-primary); background: var(--color-primary-highlight); }
+
+    /* ── Experience Timeline ───────────────────────────────────────── */
+    .exp-section { background: var(--color-surface-offset); }
+    .timeline { display: flex; flex-direction: column; gap: var(--space-1); }
+    .timeline-item {
+      display: grid; grid-template-columns: 260px 1fr;
+      gap: var(--space-8); padding-block: var(--space-10);
+      border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.07);
+      position: relative;
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-meta { padding-top: var(--space-1); }
+    .timeline-dates {
+      font-size: var(--text-xs); color: var(--color-text-muted); font-weight: 500;
+      letter-spacing: 0.04em; margin-bottom: var(--space-2);
+    }
+    .timeline-company {
+      font-size: var(--text-sm); font-weight: 700; color: var(--color-text);
+      margin-bottom: var(--space-1);
+    }
+    .timeline-location { font-size: var(--text-xs); color: var(--color-text-faint); }
+    .timeline-content {}
+    .timeline-role {
+      font-family: var(--font-display); font-size: var(--text-xl);
+      color: var(--color-text); margin-bottom: var(--space-3); letter-spacing: -0.01em;
+    }
+    .timeline-summary {
+      font-size: var(--text-sm); color: var(--color-text-muted); font-style: italic;
+      margin-bottom: var(--space-5); line-height: 1.65; max-width: 64ch;
+    }
+    .outcomes-label {
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--color-primary); margin-bottom: var(--space-3);
+    }
+    .outcomes-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); margin-bottom: var(--space-5); }
+    .outcomes-list li {
+      font-size: var(--text-sm); color: var(--color-text-muted); padding-left: var(--space-5);
+      position: relative; line-height: 1.6; max-width: 68ch;
+    }
+    .outcomes-list li::before {
+      content: '→'; position: absolute; left: 0; color: var(--color-primary); font-size: 0.75rem; top: 2px;
+    }
+    .role-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .role-tag {
+      font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.03em;
+      color: var(--color-text-muted); border: 1px solid oklch(from var(--color-text) l c h / 0.12);
+      padding: var(--space-1) var(--space-3); border-radius: var(--radius-full);
+      background: var(--color-surface);
+    }
+
+    /* Education */
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: var(--space-4); margin-top: var(--space-10); }
+    .edu-card {
+      background: var(--color-surface); border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+      border-radius: var(--radius-xl); padding: var(--space-6); box-shadow: var(--shadow-sm);
+    }
+    .edu-degree { font-size: var(--text-sm); font-weight: 700; color: var(--color-text); margin-bottom: var(--space-1); }
+    .edu-school { font-size: var(--text-xs); color: var(--color-text-muted); }
+
+    /* ── Case Studies ─────────────────────────────────────────────── */
+    .case-studies-section { background: var(--color-bg); }
+    .case-study {
+      display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8) var(--space-12);
+      padding-block: var(--space-10); border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.07);
+      align-items: start;
+    }
+    .case-study:last-child { border-bottom: none; }
+    .case-number {
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-3);
+    }
+    .case-title {
+      font-family: var(--font-display); font-size: var(--text-xl);
+      color: var(--color-text); margin-bottom: var(--space-3); letter-spacing: -0.01em; line-height: 1.2;
+    }
+    .case-context { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.65; margin-bottom: var(--space-6); max-width: 52ch; }
+    .problem-solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6); }
+    .ps-block {}
+    .ps-label { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-2); }
+    .ps-text { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.65; }
+    .impact-block { grid-column: 1 / -1; }
+    .impact-label { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: var(--space-3); }
+    .impact-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+    .impact-list li { font-size: var(--text-sm); color: var(--color-text-muted); padding-left: var(--space-5); position: relative; line-height: 1.55; }
+    .impact-list li::before { content: '✓'; position: absolute; left: 0; color: var(--color-success); font-size: 0.75rem; }
+    .tech-focus { font-size: var(--text-xs); color: var(--color-text-faint); font-family: 'Courier New', monospace; padding: var(--space-3) var(--space-4); background: var(--color-surface-offset); border-radius: var(--radius-md); margin-top: var(--space-4); }
+
+    /* Architecture visualization */
+    .arch-viz { background: var(--color-surface); border: 1px solid oklch(from var(--color-text) l c h / 0.08); border-radius: var(--radius-xl); padding: var(--space-8); box-shadow: var(--shadow-sm); }
+    .arch-viz-title { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); margin-bottom: var(--space-6); }
+    .arch-layer {
+      background: oklch(from var(--color-primary) l c h / 0.06);
+      border: 1px solid oklch(from var(--color-primary) l c h / 0.15);
+      border-radius: var(--radius-md); padding: var(--space-4) var(--space-5);
+      font-size: var(--text-sm); font-weight: 500; color: var(--color-text);
+      text-align: center; transition: all var(--transition-interactive);
+    }
+    .arch-layer:hover { background: oklch(from var(--color-primary) l c h / 0.12); }
+    .arch-arrow { text-align: center; color: var(--color-primary); font-size: 1.1rem; margin-block: var(--space-2); opacity: 0.5; }
+
+    /* ── Certifications ────────────────────────────────────────────── */
+    .certs-section { background: var(--color-surface-offset); }
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: var(--space-5); }
+    .cert-card {
+      background: var(--color-surface); border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+      border-radius: var(--radius-xl); padding: var(--space-7); box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition-interactive), transform var(--transition-interactive);
+      display: flex; flex-direction: column; gap: var(--space-4);
+    }
+    .cert-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .cert-issuer { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); }
+    .cert-name { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); line-height: 1.25; }
+    .cert-meta { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+    .cert-tag { font-size: var(--text-xs); color: var(--color-text-muted); background: var(--color-surface-offset); border-radius: var(--radius-full); padding: var(--space-1) var(--space-3); }
+    .cert-link {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      font-size: var(--text-xs); font-weight: 600; color: var(--color-primary); text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .cert-link:hover { opacity: 0.75; }
+    .cert-link svg { width: 12px; height: 12px; }
+
+    /* ── Contact ───────────────────────────────────────────────────── */
+    .contact-section { background: var(--color-bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: start; }
+    .contact-intro { font-size: var(--text-base); color: var(--color-text-muted); max-width: 48ch; line-height: 1.7; margin-bottom: var(--space-8); }
+    .contact-items { display: flex; flex-direction: column; gap: var(--space-4); }
+    .contact-item { display: flex; align-items: center; gap: var(--space-4); }
+    .contact-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--color-surface); border: 1px solid oklch(from var(--color-text) l c h / 0.08); border-radius: var(--radius-md); color: var(--color-text-muted); flex-shrink: 0; box-shadow: var(--shadow-sm); }
+    .contact-value { font-size: var(--text-sm); color: var(--color-text); font-weight: 500; }
+    .contact-links { display: flex; flex-direction: column; gap: var(--space-3); }
+    .contact-link-card {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--color-surface); border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+      border-radius: var(--radius-xl); padding: var(--space-5) var(--space-6);
+      text-decoration: none; box-shadow: var(--shadow-sm);
+      transition: all var(--transition-interactive);
+    }
+    .contact-link-card:hover { box-shadow: var(--shadow-md); transform: translateX(4px); border-color: oklch(from var(--color-primary) l c h / 0.3); }
+    .contact-link-type { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-1); }
+    .contact-link-label { font-size: var(--text-sm); font-weight: 600; color: var(--color-text); }
+    .contact-link-arrow { color: var(--color-primary); font-size: 1.1rem; }
+
+    /* ── Footer ────────────────────────────────────────────────────── */
+    .site-footer {
+      padding-block: var(--space-8);
+      border-top: 1px solid oklch(from var(--color-text) l c h / 0.07);
+      background: var(--color-bg);
+    }
+    .footer-inner {
+      max-width: var(--content-wide); margin-inline: auto; padding-inline: var(--space-6);
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap;
+    }
+    .footer-copy { font-size: var(--text-xs); color: var(--color-text-faint); }
+
+    /* ── Mobile nav overlay ─────────────────────────────────────────── */
+    .mobile-nav {
+      position: fixed; inset: 0; z-index: 99; background: var(--color-bg);
+      padding: calc(var(--nav-height) + var(--space-8)) var(--space-6) var(--space-8);
+      display: flex; flex-direction: column; gap: var(--space-4);
+      transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-nav.open { transform: translateX(0); }
+    .mobile-nav a {
+      font-family: var(--font-display); font-size: var(--text-xl);
+      color: var(--color-text); text-decoration: none; padding-block: var(--space-3);
+      border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.07);
+    }
+    .mobile-nav a:hover { color: var(--color-primary); }
+
+    /* ── Responsive ────────────────────────────────────────────────── */
+    /* ── Responsive — Tablet ───────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: var(--space-12); }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 480px; }
+      .hero-name { font-size: var(--text-2xl); }
+      .contact-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+      .tech-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Responsive — Mobile ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .timeline-item { grid-template-columns: 1fr; gap: var(--space-4); }
+      .case-study { grid-template-columns: 1fr; gap: var(--space-6); }
+      .problem-solution-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .section { padding-block: clamp(var(--space-12), 6vw, var(--space-20)); }
+      .section-inner, .section-inner-narrow { padding-inline: var(--space-4); }
+      .hero-inner { padding: var(--space-12) var(--space-4); }
+      .hero-desc { font-size: var(--text-sm); max-width: 100%; }
+      .hero-ctas { flex-direction: column; gap: var(--space-3); }
+      .hero-ctas a { width: 100%; justify-content: center; padding: var(--space-4) var(--space-6); min-height: 44px; }
+      .btn-primary, .btn-ghost { min-height: 44px; }
+      .nav-inner { padding-inline: var(--space-4); }
+      .nav-logo { font-size: var(--text-base); }
+      .case-number { font-size: var(--text-xs); }
+      .case-title { font-size: var(--text-lg); }
+      .certs-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; gap: var(--space-2); }
+      .contact-items { gap: var(--space-3); }
+      .cert-card { padding: var(--space-5); }
+    }
+
+    /* ── Responsive — Small Mobile (375px) ─────────────────────────── */
+    @media (max-width: 480px) {
+      .hero-stats { grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+      .stat-card { padding: var(--space-4); }
+      .stat-number { font-size: var(--text-xl); }
+      .hero-name { font-size: clamp(2rem, 8vw, 2.5rem); }
+      .section-heading { font-size: var(--text-xl); }
+      .timeline-role { font-size: var(--text-lg); }
+      .hero-tags { gap: var(--space-2); }
+      .hero-tag { font-size: 0.65rem; padding: 3px 10px; }
+    }
+
+    /* ── Safe Area Insets (notched phones) ─────────────────────────── */
+    @supports (padding: env(safe-area-inset-top)) {
+      .site-nav { padding-top: env(safe-area-inset-top); height: calc(var(--nav-height) + env(safe-area-inset-top)); }
+      .mobile-nav { padding-top: calc(var(--nav-height) + env(safe-area-inset-top) + var(--space-8)); padding-bottom: env(safe-area-inset-bottom); padding-left: calc(var(--space-6) + env(safe-area-inset-left)); padding-right: calc(var(--space-6) + env(safe-area-inset-right)); }
+      body { padding-bottom: env(safe-area-inset-bottom); }
+    }
+
+    /* ── Touch / Hover disambiguation ─────────────────────────────── */
+    @media (hover: none) and (pointer: coarse) {
+      .stat-card:hover, .cap-card:hover, .cert-card:hover,
+      .contact-link-card:hover, .strength-tag:hover { transform: none; box-shadow: var(--shadow-sm); }
+      .btn-primary:hover { transform: none; box-shadow: none; }
+      .stat-card:active { transform: scale(0.98); box-shadow: var(--shadow-sm); }
+      .cap-card:active, .cert-card:active { transform: scale(0.98); }
+      .btn-primary:active { background: var(--color-primary-hover); transform: scale(0.98); }
+      .btn-ghost:active { background: oklch(from var(--color-text) l c h / 0.06); transform: scale(0.98); }
+      .contact-link-card:active { transform: translateX(2px); border-color: oklch(from var(--color-primary) l c h / 0.3); }
+    }
+
+    /* ── Theme Indicator Pill ──────────────────────────────────────── */
+    .theme-indicator {
+      display: inline-flex; align-items: center; gap: var(--space-1);
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--color-text-faint);
+      opacity: 0.7; pointer-events: none; white-space: nowrap;
+      cursor: default;
+    }
+    .theme-indicator[title]:hover { opacity: 1; }
+    .theme-indicator-dot {
+      width: 5px; height: 5px; border-radius: var(--radius-full);
+      background: var(--color-primary); animation: pulse-dot 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+    .theme-toggle-wrap {
+      display: flex; align-items: center; gap: var(--space-2);
+    }
+    @media (max-width: 640px) {
+      .theme-indicator { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Navigation -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">Sai <span>Chandradeep</span></a>
+      <ul class="nav-links" role="list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#case-studies">Case Studies</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="theme-toggle-wrap">
+          <span class="theme-indicator" id="theme-indicator" title="Theme auto-adjusts based on your local time (6 AM–7 PM = light, 7 PM–6 AM = dark)">
+            <span class="theme-indicator-dot"></span>
+            <span id="theme-indicator-label">AUTO</span>
+          </span>
+          <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Mobile navigation">
+    <a href="#home" class="mobile-nav-link">Home</a>
+    <a href="#experience" class="mobile-nav-link">Experience</a>
+    <a href="#case-studies" class="mobile-nav-link">Case Studies</a>
+    <a href="#certifications" class="mobile-nav-link">Certifications</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+  </div>
+
+  <main id="main-content">
+
+    <!-- ── HERO ──────────────────────────────────────────────────── -->
+    <section id="home" class="hero" aria-label="Introduction">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-left">
+          <p class="hero-eyebrow">Platform · Commerce · Digital Product Manager</p>
+          <h1 class="hero-name">
+            Venkata Sai
+            <em>Chandradeep</em>
+            Telaprolu
+          </h1>
+          <p class="hero-desc">
+            Senior Platform Product Manager with 7+ years of experience building scalable payments, data, and workflow automation platforms — spanning financial services, enterprise commerce, and retail digital products. Led cross-functional teams to deliver straight-through onboarding, checkout optimization, and enterprise-scale platform systems.
+          </p>
+          <div class="hero-tags">
+            <span class="hero-tag">Platform PM</span>
+            <span class="hero-tag">Payments</span>
+            <span class="hero-tag">Enterprise &amp; Commerce Platforms</span>
+            <span class="hero-tag">Workflow Automation</span>
+            <span class="hero-tag">AI Products</span>
+          </div>
+          <div class="hero-ctas">
+            <a href="#experience" class="btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+              View Experience
+            </a>
+            <a href="#contact" class="btn-ghost">Get in Touch</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-stats" role="list" aria-label="Key metrics">
+            <div class="stat-card fade-in" role="listitem">
+              <div class="stat-number" aria-label="180 plus">180+</div>
+              <div class="stat-label">Clients Onboarded</div>
+              <div class="stat-desc">Enterprise scale delivery across digital onboarding</div>
+            </div>
+            <div class="stat-card fade-in fade-in-delay-1" role="listitem">
+              <div class="stat-number">45</div>
+              <div class="stat-label">Products Supported</div>
+              <div class="stat-desc">Platform and product definitions enabled across workflows</div>
+            </div>
+            <div class="stat-card fade-in fade-in-delay-2" role="listitem">
+              <div class="stat-number">90%</div>
+              <div class="stat-label">Failure Reduction</div>
+              <div class="stat-desc">Submission failures reduced via upfront validation + STP</div>
+            </div>
+            <div class="stat-card fade-in fade-in-delay-3" role="listitem">
+              <div class="stat-number">62%</div>
+              <div class="stat-label">Rework Reduction</div>
+              <div class="stat-desc">Operational handoff and correction cycles reduced</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CAPABILITIES ──────────────────────────────────────────── -->
+    <section class="section" aria-labelledby="capabilities-heading">
+      <div class="section-inner">
+        <div class="section-header fade-in">
+          <p class="section-label">Core Competency</p>
+          <h2 class="section-heading" id="capabilities-heading">Technical Footprint</h2>
+          <p class="section-subtext">API-first, metadata-driven platforms orchestrating intake, validation, and downstream automation across enterprise systems.</p>
+        </div>
+        <div class="tech-grid">
+          <div class="tech-card fade-in">
+            <div class="tech-card-label">Architecture</div>
+            <div class="tech-card-text">API-first, metadata-driven platforms orchestrating intake, validation, and downstream automation across multiple systems.</div>
+          </div>
+          <div class="tech-card fade-in fade-in-delay-1">
+            <div class="tech-card-label">Interfaces</div>
+            <div class="tech-card-text">Internal APIs, schema-based data contracts, and reusable workflow primitives enabling publish-once, reuse-everywhere execution.</div>
+          </div>
+          <div class="tech-card fade-in fade-in-delay-2">
+            <div class="tech-card-label">Governance &amp; Security</div>
+            <div class="tech-card-text">Role-based access control (RBAC), approval workflows, and definition lineage embedded directly into platform flows.</div>
+          </div>
+          <div class="tech-card fade-in fade-in-delay-3">
+            <div class="tech-card-label">Scale &amp; Reliability</div>
+            <div class="tech-card-text">180+ enterprise clients, 45+ sub-products, 48 product integrations and 15 back-office APIs supported with consistent SLAs.</div>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-16);">
+          <div class="section-header fade-in">
+            <p class="section-label">AI + Automation</p>
+            <h2 class="section-heading">Productized AI Capabilities</h2>
+            <p class="section-subtext">Built to improve intake quality, authoring speed, and operational visibility.</p>
+          </div>
+          <div class="capabilities-grid">
+            <div class="cap-card fade-in">
+              <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <div class="cap-title">Intake Quality Copilot</div>
+              <div class="cap-desc">Improve submission quality before routing by catching missing fields and flagging inconsistencies.</div>
+            </div>
+            <div class="cap-card fade-in fade-in-delay-1">
+              <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+              <div class="cap-title">Product Definition Copilot</div>
+              <div class="cap-desc">Draft reusable definitions and flag downstream impacts for approval across the product catalog.</div>
+            </div>
+            <div class="cap-card fade-in fade-in-delay-2">
+              <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              <div class="cap-title">Experiment Planner</div>
+              <div class="cap-desc">Propose hypotheses, variants, and instrumentation for checkout fixes and workflow improvements.</div>
+            </div>
+            <div class="cap-card fade-in fade-in-delay-3">
+              <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              <div class="cap-title">Ops Insights</div>
+              <div class="cap-desc">Surface STP coverage, bottlenecks, and guardrail exceptions for operational teams in real time.</div>
+            </div>
+            <div class="cap-card fade-in">
+              <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+              <div class="cap-title">Governed Analytics Platforms</div>
+              <div class="cap-desc">Governed analytics platforms enabling AI and automation with RBAC-secured data access.</div>
+            </div>
+            <div class="cap-card fade-in fade-in-delay-1">
+              <svg class="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+              <div class="cap-title">Role-based AI Personalization</div>
+              <div class="cap-desc">Role-based AI personalization embedded directly into platform workflows to reduce drop-offs.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-16);" class="fade-in">
+          <p class="section-label" style="margin-bottom: var(--space-6);">Platform Strengths</p>
+          <div class="strength-tags" role="list" aria-label="Platform capabilities">
+            <span class="strength-tag" role="listitem">Platform Product Management</span>
+            <span class="strength-tag" role="listitem">API Platform Strategy</span>
+            <span class="strength-tag" role="listitem">AI-Enabled Product Configuration</span>
+            <span class="strength-tag" role="listitem">Spec-Driven Development</span>
+            <span class="strength-tag" role="listitem">Data Platform Governance</span>
+            <span class="strength-tag" role="listitem">Workflow Automation</span>
+            <span class="strength-tag" role="listitem">Digital Payments Infrastructure</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <!-- ── EXPERIENCE ────────────────────────────────────────────── -->
+    <section id="experience" class="section exp-section" aria-labelledby="exp-heading">
+      <div class="section-inner">
+        <div class="section-header fade-in">
+          <p class="section-label">Career Overview</p>
+          <h2 class="section-heading" id="exp-heading">Experience</h2>
+          <p class="section-subtext">7+ years delivering platform and digital products across payments, data infrastructure, and workflow automation.</p>
+        </div>
+
+        <div class="timeline" role="list">
+
+          <!-- JPMC Platform PM -->
+          <article class="timeline-item fade-in" role="listitem" aria-labelledby="role-jpmc-platform">
+            <div class="timeline-meta">
+              <div class="timeline-dates">Apr 2024 — Present</div>
+              <div class="timeline-company">J.P. Morgan Chase &amp; Co.</div>
+              <div class="timeline-location">USA</div>
+            </div>
+            <div class="timeline-content">
+              <h3 class="timeline-role" id="role-jpmc-platform">Platform Product Manager — Payments</h3>
+              <p class="timeline-summary">Own fast-track onboarding for JPMorgan's Digital Banking platform (web + app), enabling activation for Wires, ACH, RTP, and Check Deposits across dependent APIs and back-office systems.</p>
+              <div class="outcomes-label">Key Outcomes</div>
+              <ul class="outcomes-list" role="list">
+                <li>Drove straight-through onboarding by pre-populating required fields and adding upfront validation; reduced submission failures by 90% and rework by 62%</li>
+                <li>Cut onboarding cycle time from ~72 hours–1 week to under 1 hour by removing manual handoffs and standardizing workflow execution</li>
+                <li>Scaled adoption from 45 clients/15 products to 180 clients/45 sub-products; supported 48 products and 15 back-office API integrations</li>
+                <li>Designed and launched a Unified Product Intake platform consolidating discovery and requests across multiple digital platforms, including AI-powered role-based personalization</li>
+                <li>Built a self-serve, prompt-driven authoring tool for Product Owners; reduced onboarding tickets by 80% for the supported segment</li>
+                <li>Owned the Catalog/Product Definition layer as a single source of truth across onboarding systems to reduce duplicate builds and engineering spend</li>
+              </ul>
+              <div class="role-tags">
+                <span class="role-tag">Platform</span>
+                <span class="role-tag">Digital</span>
+                <span class="role-tag">AI</span>
+                <span class="role-tag">STP</span>
+                <span class="role-tag">Automation</span>
+                <span class="role-tag">Governance</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- JPMC Analytics PM -->
+          <article class="timeline-item fade-in" role="listitem" aria-labelledby="role-jpmc-analytics">
+            <div class="timeline-meta">
+              <div class="timeline-dates">Aug 2022 — Mar 2024</div>
+              <div class="timeline-company">J.P. Morgan Chase &amp; Co. – Product Sales</div>
+              <div class="timeline-location">USA</div>
+            </div>
+            <div class="timeline-content">
+              <h3 class="timeline-role" id="role-jpmc-analytics">Product Manager, Analytics Solutions</h3>
+              <p class="timeline-summary">Owned the Payments sales data product end-to-end from CRM source systems through ingestion, modeling, and publishing in Amazon Redshift as a single reliable source for sales reporting.</p>
+              <div class="outcomes-label">Key Outcomes</div>
+              <ul class="outcomes-list" role="list">
+                <li>Partnered with CRM Product Owners to understand sales objects and processes; defined metadata and data dictionaries and coordinated extraction into the data platform</li>
+                <li>Wrote and prioritized user stories for CRM and ingestion teams; collaborated with data engineering to model datasets and publish analytics-ready views</li>
+                <li>Embedded governance by design by working with data stewards on quality and lineage, and implementing RBAC/IAM and row-level security across Lines of Business</li>
+                <li>Monitored usage and adoption and guided teams to the right datasets to ensure the data product delivered measurable business impact</li>
+                <li>Managed the Jira backlog and continuously re-prioritized stories to deliver the highest-value analytics capabilities first</li>
+              </ul>
+              <div class="role-tags">
+                <span class="role-tag">Data Platform</span>
+                <span class="role-tag">Analytics Product</span>
+                <span class="role-tag">Governance &amp; Security</span>
+                <span class="role-tag">AI Readiness</span>
+                <span class="role-tag">Sales Enablement</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Yum! Brands -->
+          <article class="timeline-item fade-in" role="listitem" aria-labelledby="role-yum">
+            <div class="timeline-meta">
+              <div class="timeline-dates">Oct 2021 — Jun 2022</div>
+              <div class="timeline-company">Yum! Brands (USA)</div>
+              <div class="timeline-location">USA</div>
+            </div>
+            <div class="timeline-content">
+              <h3 class="timeline-role" id="role-yum">Product Analyst (Associate Product Manager)</h3>
+              <p class="timeline-summary">Owned the checkout funnel view (menu → cart → checkout → payment → confirmation) across web and mobile to surface drop-offs and guide payments improvements.</p>
+              <div class="outcomes-label">Key Outcomes</div>
+              <ul class="outcomes-list" role="list">
+                <li>Analyzed declines, timeouts, and retries by device/browser/order type and gateway response; translated insights into engineering priorities</li>
+                <li>Partnered with engineering to improve tracking/instrumentation so release impact could be measured confidently</li>
+                <li>Supported A/B tests and pilots (error messaging, retries, saved payment, guest flow) and shared results to guide rollouts</li>
+                <li>Balanced customer experience with payments controls and reliability by aligning Product, Design, Ops, and Risk/Compliance</li>
+              </ul>
+              <div class="role-tags">
+                <span class="role-tag">Digital</span>
+                <span class="role-tag">Analytics</span>
+                <span class="role-tag">Payments</span>
+                <span class="role-tag">Experimentation</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Reguss Consulting -->
+          <article class="timeline-item fade-in" role="listitem" aria-labelledby="role-reguss">
+            <div class="timeline-meta">
+              <div class="timeline-dates">Jun 2020 — Oct 2021</div>
+              <div class="timeline-company">Reguss Consulting (India)</div>
+              <div class="timeline-location">India</div>
+            </div>
+            <div class="timeline-content">
+              <h3 class="timeline-role" id="role-reguss">Analytics Consultant</h3>
+              <p class="timeline-summary">Built analytics platforms for marketing and sales teams, focusing on automation and KPI governance.</p>
+              <div class="outcomes-label">Key Outcomes</div>
+              <ul class="outcomes-list" role="list">
+                <li>Built lead-scoring models and campaign dashboards to focus sales on high-propensity clients</li>
+                <li>Automated data pipelines using SQL, PySpark, and Airflow; reduced report turnaround time by 30%</li>
+                <li>Created KPI hierarchies and scorecards for marketing and sales performance tracking</li>
+                <li>Helped business leaders shift from manual reporting to automated analytics workflows</li>
+              </ul>
+              <div class="role-tags">
+                <span class="role-tag">Automation</span>
+                <span class="role-tag">Analytics</span>
+                <span class="role-tag">Data Products</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dell -->
+          <article class="timeline-item fade-in" role="listitem" aria-labelledby="role-dell">
+            <div class="timeline-meta">
+              <div class="timeline-dates">Jan 2019 — Jan 2020</div>
+              <div class="timeline-company">Dell Technologies</div>
+              <div class="timeline-location">USA</div>
+            </div>
+            <div class="timeline-content">
+              <h3 class="timeline-role" id="role-dell">Business Development Intern — Sales</h3>
+              <p class="timeline-summary">Supported sales segmentation, territory planning, and forecasting with TAM/SAM sizing and competitive mapping.</p>
+              <div class="outcomes-label">Key Outcomes</div>
+              <ul class="outcomes-list" role="list">
+                <li>Built weekly pipeline and forecast views (Excel/Power BI from CRM) to improve stage hygiene and forecast accuracy</li>
+                <li>Assisted win/loss reviews, tagging reasons and surfacing pricing/packaging patterns to inform sales plays</li>
+                <li>Created enablement assets (battlecards, one-pagers, ROI inputs) to sharpen messaging and speed deals</li>
+              </ul>
+              <div class="role-tags">
+                <span class="role-tag">Go-to-Market</span>
+                <span class="role-tag">Analytics</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Education -->
+        <div style="margin-top: var(--space-16);" class="fade-in">
+          <h3 style="font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-text); margin-bottom: var(--space-2); letter-spacing: -0.01em;">Education</h3>
+          <div class="edu-grid">
+            <div class="edu-card">
+              <div class="edu-degree">Executive MBA</div>
+              <div class="edu-school">University of the Cumberlands</div>
+            </div>
+            <div class="edu-card">
+              <div class="edu-degree">MS, Business Analytics</div>
+              <div class="edu-school">University of Louisville</div>
+            </div>
+            <div class="edu-card">
+              <div class="edu-degree">B.Tech, Computer Science</div>
+              <div class="edu-school">Bharath University</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <!-- ── CASE STUDIES ──────────────────────────────────────────── -->
+    <section id="case-studies" class="section case-studies-section" aria-labelledby="case-studies-heading">
+      <div class="section-inner-narrow">
+        <div class="section-header fade-in">
+          <p class="section-label">Case Studies</p>
+          <h2 class="section-heading" id="case-studies-heading">Platform Product Case Studies</h2>
+          <p class="section-subtext">Structured problem → solution → architecture → impact narratives that show end-to-end platform product ownership.</p>
+        </div>
+
+        <!-- Case Study 1 -->
+        <article class="case-study fade-in" aria-labelledby="case-1-title">
+          <div>
+            <div class="case-number">01 / Case Study</div>
+            <h3 class="case-title" id="case-1-title">Fast-Track Onboarding STP<br>(Digital Banking Platform)</h3>
+            <p class="case-context">Digital banking onboarding across web and mobile for startup and mid-market clients, covering Wires, ACH, RTP, and Check Deposits with back-office integrations.</p>
+            <div class="problem-solution-grid">
+              <div class="ps-block">
+                <div class="ps-label">Problem</div>
+                <div class="ps-text">Onboarding was slow and manual (72 hours–1 week) due to repeated handoffs, missing information, and inconsistent data capture, leading to high rework and support load.</div>
+              </div>
+              <div class="ps-block">
+                <div class="ps-label">Solution</div>
+                <div class="ps-text">Standardized onboarding workflow with upfront validation, pre-populated fields, guided data capture, and automated assignment/acceptance steps tied to back-office APIs.</div>
+              </div>
+              <div class="impact-block">
+                <div class="impact-label">Impact</div>
+                <ul class="impact-list" role="list">
+                  <li>Onboarding time reduced from 72 hours–1 week to under 1 hour</li>
+                  <li>Submission failures reduced by 90% and rework lowered by 62%</li>
+                  <li>Onboarding tickets reduced by 80% for the supported segment</li>
+                  <li>Scaled adoption from 45 clients/15 products to 180 clients/45 sub-products</li>
+                  <li>Improved release stability by reducing workflow breakages and cycle-time variance</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tech-focus">Technical Focus: Workflow orchestration · Upfront validation · API-driven straight-through processing</div>
+          </div>
+          <div>
+            <div class="arch-viz" aria-label="Digital Banking Onboarding Platform architecture layers">
+              <div class="arch-viz-title">Digital Banking Onboarding Platform — Layered View</div>
+              <div class="arch-layer">Client Portal / Product Intake</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">AI Personalization Layer</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">Product Definition Catalog</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">Workflow Orchestration Engine</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">API Integration Layer</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">Payment Services &amp; Back Office Systems</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case Study 2 -->
+        <article class="case-study fade-in" aria-labelledby="case-2-title">
+          <div>
+            <div class="case-number">02 / Case Study</div>
+            <h3 class="case-title" id="case-2-title">Checkout Funnel Optimization<br><span style="font-size:0.7em; color:var(--color-text-muted); font-style:normal;">Yum! Brands · 50M+ Digital Orders / Year</span></h3>
+            <p class="case-context">Consumer-facing digital ordering funnel (KFC, Pizza Hut, Taco Bell) spanning web and mobile apps, serving tens of millions of orders annually across multiple payment gateways and tender types.</p>
+            <div class="problem-solution-grid">
+              <div class="ps-block">
+                <div class="ps-label">Problem</div>
+                <div class="ps-text">Drop-offs, declines, and timeouts were hard to diagnose with limited instrumentation, making it impossible to isolate issues by device, browser, or gateway.</div>
+              </div>
+              <div class="ps-block">
+                <div class="ps-label">Solution</div>
+                <div class="ps-text">Instrumented funnel events, analyzed failure patterns by device/browser/gateway, and ran experiments on messaging and retry flows to improve completion rates.</div>
+              </div>
+              <div class="impact-block">
+                <div class="impact-label">Impact</div>
+                <ul class="impact-list" role="list">
+                  <li>Reduced checkout drop-off rate via A/B-tested messaging, retry flows, and gateway failure fixes — directly improving order conversion across 50M+ annual consumer transactions</li>
+                  <li>Built real-time funnel instrumentation enabling same-day diagnosis of payment failures by device, browser, and gateway — reducing operational response time from days to hours</li>
+                  <li>Expanded payment tender coverage (credit, debit, digital wallets) improving checkout success rates for a broader consumer base</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tech-focus">Technical Focus: Consumer funnel instrumentation · A/B experimentation · Payment gateway failure analysis · Omnichannel checkout · Tender type expansion</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <div class="arch-viz">
+              <div class="arch-viz-title">Checkout Funnel — Failure Taxonomy</div>
+              <div class="arch-layer">Menu → Add to Cart</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">Cart → Checkout Entry</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">Payment Selection + Auth</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">Gateway Processing</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">Order Confirmation</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case Study 3 -->
+        <article class="case-study fade-in" aria-labelledby="case-3-title">
+          <div>
+            <div class="case-number">03 / Case Study</div>
+            <h3 class="case-title" id="case-3-title">Payments Sales Analytics<br>Data Platform (CRM → Redshift)</h3>
+            <p class="case-context">Enterprise Payments Sales organization requiring trusted, reusable sales data across multiple Lines of Business.</p>
+            <div class="problem-solution-grid">
+              <div class="ps-block">
+                <div class="ps-label">Problem</div>
+                <div class="ps-text">Sales data fragmented across CRM objects with inconsistent definitions, manual reporting effort, and limited reuse for analytics and ML models.</div>
+              </div>
+              <div class="ps-block">
+                <div class="ps-label">Solution</div>
+                <div class="ps-text">Built a governed analytics data product by defining metadata, data dictionaries, ingestion requirements, and analytics-ready models in Amazon Redshift.</div>
+              </div>
+              <div class="impact-block">
+                <div class="impact-label">Impact</div>
+                <ul class="impact-list" role="list">
+                  <li>Established a single source of truth for Payments sales reporting</li>
+                  <li>Reduced manual reporting effort and clarification cycles</li>
+                  <li>Improved adoption and trust across Sales, Analytics, and ML teams</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tech-focus">Technical Focus: CRM ingestion · Governed analytics models · RBAC-secured data access</div>
+          </div>
+          <div>
+            <div class="arch-viz">
+              <div class="arch-viz-title">Analytics Data Platform — Pipeline View</div>
+              <div class="arch-layer">CRM Source Systems (Salesforce)</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">Ingestion Layer + Metadata Catalog</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">Data Modeling + Transformation</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">Amazon Redshift (Analytics Store)</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">RBAC-Secured Analytics Views</div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-layer">Sales / ML / Analytics Consumers</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <!-- ── CERTIFICATIONS ────────────────────────────────────────── -->
+    <section id="certifications" class="section certs-section" aria-labelledby="certs-heading">
+      <div class="section-inner">
+        <div class="section-header fade-in">
+          <p class="section-label">Credentials</p>
+          <h2 class="section-heading" id="certs-heading">Certifications</h2>
+          <p class="section-subtext">Verifiable credentials supporting platform, data, and AI product leadership.</p>
+        </div>
+        <div class="certs-grid">
+          <article class="cert-card fade-in" aria-labelledby="cert-1">
+            <div class="cert-issuer">Google (Coursera)</div>
+            <h3 class="cert-name" id="cert-1">Foundations of Project Management</h3>
+            <div class="cert-meta">
+              <span class="cert-tag">2023</span>
+              <span class="cert-tag">Product/PM</span>
+            </div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/5EDCNCCFJF89" class="cert-link" target="_blank" rel="noopener noreferrer" aria-label="Verify Google Project Management credential">
+              Verify credential
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+          </article>
+          <article class="cert-card fade-in fade-in-delay-1" aria-labelledby="cert-2">
+            <div class="cert-issuer">University of Pennsylvania (Coursera)</div>
+            <h3 class="cert-name" id="cert-2">Customer Analytics</h3>
+            <div class="cert-meta">
+              <span class="cert-tag">2020</span>
+              <span class="cert-tag">Analytics</span>
+              <span class="cert-tag">AI / Analytics</span>
+            </div>
+            <a href="https://www.coursera.org/account/accomplishments/verify/MASE9K7S8AY4" class="cert-link" target="_blank" rel="noopener noreferrer" aria-label="Verify UPenn Customer Analytics credential">
+              Verify credential
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+          </article>
+          <article class="cert-card fade-in fade-in-delay-2" aria-labelledby="cert-3">
+            <div class="cert-issuer">SAS &amp; University of Louisville (Credly)</div>
+            <h3 class="cert-name" id="cert-3">Joint Certificate in Data Analytics</h3>
+            <div class="cert-meta">
+              <span class="cert-tag">Sep 2022</span>
+              <span class="cert-tag">Analytics</span>
+              <span class="cert-tag">Data Platforms</span>
+            </div>
+            <a href="https://www.credly.com/badges/9320c9e0-c9a5-4665-b1ec-f9e26bdc9888/linked_in_profile" class="cert-link" target="_blank" rel="noopener noreferrer" aria-label="Verify SAS Data Analytics credential">
+              Verify credential
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+          </article>
+          <article class="cert-card fade-in fade-in-delay-3" aria-labelledby="cert-4">
+            <div class="cert-issuer">Amazon Web Services (Credly)</div>
+            <h3 class="cert-name" id="cert-4">AWS Certified Solutions Architect – Associate</h3>
+            <div class="cert-meta">
+              <span class="cert-tag">Feb 2024</span>
+              <span class="cert-tag">Cloud</span>
+              <span class="cert-tag">Architecture</span>
+            </div>
+            <a href="https://www.credly.com/badges/a0f5519a-88b0-4fa4-a65e-ac5772d0edeb" class="cert-link" target="_blank" rel="noopener noreferrer" aria-label="Verify AWS Solutions Architect credential">
+              Verify credential
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" role="separator"></div>
+
+    <!-- ── CONTACT ───────────────────────────────────────────────── -->
+    <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
+      <div class="section-inner">
+        <div class="contact-grid">
+          <div class="fade-in">
+            <p class="section-label">Let's Talk</p>
+            <h2 class="section-heading" id="contact-heading">Get in Touch</h2>
+            <p class="contact-intro">Open to Platform PM, Data Product PM, and AI PM roles focused on automation, STP, and AI-enabled workflows.</p>
+            <div class="contact-items">
+              <div class="contact-item">
+                <div class="contact-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <a href="mailto:chandradeep.msba@gmail.com" class="contact-value">chandradeep.msba@gmail.com</a>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
+                </div>
+                <a href="tel:+15022986263" class="contact-value">502-298-6263</a>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <span class="contact-value">USA</span>
+              </div>
+            </div>
+          </div>
+          <div class="contact-links fade-in fade-in-delay-1">
+            <a href="https://linkedin.com/in/venkata-sai-chandradeep-telaprolu-b0a568154" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+              <div>
+                <div class="contact-link-type">Professional Network</div>
+                <div class="contact-link-label">LinkedIn Profile</div>
+              </div>
+              <span class="contact-link-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="https://medium.com/@chandradeepsai96" target="_blank" rel="noopener noreferrer" class="contact-link-card">
+              <div>
+                <div class="contact-link-type">Writing</div>
+                <div class="contact-link-label">Medium Articles</div>
+              </div>
+              <span class="contact-link-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="/resume.pdf" class="contact-link-card" download>
+              <div>
+                <div class="contact-link-type">Document</div>
+                <div class="contact-link-label">Download Resume (PDF)</div>
+              </div>
+              <span class="contact-link-arrow" aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 Venkata Sai Chandradeep Telaprolu. All rights reserved.</span>
+      <a href="mailto:chandradeep.msba@gmail.com" class="footer-copy" style="text-decoration: none;">chandradeep.msba@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    /* ── Time-Based Auto Theme ──────────────────────────────────────── *
+     * Data-theme is already set in <head> — no flash. This block just  *
+     * wires up the toggle, indicator, and 60-second auto-recheck.      *
+     * ─────────────────────────────────────────────────────────────── */
+    (function () {
+      const root     = document.documentElement;
+      const toggle   = document.querySelector('[data-theme-toggle]');
+      const indLabel = document.getElementById('theme-indicator-label');
+      const indDot   = document.querySelector('.theme-indicator-dot');
+
+      const SUNRISE = 6, SUNSET = 19;
+
+      /* ── Helpers ── */
+      function themeForTime() {
+        return (new Date().getHours() >= SUNRISE && new Date().getHours() < SUNSET)
+          ? 'light' : 'dark';
+      }
+
+      /* Get short timezone abbreviation: "CDT", "PST", "IST", etc. */
+      function tzAbbr() {
+        try {
+          const s = new Date().toLocaleTimeString('en-US', { timeZoneName: 'short' });
+          return s.split(' ').pop(); /* last token is the tz abbreviation */
+        } catch(e) { return ''; }
+      }
+
+      /* Format local time as "12 AM", "3 PM", etc. */
+      function localTimeStr() {
+        const now = new Date();
+        let h = now.getHours(), ampm = h >= 12 ? 'PM' : 'AM';
+        h = h % 12 || 12;
+        return h + ' ' + ampm;
+      }
+
+      const SUN_ICON  = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+      const MOON_ICON = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
+      /* ── State ── */
+      /* Read the theme already applied by the <head> script */
+      let currentTheme   = root.getAttribute('data-theme') || themeForTime();
+      let manualOverride = false;
+
+      /* ── Apply ── */
+      function applyTheme(theme, isAuto) {
+        root.setAttribute('data-theme', theme);
+
+        /* Toggle icon */
+        if (toggle) {
+          toggle.innerHTML = (theme === 'dark') ? SUN_ICON : MOON_ICON;
+          toggle.setAttribute('aria-label',
+            (theme === 'dark' ? 'Switch to light' : 'Switch to dark') +
+            (isAuto ? ' (auto · time-based)' : ' (manual override)'));
+        }
+
+        /* Indicator label: "AUTO · 12 AM · CDT" or "MANUAL" */
+        if (indLabel) {
+          indLabel.textContent = isAuto
+            ? 'AUTO · ' + localTimeStr() + ' · ' + tzAbbr()
+            : 'MANUAL';
+        }
+
+        /* Dot: pulsing in auto, solid amber in manual */
+        if (indDot) {
+          indDot.style.background = isAuto
+            ? 'var(--color-primary)'
+            : '#e8ad3a';
+          indDot.style.animationPlayState = isAuto ? 'running' : 'paused';
+        }
+      }
+
+      /* ── Boot: sync icon + indicator with the head-script-set theme ── */
+      applyTheme(currentTheme, true);
+
+      /* ── Manual toggle ── */
+      let resetTimer;
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          clearTimeout(resetTimer);
+          manualOverride = true;
+          currentTheme   = (currentTheme === 'dark') ? 'light' : 'dark';
+          applyTheme(currentTheme, false);
+
+          /* Auto-revert to time-based after 1 hour */
+          resetTimer = setTimeout(() => {
+            manualOverride = false;
+            currentTheme   = themeForTime();
+            applyTheme(currentTheme, true);
+          }, 3600000);
+        });
+      }
+
+      /* ── Auto recheck every 60 s (only when not manually overridden) ── */
+      setInterval(() => {
+        if (!manualOverride) {
+          const auto = themeForTime();
+          if (auto !== currentTheme) {
+            currentTheme = auto;
+            applyTheme(currentTheme, true);
+          } else {
+            /* Even if theme didn't change, refresh the time in the label */
+            applyTheme(currentTheme, true);
+          }
+        }
+      }, 60000);
+    })();
+
+    /* ── Mobile Nav ─────────────────────────────────────────────────── */
+    (function () {
+      const btn   = document.getElementById('hamburger-btn');
+      const nav   = document.getElementById('mobile-nav');
+      const links = nav ? nav.querySelectorAll('a') : [];
+      let open    = false;
+
+      function closeNav() {
+        open = false;
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        /* Animate hamburger back */
+        const spans = btn.querySelectorAll('span');
+        spans[0].style.transform = '';
+        spans[1].style.opacity   = '';
+        spans[2].style.transform = '';
+      }
+
+      function openNav() {
+        open = true;
+        nav.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        /* Animate to X */
+        const spans = btn.querySelectorAll('span');
+        spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+        spans[1].style.opacity   = '0';
+        spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+      }
+
+      if (btn) btn.addEventListener('click', () => open ? closeNav() : openNav());
+      links.forEach(l => l.addEventListener('click', () => { if (open) closeNav(); }));
+
+      /* Close on Escape key */
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && open) closeNav();
+      });
+
+      /* Close on outside tap */
+      document.addEventListener('click', e => {
+        if (open && nav && !nav.contains(e.target) && !btn.contains(e.target)) closeNav();
+      });
+    })();
+
+    /* ── Active nav link on scroll ──────────────────────────────────── */
+    (function () {
+      const sections = document.querySelectorAll('section[id]');
+      const links    = document.querySelectorAll('.nav-links a');
+      const navH     = 80;
+
+      function onScroll() {
+        let current = '';
+        sections.forEach(s => {
+          if (window.scrollY >= s.offsetTop - navH - 40) current = s.id;
+        });
+        links.forEach(l => {
+          const href = l.getAttribute('href').replace('#', '');
+          l.classList.toggle('active', href === current);
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+</body>
 </html>
