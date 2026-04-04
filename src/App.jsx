@@ -1221,10 +1221,10 @@ function App() {
     "Digital Payments Infrastructure",
   ];
   const stats = [
-    { num: "<1h", label: "Onboarding time reduced", detail: "From 72+ hours to under 1 hour" },
-    { num: "90%", label: "Submission failure reduction", detail: "Via upfront validation & API-driven STP" },
-    { num: "180", label: "Enterprise clients supported", detail: "45 → 180 clients · 15 → 45 sub-products" },
-    { num: "48", label: "Product integrations", detail: "48 products · 15 back-office APIs" },
+    { num: "180+", label: "Clients onboarded", detail: "Enterprise scale delivery across digital onboarding" },
+    { num: "45", label: "Products supported", detail: "Platform and product definitions enabled across workflows" },
+    { num: "90%", label: "Failure reduction", detail: "Submission failures reduced via upfront validation + STP" },
+    { num: "62%", label: "Rework reduction", detail: "Operational handoff and correction cycles reduced" },
   ];
   const techCards = [
     {
@@ -1266,10 +1266,19 @@ function App() {
           <p className="hero-label">Platform + Digital Product Manager</p>
           <h1 className="hero-name">Venkata Sai<br /><em>Chandradeep</em><br />Telaprolu</h1>
           <p className="hero-tagline">
-            Senior Platform Product Manager — Payments, Data Platforms, and AI-Driven Digital Experiences.
+            Senior Platform Product Manager
           </p>
           <p className="hero-tagline">
-            Building scalable platform products across digital banking, payments, and analytics systems with spec-driven development, API architecture, AI-enabled configuration, and automation at scale.
+            7+ Years Building Platform, Data, and AI-Driven Products
+          </p>
+          <p className="hero-tagline">
+            Payments | Digital Banking | Workflow Automation
+          </p>
+          <p className="hero-tagline">
+            Senior Platform Product Manager with 7+ years of experience building scalable payments, data, and workflow automation platforms. Led cross-functional teams to deliver straight-through onboarding and enterprise platform systems.
+          </p>
+          <p className="hero-tagline">
+            Platform Product Manager · Payments Product Manager · Data Platform Product Manager · AI Product Manager · Digital Banking Platforms
           </p>
           <div className="hero-cta">
             <a href="#experience" className="btn btn-primary">View Experience</a>
@@ -1339,7 +1348,8 @@ function App() {
       <div className="full-section" id="experience">
         <div className="section-inner">
           <div className="section-header">
-            <p className="section-eyebrow">Career</p>
+            <p className="section-eyebrow">Career Overview</p>
+            <p className="section-sub">7+ years delivering platform and digital products across payments, data infrastructure, and workflow automation.</p>
             <h2 className="section-title">Experience</h2>
             <p className="section-sub">Role-based leadership scope and outcomes across platform, digital, and automation initiatives.</p>
           </div>
@@ -1365,6 +1375,14 @@ function App() {
               </div>
             ))}
           </div>
+          <div className="section-header" style={{ marginTop: "3rem" }}>
+            <h2 className="section-title">EDUCATION</h2>
+          </div>
+          <ul className="outcomes-list">
+            {DATA.education.map((item) => (
+              <li key={item.degree}>{item.degree}</li>
+            ))}
+          </ul>
         </div>
       </div>
 
