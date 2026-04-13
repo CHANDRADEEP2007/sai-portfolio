@@ -1469,9 +1469,8 @@
   border: none;
   cursor: pointer;
   z-index: 9999;
-  background: radial-gradient(circle at 35% 30%, #c79a39 0%, #9a7a1e 55%, #6f5514 100%);
-  border: 2px solid #c9922a;
-  box-shadow: 0 0 0 9px rgba(201,146,42,0.18), 0 8px 30px rgba(0,0,0,0.35);
+  background: radial-gradient(circle at 35% 30%, #3bbfcc 0%, #1b8a94 45%, #0d4f58 100%);
+  box-shadow: 0 0 0 9px rgba(27,138,148,0.10), 0 8px 30px rgba(0,0,0,0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1480,10 +1479,10 @@
 }
 #sai-fab:hover {
   transform: scale(1.07);
-  box-shadow: 0 0 0 13px rgba(201,146,42,0.22), 0 12px 36px rgba(0,0,0,0.45);
+  box-shadow: 0 0 0 13px rgba(27,138,148,0.13), 0 12px 36px rgba(0,0,0,0.5);
 }
 #sai-fab:active { transform: scale(.95); }
-#sai-fab .sp-badge { position: absolute; top: -2px; right: -2px; width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 2.5px solid #9a7a1e; transition: opacity .18s; }
+#sai-fab .sp-badge { position: absolute; top: -2px; right: -2px; width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #8fa8b0, #4a6068); border: 2.5px solid #0e1214; transition: opacity .18s; }
 #sai-fab.open .sp-badge { opacity: 0; }
 #sai-fab .ic { position: absolute; transition: opacity .18s, transform .2s cubic-bezier(.34,1.56,.64,1); }
 #sai-fab .ic-chat { opacity: 1; transform: scale(1); }
@@ -1498,11 +1497,11 @@
   max-width: calc(100vw - 32px);
   height: 540px;
   max-height: calc(100dvh - 145px);
-  background: #faf6ee;
-  color: #1c1c1c;
-  border: 1px solid #c9922a;
+  background: #101415;
+  color: #e4eef0;
+  border: 1px solid rgba(255,255,255,0.07);
   border-radius: 22px;
-  box-shadow: 0 16px 44px rgba(0,0,0,0.25), 0 4px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
   font-family: Inter, system-ui, sans-serif;
@@ -1516,64 +1515,48 @@
   transition: transform .26s cubic-bezier(.34,1.56,.64,1), opacity .2s;
 }
 #sai-panel.open { opacity: 1; pointer-events: auto; transform: scale(1) translateY(0); }
-.sp-hd { padding: 13px 15px; background: linear-gradient(155deg, #c9922a 0%, #9a7a1e 100%); display: flex; align-items: center; gap: 10px; flex-shrink: 0; color: #fff; }
-.sp-av { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; background: radial-gradient(circle at 35% 30%, #e0aa3e, #8e6e1b); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-size: 15px; position: relative; }
-.sp-av-dot { position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; border-radius: 50%; background: #fff; border: 2px solid #9a7a1e; }
+.sp-hd { padding: 13px 15px; background: linear-gradient(155deg, #0e3840 0%, #082428 100%); display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.sp-av { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; background: radial-gradient(circle at 35% 30%, #4fa8b4, #0f3e46); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-size: 15px; position: relative; }
+.sp-av-dot { position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; border-radius: 50%; background: #4ade80; border: 2px solid #082428; }
 .sp-hd-info { flex: 1; min-width: 0; }
 .sp-hd-name { font-size: 14px; font-weight: 700; color: #fff; }
-.sp-hd-sub { font-size: 11px; color: rgba(255,255,255,0.8); margin-top: 2px; }
+.sp-hd-sub { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
 .sp-hd-close { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.4); padding: 5px; border-radius: 7px; display: flex; align-items: center; transition: color .15s, background .15s; }
 .sp-hd-close:hover { color: #fff; background: rgba(255,255,255,0.1); }
-.sp-msgs { flex: 1; overflow-y: auto; padding: 14px 13px 6px; background: #fdf9f1; display: flex; flex-direction: column; gap: 9px; scroll-behavior: smooth; }
+.sp-msgs { flex: 1; overflow-y: auto; padding: 14px 13px 6px; background: #0c1214; display: flex; flex-direction: column; gap: 9px; scroll-behavior: smooth; }
 .sp-msg { display: flex; animation: sp-in .22s cubic-bezier(.34,1.4,.64,1); }
 @keyframes sp-in { from { opacity:0; transform:translateY(8px) scale(.96); } to { opacity:1; transform:none; } }
 .sp-msg.user { justify-content: flex-end; }
 .sp-bub { max-width: 85%; padding: 10px 13px; border-radius: 14px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
-.sp-msg.bot .sp-bub { background: #f1e6cf; color: #2a2418; border-bottom-left-radius: 3px; }
-.sp-msg.user .sp-bub { background: #c9922a; color: #fff; border-bottom-right-radius: 3px; }
+.sp-msg.bot .sp-bub { background: #192024; color: #d4e6ea; border-bottom-left-radius: 3px; }
+.sp-msg.user .sp-bub { background: #1b7880; color: #fff; border-bottom-right-radius: 3px; }
 .sp-typing-row { display: flex; animation: sp-in .22s cubic-bezier(.34,1.4,.64,1); }
-.sp-typing { display: flex; align-items: center; gap: 5px; padding: 12px 14px; background: #f1e6cf; border-radius: 14px; border-bottom-left-radius: 3px; }
-.sp-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(154,122,30,0.55); animation: sp-bounce 1.4s ease-in-out infinite; }
+.sp-typing { display: flex; align-items: center; gap: 5px; padding: 12px 14px; background: #192024; border-radius: 14px; border-bottom-left-radius: 3px; }
+.sp-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.3); animation: sp-bounce 1.4s ease-in-out infinite; }
 .sp-dot:nth-child(2) { animation-delay: .2s; }
 .sp-dot:nth-child(3) { animation-delay: .4s; }
 @keyframes sp-bounce { 0%,60%,100%{transform:translateY(0);opacity:.35} 30%{transform:translateY(-6px);opacity:1} }
-.sp-chips { display: flex; gap: 7px; flex-wrap: wrap; padding: 9px 12px 5px; background: #fdf9f1; flex-shrink: 0; }
-.sp-chip { border: 1px solid rgba(201,146,42,0.5); background: transparent; color: #9a7a1e; border-radius: 99px; padding: 6px 11px; font-size: 12px; font-family: inherit; cursor: pointer; transition: background .14s, color .14s, border-color .14s; white-space: nowrap; }
-.sp-chip:hover { background: #c9922a; color: #fff; border-color: #c9922a; }
-.sp-input-row { display: flex; gap: 8px; padding: 10px 13px 13px; border-top: 1px solid rgba(201,146,42,0.25); background: #faf6ee; flex-shrink: 0; }
-#sai-inp { flex: 1; resize: none; min-height: 42px; max-height: 100px; border-radius: 12px; border: 1px solid rgba(201,146,42,0.4); background: #fffaf0; color: #1c1c1c; padding: 10px 13px; font-family: inherit; font-size: 13.5px; line-height: 1.5; outline: none; transition: border-color .15s; }
-#sai-inp::placeholder { color: rgba(28,28,28,0.45); }
-#sai-inp:focus { border-color: rgba(201,146,42,0.7); }
-#sai-send { width: 44px; height: 44px; flex-shrink: 0; border: none; border-radius: 12px; background: #c9922a; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .15s, transform .15s; }
-#sai-send:hover { background: #e0aa3e; }
+.sp-chips { display: flex; gap: 7px; flex-wrap: wrap; padding: 9px 12px 5px; background: #0c1214; flex-shrink: 0; }
+.sp-chip { border: 1px solid rgba(59,191,204,0.4); background: transparent; color: #7dd4dc; border-radius: 99px; padding: 6px 11px; font-size: 12px; font-family: inherit; cursor: pointer; transition: background .14s, color .14s, border-color .14s; white-space: nowrap; }
+.sp-chip:hover { background: #1b7880; color: #fff; border-color: #1b7880; }
+.sp-input-row { display: flex; gap: 8px; padding: 10px 13px 13px; border-top: 1px solid rgba(255,255,255,0.05); background: #101415; flex-shrink: 0; }
+#sai-inp { flex: 1; resize: none; min-height: 42px; max-height: 100px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); background: #171d20; color: #e4eef0; padding: 10px 13px; font-family: inherit; font-size: 13.5px; line-height: 1.5; outline: none; transition: border-color .15s; }
+#sai-inp::placeholder { color: rgba(255,255,255,0.22); }
+#sai-inp:focus { border-color: rgba(59,191,204,0.45); }
+#sai-send { width: 44px; height: 44px; flex-shrink: 0; border: none; border-radius: 12px; background: #1b7880; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .15s, transform .15s; }
+#sai-send:hover { background: #22969f; }
 #sai-send:active { transform: scale(.92); }
 #sai-send:disabled { opacity: .35; cursor: not-allowed; }
-
-[data-theme="dark"] #sai-fab {
-  background: radial-gradient(circle at 35% 30%, #e0aa3e 0%, #c9922a 55%, #8f6e1b 100%);
-  border-color: #e0aa3e;
-  box-shadow: 0 0 0 9px rgba(201,146,42,0.22), 0 8px 30px rgba(0,0,0,0.5);
-}
-[data-theme="dark"] #sai-fab .sp-badge { background: #1c1c1c; border-color: #c9922a; }
-[data-theme="dark"] #sai-panel { background: #1e1e1e; color: #fff; border-color: #c9922a; box-shadow: 0 16px 44px rgba(0,0,0,0.55), 0 4px 16px rgba(0,0,0,0.35); }
-[data-theme="dark"] .sp-msgs, [data-theme="dark"] .sp-chips { background: #222; }
-[data-theme="dark"] .sp-msg.bot .sp-bub, [data-theme="dark"] .sp-typing { background: #2a2a2a; color: #f7f3ea; }
-[data-theme="dark"] .sp-dot { background: rgba(224,170,62,0.8); }
-[data-theme="dark"] .sp-chip { color: #e0aa3e; border-color: rgba(224,170,62,0.6); }
-[data-theme="dark"] .sp-chip:hover { background: #c9922a; color: #fff; border-color: #c9922a; }
-[data-theme="dark"] .sp-input-row { background: #1e1e1e; border-top-color: rgba(201,146,42,0.35); }
-[data-theme="dark"] #sai-inp { background: #2a2a2a; border-color: rgba(201,146,42,0.65); color: #fff; }
-[data-theme="dark"] #sai-inp::placeholder { color: rgba(255,255,255,0.45); }
 @media (max-width: 480px) { #sai-fab { right: 16px; bottom: 16px; } #sai-panel { right: 10px; left: 10px; bottom: 88px; width: auto; max-width: none; height: 72dvh; } }
 </style>
 
-<button id="sai-fab" aria-label="Chat — Ask about Sai" onclick="if(window.__saiToggleChat){window.__saiToggleChat();}else{this.classList.toggle('open');document.getElementById('sai-panel')?.classList.toggle('open');}">
+<button id="sai-fab" aria-label="Chat — Ask about Sai">
   <span class="sp-badge" aria-hidden="true"></span>
   <svg class="ic ic-chat" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
   <svg class="ic ic-close" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
 </button>
 <div id="sai-panel" role="dialog" aria-modal="true" aria-label="Ask about Sai">
-  <div class="sp-hd"><div class="sp-av">S<span class="sp-av-dot"></span></div><div class="sp-hd-info"><div class="sp-hd-name">Ask about Sai</div><div class="sp-hd-sub">Powered by AI · reads this page live</div></div><button class="sp-hd-close" id="sai-close" aria-label="Close" onclick="if(window.__saiCloseChat){window.__saiCloseChat();}else{document.getElementById('sai-panel')?.classList.remove('open');document.getElementById('sai-fab')?.classList.remove('open');}">✕</button></div>
+  <div class="sp-hd"><div class="sp-av">S<span class="sp-av-dot"></span></div><div class="sp-hd-info"><div class="sp-hd-name">Ask about Sai</div><div class="sp-hd-sub">Powered by AI · reads this page live</div></div><button class="sp-hd-close" id="sai-close" aria-label="Close">✕</button></div>
   <div class="sp-msgs" id="sp-msgs" role="log" aria-live="polite"></div>
   <div class="sp-chips" id="sp-chips">
     <button class="sp-chip" data-q="What is Sai's current role?">Current role</button>
@@ -1585,144 +1568,48 @@
 
 <script>
 (function () {
-  function initSaiChat() {
-    const ENDPOINT = '/api/sai-chat';
+  const ENDPOINT = '/api/sai-chat';
+  function scrapePortfolio() {
+    const clone = document.body.cloneNode(true);
+    clone.querySelectorAll('#sai-panel, #sai-fab, script, style, noscript').forEach(el => el.remove());
+    return (clone.innerText || '').replace(/
+{3,}/g, '
 
-    function scrapePortfolio() {
-      const clone = document.body.cloneNode(true);
-      clone.querySelectorAll('#sai-panel, #sai-fab, script, style, noscript').forEach(el => el.remove());
-      return (clone.innerText || '')
-        .replace(/\n{3,}/g, '\n\n')
-        .replace(/[ \t]{2,}/g, ' ')
-        .trim()
-        .slice(0, 6000);
-    }
-
-    const pageContent = scrapePortfolio();
-    const systemPrompt = `You are a helpful, concise portfolio assistant. Use only the provided page content. Keep replies under 120 words.\n\n${pageContent}`;
-
-    const fab = document.getElementById('sai-fab');
-    const panel = document.getElementById('sai-panel');
-    const closeB = document.getElementById('sai-close');
-    const msgsEl = document.getElementById('sp-msgs');
-    const chipsEl = document.getElementById('sp-chips');
-    const inp = document.getElementById('sai-inp');
-    const sendB = document.getElementById('sai-send');
-
-    if (!fab || !panel || !closeB || !msgsEl || !chipsEl || !inp || !sendB) {
-      console.warn('[SaiChat] Chat UI not initialized: missing DOM node(s).');
-      return;
-    }
-
-    let history = [];
-    let started = false;
-
-    function toggle() {
-      const opening = !panel.classList.contains('open');
-      panel.classList.toggle('open', opening);
-      fab.classList.toggle('open', opening);
-      if (opening) {
-        if (!started) {
-          started = true;
-          addMsg('bot', "Hi there! 👋 Ask me anything about Sai's experience, skills, or projects.");
-        }
-        setTimeout(() => inp.focus(), 180);
-      }
-    }
-
-    function addMsg(role, text) {
-      const row = document.createElement('div');
-      row.className = `sp-msg ${role}`;
-      const bub = document.createElement('div');
-      bub.className = 'sp-bub';
-      bub.textContent = text;
-      row.appendChild(bub);
-      msgsEl.appendChild(row);
-      msgsEl.scrollTop = msgsEl.scrollHeight;
-    }
-
-    function showTyping() {
-      const row = document.createElement('div');
-      row.className = 'sp-typing-row';
-      row.id = 'sp-typing';
-      row.innerHTML = '<div class="sp-typing"><div class="sp-dot"></div><div class="sp-dot"></div><div class="sp-dot"></div></div>';
-      msgsEl.appendChild(row);
-      msgsEl.scrollTop = msgsEl.scrollHeight;
-    }
-
-    function hideTyping() {
-      const t = document.getElementById('sp-typing');
-      if (t) t.remove();
-    }
-
-    async function askAssistant(userMsg) {
-      history.push({ role: 'user', content: userMsg });
-      if (history.length > 20) history = history.slice(-20);
-
-      const res = await fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ systemPrompt, messages: history })
-      });
-
-      if (!res.ok) throw new Error('Chat API error ' + res.status);
-
-      const data = await res.json();
-      const reply = (data.reply || '').trim() || 'I could not generate a response just now.';
-      history.push({ role: 'assistant', content: reply });
-      return reply;
-    }
-
-    async function send(text) {
-      const msg = (text || inp.value).trim();
-      if (!msg) return;
-
-      addMsg('user', msg);
-      inp.value = '';
-      inp.style.height = 'auto';
-      sendB.disabled = true;
-      chipsEl.style.display = 'none';
-      showTyping();
-
-      try {
-        addMsg('bot', await askAssistant(msg));
-      } catch (e) {
-        addMsg('bot', 'Chat is unavailable right now.');
-        console.error('[SaiChat]', e.message);
-      } finally {
-        hideTyping();
-        sendB.disabled = false;
-        inp.focus();
-      }
-    }
-
-    window.__saiToggleChat = toggle;
-    window.__saiCloseChat = function () {
-      panel.classList.remove('open');
-      fab.classList.remove('open');
-    };
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && panel.classList.contains('open')) toggle();
-    });
-    inp.addEventListener('input', function () {
-      this.style.height = 'auto';
-      this.style.height = Math.min(this.scrollHeight, 100) + 'px';
-    });
-    inp.addEventListener('keydown', e => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        send();
-      }
-    });
-    sendB.addEventListener('click', () => send());
-    document.querySelectorAll('.sp-chip').forEach(c => c.addEventListener('click', () => send(c.dataset.q)));
+').replace(/[ 	]{2,}/g, ' ').trim().slice(0, 6000);
   }
+  const PAGE_CONTENT = scrapePortfolio();
+  const SYSTEM_PROMPT = `You are a helpful, concise portfolio assistant. Use only the provided page content. Keep replies under 120 words.
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSaiChat);
-  } else {
-    initSaiChat();
+${PAGE_CONTENT}`;
+  const fab = document.getElementById('sai-fab');
+  const panel = document.getElementById('sai-panel');
+  const closeB = document.getElementById('sai-close');
+  const msgsEl = document.getElementById('sp-msgs');
+  const chipsEl = document.getElementById('sp-chips');
+  const inp = document.getElementById('sai-inp');
+  const sendB = document.getElementById('sai-send');
+  let history = []; let started = false;
+  function toggle() { const opening = !panel.classList.contains('open'); panel.classList.toggle('open', opening); fab.classList.toggle('open', opening); if (opening) { if (!started) { started = true; addMsg('bot', "Hi there! 👋 Ask me anything about Sai's experience, skills, or projects."); } setTimeout(() => inp.focus(), 180); } }
+  function addMsg(role, text) { const row = document.createElement('div'); row.className = 'sp-msg ' + role; const bub = document.createElement('div'); bub.className = 'sp-bub'; bub.textContent = text; row.appendChild(bub); msgsEl.appendChild(row); msgsEl.scrollTop = msgsEl.scrollHeight; }
+  function showTyping() { const row = document.createElement('div'); row.className = 'sp-typing-row'; row.id = 'sp-typing'; row.innerHTML = '<div class="sp-typing"><div class="sp-dot"></div><div class="sp-dot"></div><div class="sp-dot"></div></div>'; msgsEl.appendChild(row); msgsEl.scrollTop = msgsEl.scrollHeight; }
+  function hideTyping() { const t = document.getElementById('sp-typing'); if (t) t.remove(); }
+  async function askAssistant(userMsg) {
+    history.push({ role: 'user', content: userMsg });
+    if (history.length > 20) history = history.slice(-20);
+    const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ systemPrompt: SYSTEM_PROMPT, messages: history }) });
+    if (!res.ok) throw new Error('Chat API error ' + res.status);
+    const data = await res.json();
+    const reply = (data.reply || '').trim() || 'I could not generate a response just now.';
+    history.push({ role: 'assistant', content: reply });
+    return reply;
   }
+  async function send(text) { const msg = (text || inp.value).trim(); if (!msg) return; addMsg('user', msg); inp.value = ''; inp.style.height = 'auto'; sendB.disabled = true; chipsEl.style.display = 'none'; showTyping(); try { addMsg('bot', await askAssistant(msg)); } catch (e) { addMsg('bot', 'Chat is unavailable right now.'); console.error('[SaiChat]', e.message); } finally { hideTyping(); sendB.disabled = false; inp.focus(); } }
+  fab.addEventListener('click', toggle); closeB.addEventListener('click', toggle);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && panel.classList.contains('open')) toggle(); });
+  inp.addEventListener('input', function () { this.style.height = 'auto'; this.style.height = Math.min(this.scrollHeight, 100) + 'px'; });
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } });
+  sendB.addEventListener('click', () => send());
+  document.querySelectorAll('.sp-chip').forEach(c => c.addEventListener('click', () => send(c.dataset.q)));
 })();
 </script>
 
