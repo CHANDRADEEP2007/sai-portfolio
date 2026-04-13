@@ -1572,14 +1572,15 @@
   function scrapePortfolio() {
     const clone = document.body.cloneNode(true);
     clone.querySelectorAll('#sai-panel, #sai-fab, script, style, noscript').forEach(el => el.remove());
-    return (clone.innerText || '')
-      .replace(/\n{3,}/g, '\n\n')
-      .replace(/[ \t]{2,}/g, ' ')
-      .trim()
-      .slice(0, 6000);
+    return (clone.innerText || '').replace(/
+{3,}/g, '
+
+').replace(/[ 	]{2,}/g, ' ').trim().slice(0, 6000);
   }
   const PAGE_CONTENT = scrapePortfolio();
-  const SYSTEM_PROMPT = `You are a helpful, concise portfolio assistant. Use only the provided page content. Keep replies under 120 words.\n\n${PAGE_CONTENT}`;
+  const SYSTEM_PROMPT = `You are a helpful, concise portfolio assistant. Use only the provided page content. Keep replies under 120 words.
+
+${PAGE_CONTENT}`;
   const fab = document.getElementById('sai-fab');
   const panel = document.getElementById('sai-panel');
   const closeB = document.getElementById('sai-close');
