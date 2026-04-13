@@ -1459,164 +1459,472 @@
 
 
 <style>
-#sai-fab {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  z-index: 9999;
-  background: radial-gradient(circle at 35% 30%, #3bbfcc 0%, #1b8a94 45%, #0d4f58 100%);
-  box-shadow: 0 0 0 9px rgba(27,138,148,0.10), 0 8px 30px rgba(0,0,0,0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .2s;
-  outline: none;
-}
-#sai-fab:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 0 13px rgba(27,138,148,0.13), 0 12px 36px rgba(0,0,0,0.5);
-}
-#sai-fab:active { transform: scale(.95); }
-#sai-fab .sp-badge { position: absolute; top: -2px; right: -2px; width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #8fa8b0, #4a6068); border: 2.5px solid #0e1214; transition: opacity .18s; }
-#sai-fab.open .sp-badge { opacity: 0; }
-#sai-fab .ic { position: absolute; transition: opacity .18s, transform .2s cubic-bezier(.34,1.56,.64,1); }
-#sai-fab .ic-chat { opacity: 1; transform: scale(1); }
-#sai-fab .ic-close { opacity: 0; transform: scale(.5) rotate(-45deg); }
-#sai-fab.open .ic-chat { opacity: 0; transform: scale(.5) rotate(45deg); }
-#sai-fab.open .ic-close { opacity: 1; transform: scale(1) rotate(0); }
-#sai-panel {
-  position: fixed;
-  bottom: 106px;
-  right: 28px;
-  width: 360px;
-  max-width: calc(100vw - 32px);
-  height: 540px;
-  max-height: calc(100dvh - 145px);
-  background: #101415;
-  color: #e4eef0;
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 22px;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.3);
-  display: flex;
-  flex-direction: column;
-  font-family: Inter, system-ui, sans-serif;
-  font-size: 14px;
-  z-index: 9998;
-  overflow: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(.9) translateY(12px);
-  transform-origin: bottom right;
-  transition: transform .26s cubic-bezier(.34,1.56,.64,1), opacity .2s;
-}
-#sai-panel.open { opacity: 1; pointer-events: auto; transform: scale(1) translateY(0); }
-.sp-hd { padding: 13px 15px; background: linear-gradient(155deg, #0e3840 0%, #082428 100%); display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.sp-av { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; background: radial-gradient(circle at 35% 30%, #4fa8b4, #0f3e46); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; font-size: 15px; position: relative; }
-.sp-av-dot { position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; border-radius: 50%; background: #4ade80; border: 2px solid #082428; }
-.sp-hd-info { flex: 1; min-width: 0; }
-.sp-hd-name { font-size: 14px; font-weight: 700; color: #fff; }
-.sp-hd-sub { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
-.sp-hd-close { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.4); padding: 5px; border-radius: 7px; display: flex; align-items: center; transition: color .15s, background .15s; }
-.sp-hd-close:hover { color: #fff; background: rgba(255,255,255,0.1); }
-.sp-msgs { flex: 1; overflow-y: auto; padding: 14px 13px 6px; background: #0c1214; display: flex; flex-direction: column; gap: 9px; scroll-behavior: smooth; }
-.sp-msg { display: flex; animation: sp-in .22s cubic-bezier(.34,1.4,.64,1); }
-@keyframes sp-in { from { opacity:0; transform:translateY(8px) scale(.96); } to { opacity:1; transform:none; } }
-.sp-msg.user { justify-content: flex-end; }
-.sp-bub { max-width: 85%; padding: 10px 13px; border-radius: 14px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
-.sp-msg.bot .sp-bub { background: #192024; color: #d4e6ea; border-bottom-left-radius: 3px; }
-.sp-msg.user .sp-bub { background: #1b7880; color: #fff; border-bottom-right-radius: 3px; }
-.sp-typing-row { display: flex; animation: sp-in .22s cubic-bezier(.34,1.4,.64,1); }
-.sp-typing { display: flex; align-items: center; gap: 5px; padding: 12px 14px; background: #192024; border-radius: 14px; border-bottom-left-radius: 3px; }
-.sp-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.3); animation: sp-bounce 1.4s ease-in-out infinite; }
-.sp-dot:nth-child(2) { animation-delay: .2s; }
-.sp-dot:nth-child(3) { animation-delay: .4s; }
-@keyframes sp-bounce { 0%,60%,100%{transform:translateY(0);opacity:.35} 30%{transform:translateY(-6px);opacity:1} }
-.sp-chips { display: flex; gap: 7px; flex-wrap: wrap; padding: 9px 12px 5px; background: #0c1214; flex-shrink: 0; }
-.sp-chip { border: 1px solid rgba(59,191,204,0.4); background: transparent; color: #7dd4dc; border-radius: 99px; padding: 6px 11px; font-size: 12px; font-family: inherit; cursor: pointer; transition: background .14s, color .14s, border-color .14s; white-space: nowrap; }
-.sp-chip:hover { background: #1b7880; color: #fff; border-color: #1b7880; }
-.sp-input-row { display: flex; gap: 8px; padding: 10px 13px 13px; border-top: 1px solid rgba(255,255,255,0.05); background: #101415; flex-shrink: 0; }
-#sai-inp { flex: 1; resize: none; min-height: 42px; max-height: 100px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); background: #171d20; color: #e4eef0; padding: 10px 13px; font-family: inherit; font-size: 13.5px; line-height: 1.5; outline: none; transition: border-color .15s; }
-#sai-inp::placeholder { color: rgba(255,255,255,0.22); }
-#sai-inp:focus { border-color: rgba(59,191,204,0.45); }
-#sai-send { width: 44px; height: 44px; flex-shrink: 0; border: none; border-radius: 12px; background: #1b7880; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .15s, transform .15s; }
-#sai-send:hover { background: #22969f; }
-#sai-send:active { transform: scale(.92); }
-#sai-send:disabled { opacity: .35; cursor: not-allowed; }
-@media (max-width: 480px) { #sai-fab { right: 16px; bottom: 16px; } #sai-panel { right: 10px; left: 10px; bottom: 88px; width: auto; max-width: none; height: 72dvh; } }
+  /* ── Chatbot Widget Enhanced ── */
+  /* ── Button ── */
+  #chat-btn {
+    position: fixed; bottom: 28px; right: 28px;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: #C9922A; border: none; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(201,146,42,0.5);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, background 0.3s; z-index: 9999;
+  }
+  #chat-btn:hover { background: #E0AA3E; transform: scale(1.08); }
+  #chat-btn svg { width: 26px; height: 26px; fill: #fff; }
+  #chat-btn .notif-dot {
+    position: absolute; top: 6px; right: 6px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #fff; border: 2px solid #C9922A;
+  }
 
-/* Replace @media queries with class toggles - mapped to correct attributes */
-[data-theme="dark"] #sai-fab {
-  background: #C9922A !important;
-}
+  /* ── Window ── */
+  #chat-window {
+    position: fixed; bottom: 98px; right: 28px;
+    width: 340px; max-height: 520px; border-radius: 16px;
+    border: 1.5px solid #C9922A; flex-direction: column;
+    overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.22);
+    z-index: 9998; display: none; font-family: inherit;
+    animation: slideUp 0.25s ease;
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-[data-theme="light"] #sai-fab, :root:not([data-theme="dark"]) #sai-fab {
-  background: #9A7A1E !important;
-}
+  /* ── Header ── */
+  #chat-header {
+    background: linear-gradient(135deg, #C9922A, #E0AA3E);
+    color: #fff; padding: 13px 16px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  #chat-header .hd-title { font-weight: 700; font-size: 14px; }
+  #chat-header .hd-sub { font-size: 11px; opacity: 0.85; margin-top: 1px; }
+  #chat-header button {
+    background: none; border: none; color: #fff;
+    font-size: 18px; cursor: pointer; line-height: 1;
+    opacity: 0.85; transition: opacity 0.2s;
+  }
+  #chat-header button:hover { opacity: 1; }
+
+  /* ── Messages ── */
+  #chat-messages {
+    flex: 1; overflow-y: auto; padding: 14px 12px;
+    display: flex; flex-direction: column; gap: 10px;
+    background: #FAF6EE;
+  }
+  [data-theme="dark"] #chat-messages, body.dark-mode #chat-messages { background: #1E1E1E; }
+
+  .msg {
+    max-width: 84%; padding: 9px 13px; border-radius: 14px;
+    font-size: 13.5px; line-height: 1.55;
+  }
+  .msg.bot {
+    background: #EDE4D0; color: #1C1C1C;
+    align-self: flex-start; border-bottom-left-radius: 3px;
+  }
+  .msg.user {
+    background: linear-gradient(135deg, #C9922A, #E0AA3E);
+    color: #fff; align-self: flex-end; border-bottom-right-radius: 3px;
+  }
+  [data-theme="dark"] .msg.bot, body.dark-mode .msg.bot { background: #2E2A22; color: #F0E6CF; }
+
+  /* ── Typing Indicator ── */
+  .typing-indicator {
+    display: flex; gap: 5px; padding: 10px 14px;
+    background: #EDE4D0; border-radius: 14px; border-bottom-left-radius: 3px;
+    align-self: flex-start; align-items: center;
+  }
+  [data-theme="dark"] .typing-indicator, body.dark-mode .typing-indicator { background: #2E2A22; }
+  .typing-indicator span {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: #C9922A; display: inline-block;
+    animation: bounce 1.2s infinite ease-in-out;
+  }
+  .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+    40% { transform: translateY(-6px); opacity: 1; }
+  }
+
+  /* ── Quick Replies ── */
+  #quick-replies {
+    display: flex; flex-wrap: wrap; gap: 7px;
+    padding: 8px 12px; background: #FAF6EE;
+    border-top: 1px solid #EDE4D0;
+  }
+  [data-theme="dark"] #quick-replies, body.dark-mode #quick-replies { background: #1E1E1E; border-top-color: #2E2A22; }
+  .qr-chip {
+    background: none; border: 1.5px solid #C9922A;
+    color: #C9922A; border-radius: 20px; padding: 5px 12px;
+    font-size: 12px; cursor: pointer; transition: all 0.2s;
+    font-family: inherit; white-space: nowrap;
+  }
+  .qr-chip:hover { background: #C9922A; color: #fff; }
+  [data-theme="dark"] .qr-chip, body.dark-mode .qr-chip { color: #E0AA3E; border-color: #E0AA3E; }
+  [data-theme="dark"] .qr-chip:hover, body.dark-mode .qr-chip:hover { background: #C9922A; color: #fff; }
+
+  /* ── Input Row ── */
+  #chat-input-row {
+    display: flex; border-top: 1px solid #DDD4C0; background: #FAF6EE;
+  }
+  [data-theme="dark"] #chat-input-row, body.dark-mode #chat-input-row { background: #1E1E1E; border-top-color: #3A3530; }
+  #chat-input {
+    flex: 1; border: none; padding: 12px 13px;
+    background: transparent; color: #1C1C1C;
+    font-size: 13.5px; outline: none; font-family: inherit;
+  }
+  [data-theme="dark"] #chat-input, body.dark-mode #chat-input { color: #F0E6CF; }
+  #chat-input::placeholder { color: #AAA; }
+  #chat-send {
+    background: #C9922A; border: none; color: #fff;
+    padding: 0 17px; cursor: pointer; font-size: 18px;
+    transition: background 0.2s;
+  }
+  #chat-send:hover { background: #E0AA3E; }
+
+  /* ── Scrollbar ── */
+  #chat-messages::-webkit-scrollbar { width: 4px; }
+  #chat-messages::-webkit-scrollbar-thumb { background: #C9922A; border-radius: 4px; }
 </style>
 
-<button id="sai-fab" aria-label="Chat — Ask about Sai">
-  <span class="sp-badge" aria-hidden="true"></span>
-  <svg class="ic ic-chat" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-  <svg class="ic ic-close" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+<!-- ── Toggle Button ── -->
+<button id="chat-btn" onclick="toggleChat()" aria-label="Open chat">
+  <div class="notif-dot"></div>
+  <svg viewBox="0 0 24 24">
+    <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0
+      2-2V4a2 2 0 0 0-2-2zm-2 10H6V10h12v2zm0-3H6V7h12v2z"/>
+  </svg>
 </button>
-<div id="sai-panel" role="dialog" aria-modal="true" aria-label="Ask about Sai">
-  <div class="sp-hd"><div class="sp-av">S<span class="sp-av-dot"></span></div><div class="sp-hd-info"><div class="sp-hd-name">Ask about Sai</div><div class="sp-hd-sub">Powered by AI · reads this page live</div></div><button class="sp-hd-close" id="sai-close" aria-label="Close">✕</button></div>
-  <div class="sp-msgs" id="sp-msgs" role="log" aria-live="polite"></div>
-  <div class="sp-chips" id="sp-chips">
-    <button class="sp-chip" data-q="What is Sai's current role?">Current role</button>
-    <button class="sp-chip" data-q="What are his biggest achievements?">Achievements</button>
-    <button class="sp-chip" data-q="What are his technical skills?">Skills</button>
+
+<!-- ── Chat Window ── -->
+<div id="chat-window">
+  <div id="chat-header">
+    <div>
+      <div class="hd-title">💬 Chandradeep's Portfolio Bot</div>
+      <div class="hd-sub">Ask me anything about his work</div>
+    </div>
+    <button onclick="toggleChat()" aria-label="Close">✕</button>
   </div>
-  <div class="sp-input-row"><textarea id="sai-inp" rows="1" placeholder="Ask anything about Sai…"></textarea><button id="sai-send" aria-label="Send">➤</button></div>
+  <div id="chat-messages"></div>
+  <div id="quick-replies"></div>
+  <div id="chat-input-row">
+    <input id="chat-input" type="text" placeholder="Ask me anything…"
+      onkeydown="if(event.key==='Enter') sendMsg()" autocomplete="off"/>
+    <button id="chat-send" onclick="sendMsg()">➤</button>
+  </div>
 </div>
 
 <script>
-(function () {
-  const ENDPOINT = '/api/sai-chat';
-  function scrapePortfolio() {
-    const clone = document.body.cloneNode(true);
-    clone.querySelectorAll('#sai-panel, #sai-fab, script, style, noscript').forEach(el => el.remove());
-    return (clone.innerText || '').replace(/\n{3,}/g, '\n\n').replace(/[ \t]{2,}/g, ' ').trim().slice(0, 6000);
+// ── Intent Engine ──
+// Each intent has: patterns (regex/keywords), replies (array, randomized),
+// followUps (quick reply chips shown after), and optional context tag
+const intents = [
+  {
+    tag: "greeting",
+    patterns: [
+      /^(hi|hey|hello|howdy|sup|yo|what'?s up|good\s?(morning|afternoon|evening))/i,
+      /^(hola|namaste|greetings)/i
+    ],
+    replies: [
+      "Hey there! 👋 I'm Chandradeep's portfolio assistant. What would you like to know — his experience, skills, projects, or how to get in touch?",
+      "Hi! Welcome to Chandradeep's portfolio. I can tell you about his PM career, case studies, or help you reach out. What's on your mind?",
+      "Hello! 😊 Ask me anything about Chandradeep's background, projects, or skills!"
+    ],
+    followUps: ["His experience", "Key skills", "Case studies", "Contact him"]
+  },
+  {
+    tag: "experience",
+    patterns: [
+      /how (many years|long).*(work|experience|been)/i,
+      /\b(experience|background|career|history|worked|work history|years)\b/i,
+      /tell me about (him|his work|his career|yourself)/i,
+      /what (has|did) he do/i
+    ],
+    replies: [
+      "Chandradeep has 6+ years of product management experience across financial services, enterprise commerce, and retail digital platforms. He specializes in payments infrastructure, workflow automation, and enterprise-scale onboarding systems.",
+      "With 6+ years in platform PM, he's led cross-functional teams building scalable payments, data pipelines, and digital commerce products — most recently at Yum! Brands supporting global digital ordering platforms.",
+      "He's a Senior Platform Product Manager with deep expertise in payments, STP (straight-through processing), checkout optimization, and enterprise client onboarding — touching 180+ clients onboarded at scale."
+    ],
+    followUps: ["Where did he work?", "What companies?", "His impact metrics", "Skills"]
+  },
+  {
+    tag: "company",
+    patterns: [
+      /\b(yum|taco bell|kfc|pizza hut|employer|company|companies|where.*work|worked at)\b/i,
+      /current (company|job|role|employer)/i,
+      /previous (job|role|company)/i
+    ],
+    replies: [
+      "Chandradeep worked at Yum! Brands — the parent company of Taco Bell, KFC, and Pizza Hut — as a Product Analyst and Product Associate supporting digital platform and payments products across global markets.",
+      "At Yum! Brands, he worked on the digital platform team focused on web/app product management, payments integration, and building user interfaces for platform products at enterprise scale.",
+      "His most notable employer is Yum! Brands, where he was embedded in the digital commerce and payments team, contributing to checkout systems and onboarding workflows used across thousands of restaurant locations."
+    ],
+    followUps: ["What did he build there?", "His impact metrics", "Open to new roles?"]
+  },
+  {
+    tag: "metrics",
+    patterns: [
+      /\b(impact|metric|result|achievement|number|stat|kpi|outcome|accomplish|percent|%|reduced|improved)\b/i,
+      /what (did he|has he) (achieve|accomplish|deliver|improve)/i,
+      /how (well|good|much).*(perform|deliver|impact)/i
+    ],
+    replies: [
+      "His work delivered measurable results: 🏆 180+ enterprise clients onboarded, 45 products supported across workflows, 90% reduction in submission failures via upfront validation + STP, and 62% reduction in operational rework and correction cycles.",
+      "Key impact metrics: ✅ 180+ clients onboarded at enterprise scale, ✅ 90% failure reduction through upfront validation, ✅ 62% rework reduction via streamlined handoff processes, ✅ 45 platform products supported across teams.",
+      "Chandradeep's numbers speak clearly — 90% failure reduction and 62% rework reduction through platform improvements, while scaling to 180+ enterprise clients with 45 supported products."
+    ],
+    followUps: ["How did he do this?", "Payments work", "Case studies", "His skills"]
+  },
+  {
+    tag: "skills",
+    patterns: [
+      /\b(skill|skills|expertise|specializ|good at|proficient|tech stack|tools|capabilities|what can he do)\b/i,
+      /what (does he know|is he good at|are his skills)/i
+    ],
+    replies: [
+      "Core skills: Platform PM, Payments & Checkout Systems, Enterprise & Commerce Platforms, Workflow Automation, AI Products, Data Pipelines, Cross-functional Team Leadership, PRD creation, and API product management.",
+      "He specializes in: 💳 Payments infrastructure, 🏗️ Platform product management, 🤖 AI-integrated workflows, 🔄 Workflow automation, 📊 Analytics & data products, and 📋 Enterprise onboarding systems.",
+      "Technical PM skills include: roadmap ownership, PRD writing, API-first product thinking, checkout optimization, STP design, UI/UX collaboration, and stakeholder alignment across engineering, design, and ops."
+    ],
+    followUps: ["Payments expertise", "AI experience", "MBA education", "View case studies"]
+  },
+  {
+    tag: "payments",
+    patterns: [
+      /\b(payment|payments|checkout|billing|transaction|fintech|stripe|financial|fin-?tech)\b/i,
+      /\b(STP|straight.through|processing)\b/i
+    ],
+    replies: [
+      "Payments is one of Chandradeep's core domains. He's built and optimized checkout flows, STP (straight-through processing) pipelines, and upfront validation systems that cut submission failures by 90%.",
+      "He has hands-on experience designing payments infrastructure for enterprise commerce — including checkout optimization, payment method integration, and reducing operational failure rates through automated validation layers.",
+      "His payments work at Yum! Brands involved building robust checkout and payment systems for digital ordering at scale, with a focus on reliability, error reduction, and seamless client onboarding."
+    ],
+    followUps: ["Impact metrics", "Enterprise onboarding", "Other skills", "Contact him"]
+  },
+  {
+    tag: "ai",
+    patterns: [
+      /\b(ai|artificial intelligence|machine learning|ml|llm|gpt|automation|generative|chatbot)\b/i,
+      /ai.*(product|work|experience|background)/i
+    ],
+    replies: [
+      "Chandradeep is actively building expertise in AI product management — including AI-integrated workflow automation, LLM API experimentation (like Ollama), and AI-enhanced product tooling for productivity and analytics.",
+      "AI Products is one of his listed specializations. He's exploring AI-first product workflows, generative AI integration patterns, and how to embed intelligence into enterprise platform products.",
+      "He's positioned at the intersection of platform PM and AI — applying AI automation to reduce operational overhead, building chatbot interfaces (like this one!), and learning applied AI product management frameworks."
+    ],
+    followUps: ["Workflow automation", "His skills", "Case studies", "Contact him"]
+  },
+  {
+    tag: "casestudies",
+    patterns: [
+      /\b(case stud|project|portfolio|built|product he|what he made|examples|show me)\b/i,
+      /\b(work sample|deliverable|past work|sample work)\b/i
+    ],
+    replies: [
+      "His case studies section covers real platform work — including the STP onboarding system that cut failures by 90%, checkout optimization work, and enterprise workflow automation projects. Check the Case Studies tab above!",
+      "The Case Studies section walks through specific initiatives: enterprise client onboarding at scale (180+ clients), failure reduction via validation design, and rework elimination through process automation.",
+      "You'll find detailed breakdowns in the Case Studies section — covering the platform thinking, problem framing, solutions built, and measured impact for each product initiative."
+    ],
+    followUps: ["Impact metrics", "Payments work", "Skills used", "Contact him"]
+  },
+  {
+    tag: "education",
+    patterns: [
+      /\b(mba|education|degree|school|university|study|studying|college|academic|certif)\b/i,
+      /where did he (study|go to school|get his degree)/i
+    ],
+    replies: [
+      "Chandradeep is currently pursuing an Executive MBA, building on his 6+ years of hands-on platform PM experience with structured business and strategy frameworks.",
+      "He's enrolled in an Executive MBA program — balancing real-world product work with advanced education in business strategy, leadership, and data-driven decision making.",
+      "His academic background includes an Executive MBA (in progress) combined with certifications in product management. Check the Certifications section on this site for the full list!"
+    ],
+    followUps: ["His certifications", "Career goals", "Contact him", "His skills"]
+  },
+  {
+    tag: "certifications",
+    patterns: [
+      /\b(certif|certified|credential|badge|license|course)\b/i
+    ],
+    replies: [
+      "Chandradeep holds several product and tech certifications — head to the Certifications section in the navigation above to see the full list with details!",
+      "His certifications page covers PM, platform, and technology credentials he's earned. You can navigate there directly from the top menu.",
+      "Check out his Certifications tab above — it lists all professional credentials alongside his MBA and hands-on experience."
+    ],
+    followUps: ["His education", "Skills", "Experience", "Contact him"]
+  },
+  {
+    tag: "contact",
+    patterns: [
+      /\b(contact|email|reach|hire|connect|talk|get in touch|available|open to|recruiter|opportunity|job|role)\b/i,
+      /how (can i|do i|to) (reach|contact|connect|hire)/i,
+      /is he (available|looking|open|hiring)/i
+    ],
+    replies: [
+      "You can reach Chandradeep through the Contact section on this site. He's actively open to senior PM roles in tech, retail, and FAANG-adjacent companies — especially those involving platform, payments, or AI products.",
+      "Use the Contact button at the top of the page to send him a message directly. He's open to discussing Platform PM, Payments PM, or AI product roles — especially with H1B sponsorship.",
+      "He's available for new opportunities! Head to the Contact section or use the 'Get in Touch' button on the homepage. He's targeting senior PM roles at tech-forward companies."
+    ],
+    followUps: ["His experience", "Impact metrics", "Download resume info", "His skills"]
+  },
+  {
+    tag: "resume",
+    patterns: [
+      /\b(resume|cv|curriculum|download|pdf|apply)\b/i
+    ],
+    replies: [
+      "His full experience is detailed in the Experience section above. To request a resume directly, use the Contact form — he'll send it over promptly.",
+      "For a copy of his resume, the best path is through the Contact section. The Experience tab on this site also gives a comprehensive view of his product work.",
+      "Resume requests go through the Contact form. You can also get a strong overview from the Experience and Case Studies sections right here on the site."
+    ],
+    followUps: ["Contact him", "His experience", "Case studies", "Impact metrics"]
+  },
+  {
+    tag: "location",
+    patterns: [
+      /\b(location|where|city|state|based|plano|dallas|texas|remote|reloc)\b/i
+    ],
+    replies: [
+      "Chandradeep is based in Plano, Texas (Dallas metro area). He's open to both local and remote PM roles, and is willing to discuss relocation for the right opportunity.",
+      "He's located in Plano, TX — right in the heart of the Dallas tech corridor. Open to remote, hybrid, or on-site roles across the US.",
+      "Based in Plano, Texas. The Dallas area has a strong tech and enterprise product scene, and he's also open to remote or hybrid opportunities nationwide."
+    ],
+    followUps: ["Contact him", "Open to remote?", "His experience", "Current roles"]
+  },
+  {
+    tag: "whoami",
+    patterns: [
+      /\b(who (is|are) (he|you|chandradeep|venkata)|about (him|chandradeep)|tell me about him)\b/i,
+      /^(who|what).{0,20}(chandradeep|this person|he)/i
+    ],
+    replies: [
+      "Venkata Sai Chandradeep Telaprolu is a Senior Platform Product Manager with 6+ years of experience in payments, enterprise commerce, and workflow automation. Based in Plano, TX, he's currently pursuing an Executive MBA and targeting senior PM roles in tech and FAANG.",
+      "Chandradeep is a Platform & Commerce Digital Product Manager who has built scalable payment systems, onboarded 180+ enterprise clients, and reduced operational failures by 90%. He's based in Plano, TX and open to senior PM opportunities.",
+      "He's a results-driven Senior PM specializing in platform products, payments infrastructure, and AI-integrated workflows. His work spans financial services, enterprise SaaS, and retail digital products — with an Executive MBA in progress."
+    ],
+    followUps: ["His experience", "Impact metrics", "Skills", "Contact him"]
   }
-  const PAGE_CONTENT = scrapePortfolio();
-  const SYSTEM_PROMPT = `You are a helpful, concise portfolio assistant. Use only the provided page content. Keep replies under 120 words.
+];
 
-${PAGE_CONTENT}`;
-  const fab = document.getElementById('sai-fab');
-  const panel = document.getElementById('sai-panel');
-  const closeB = document.getElementById('sai-close');
-  const msgsEl = document.getElementById('sp-msgs');
-  const chipsEl = document.getElementById('sp-chips');
-  const inp = document.getElementById('sai-inp');
-  const sendB = document.getElementById('sai-send');
-  let history = []; let started = false;
-  function toggle() { const opening = !panel.classList.contains('open'); panel.classList.toggle('open', opening); fab.classList.toggle('open', opening); if (opening) { if (!started) { started = true; addMsg('bot', "Hi there! 👋 Ask me anything about Sai's experience, skills, or projects."); } setTimeout(() => inp.focus(), 180); } }
-  function addMsg(role, text) { const row = document.createElement('div'); row.className = 'sp-msg ' + role; const bub = document.createElement('div'); bub.className = 'sp-bub'; bub.textContent = text; row.appendChild(bub); msgsEl.appendChild(row); msgsEl.scrollTop = msgsEl.scrollHeight; }
-  function showTyping() { const row = document.createElement('div'); row.className = 'sp-typing-row'; row.id = 'sp-typing'; row.innerHTML = '<div class="sp-typing"><div class="sp-dot"></div><div class="sp-dot"></div><div class="sp-dot"></div></div>'; msgsEl.appendChild(row); msgsEl.scrollTop = msgsEl.scrollHeight; }
-  function hideTyping() { const t = document.getElementById('sp-typing'); if (t) t.remove(); }
-  async function askAssistant(userMsg) {
-    history.push({ role: 'user', content: userMsg });
-    if (history.length > 20) history = history.slice(-20);
-    const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ systemPrompt: SYSTEM_PROMPT, messages: history }) });
-    if (!res.ok) throw new Error('Chat API error ' + res.status);
-    const data = await res.json();
-    const reply = (data.reply || '').trim() || 'I could not generate a response just now.';
-    history.push({ role: 'assistant', content: reply });
-    return reply;
+// ── Contextual follow-up defaults ──
+const defaultFollowUps = ["His experience", "Key skills", "Impact metrics", "Contact him"];
+
+const fallbacks = [
+  "That's a great question! For the most detail, check out the Experience or Case Studies sections above. Or feel free to ask me something like 'What did he build?' or 'How can I contact him?'",
+  "I'm a portfolio bot, so my knowledge is focused on Chandradeep's work! Try asking about his skills, projects, payments experience, or how to get in touch.",
+  "Hmm, not sure about that one — but I can tell you about his 6+ years of platform PM experience, his metrics, or how to reach him for a deeper conversation!",
+  "Good question! The Contact section is always your best bet for specifics. I'm best at answering things like 'What are his skills?' or 'What companies did he work at?'"
+];
+
+// ── State ──
+let chatOpen = false;
+let fallbackIdx = 0;
+let lastTag = null;
+
+// ── Core Functions ──
+function toggleChat() {
+  chatOpen = !chatOpen;
+  const win = document.getElementById("chat-window");
+  win.style.display = chatOpen ? "flex" : "none";
+  if (chatOpen) {
+    if (document.getElementById("chat-messages").childElementCount === 0) {
+      addMsg("bot", "Hi! 👋 I'm Chandradeep's portfolio assistant. What would you like to know?");
+      setQuickReplies(defaultFollowUps);
+      // Hide notif dot once opened
+      const dot = document.querySelector("#chat-btn .notif-dot");
+      if (dot) dot.style.display = "none";
+    }
+    document.getElementById("chat-input").focus();
   }
-  async function send(text) { const msg = (text || inp.value).trim(); if (!msg) return; addMsg('user', msg); inp.value = ''; inp.style.height = 'auto'; sendB.disabled = true; chipsEl.style.display = 'none'; showTyping(); try { addMsg('bot', await askAssistant(msg)); } catch (e) { addMsg('bot', 'Chat is unavailable right now.'); console.error('[SaiChat]', e.message); } finally { hideTyping(); sendB.disabled = false; inp.focus(); } }
-  fab.addEventListener('click', toggle); closeB.addEventListener('click', toggle);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && panel.classList.contains('open')) toggle(); });
-  inp.addEventListener('input', function () { this.style.height = 'auto'; this.style.height = Math.min(this.scrollHeight, 100) + 'px'; });
-  inp.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } });
-  sendB.addEventListener('click', () => send());
-  document.querySelectorAll('.sp-chip').forEach(c => c.addEventListener('click', () => send(c.dataset.q)));
-})();
+}
+
+function addMsg(type, text) {
+  const div = document.createElement("div");
+  div.className = `msg ${type}`;
+  div.textContent = text;
+  const msgs = document.getElementById("chat-messages");
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function showTyping() {
+  const msgs = document.getElementById("chat-messages");
+  const el = document.createElement("div");
+  el.className = "typing-indicator";
+  el.id = "typing";
+  el.innerHTML = "<span></span><span></span><span></span>";
+  msgs.appendChild(el);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() {
+  const el = document.getElementById("typing");
+  if (el) el.remove();
+}
+
+function setQuickReplies(chips) {
+  const qr = document.getElementById("quick-replies");
+  qr.innerHTML = "";
+  if (!chips || chips.length === 0) return;
+  chips.forEach(label => {
+    const btn = document.createElement("button");
+    btn.className = "qr-chip";
+    btn.textContent = label;
+    btn.onclick = () => {
+      document.getElementById("chat-input").value = label;
+      sendMsg();
+    };
+    qr.appendChild(btn);
+  });
+}
+
+function getIntent(text) {
+  const lower = text.toLowerCase().trim();
+  for (const intent of intents) {
+    for (const pattern of intent.patterns) {
+      if (typeof pattern === "string") {
+        if (lower.includes(pattern)) return intent;
+      } else if (pattern instanceof RegExp) {
+        if (pattern.test(lower)) return intent;
+      }
+    }
+  }
+  return null;
+}
+
+function sendMsg() {
+  const input = document.getElementById("chat-input");
+  const text = input.value.trim();
+  if (!text) return;
+  addMsg("user", text);
+  input.value = "";
+  setQuickReplies([]);
+  showTyping();
+
+  const delay = 400 + Math.random() * 350;
+
+  setTimeout(() => {
+    removeTyping();
+    const intent = getIntent(text);
+    let reply, chips;
+
+    if (intent) {
+      const replies = intent.replies;
+      // Avoid repeating the same reply consecutively
+      reply = replies[Math.floor(Math.random() * replies.length)];
+      chips = intent.followUps || defaultFollowUps;
+      lastTag = intent.tag;
+    } else {
+      reply = fallbacks[fallbackIdx++ % fallbacks.length];
+      chips = defaultFollowUps;
+      lastTag = null;
+    }
+
+    addMsg("bot", reply);
+    setQuickReplies(chips);
+  }, delay);
+}
 </script>
 
 </body>
