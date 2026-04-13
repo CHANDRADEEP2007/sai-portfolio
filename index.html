@@ -1623,8 +1623,8 @@ const intents = [
   {
     tag: "greeting",
     patterns: [
-      /^(hi|hey|hello|howdy|sup|yo|what'?s up|good\s?(morning|afternoon|evening))/i,
-      /^(hola|namaste|greetings)/i
+      /^(hi|hey|hello|howdy|sup|yo|what'?s up|good\s?(morning|afternoon|evening))\b/i,
+      /^(hola|namaste|greetings)\b/i
     ],
     replies: [
       "Hey there! 👋 I'm Chandradeep's portfolio assistant. What would you like to know — his experience, skills, projects, or how to get in touch?",
@@ -1794,8 +1794,8 @@ const intents = [
   {
     tag: "whoami",
     patterns: [
-      /\b(who (is|are) (he|you|chandradeep|venkata)|about (him|chandradeep)|tell me about him)\b/i,
-      /^(who|what).{0,20}(chandradeep|this person|he)/i
+      /\b(who (is|are) (he|you|chandradeep|venkata|sai)|about (him|chandradeep|sai)|tell me about (him|sai))\b/i,
+      /^(who|what).{0,20}(chandradeep|this person|he|sai)/i
     ],
     replies: [
       "Venkata Sai Chandradeep Telaprolu is a Senior Platform Product Manager with 6+ years of experience in payments, enterprise commerce, and workflow automation. Based in Plano, TX, he's currently pursuing an Executive MBA and targeting senior PM roles in tech and FAANG.",
