@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'grok-beta',
+        model: 'grok-3',
         messages: [{ role: 'system', content: systemPrompt }, ...(messages || [])],
         max_tokens: 280,
         temperature: 0.6,
