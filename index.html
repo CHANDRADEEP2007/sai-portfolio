@@ -1548,6 +1548,15 @@
 #sai-send:active { transform: scale(.92); }
 #sai-send:disabled { opacity: .35; cursor: not-allowed; }
 @media (max-width: 480px) { #sai-fab { right: 16px; bottom: 16px; } #sai-panel { right: 10px; left: 10px; bottom: 88px; width: auto; max-width: none; height: 72dvh; } }
+
+/* Replace @media queries with class toggles - mapped to correct attributes */
+[data-theme="dark"] #sai-fab {
+  background: #C9922A !important;
+}
+
+[data-theme="light"] #sai-fab, :root:not([data-theme="dark"]) #sai-fab {
+  background: #9A7A1E !important;
+}
 </style>
 
 <button id="sai-fab" aria-label="Chat — Ask about Sai">
@@ -1572,10 +1581,7 @@
   function scrapePortfolio() {
     const clone = document.body.cloneNode(true);
     clone.querySelectorAll('#sai-panel, #sai-fab, script, style, noscript').forEach(el => el.remove());
-    return (clone.innerText || '').replace(/
-{3,}/g, '
-
-').replace(/[ 	]{2,}/g, ' ').trim().slice(0, 6000);
+    return (clone.innerText || '').replace(/\n{3,}/g, '\n\n').replace(/[ \t]{2,}/g, ' ').trim().slice(0, 6000);
   }
   const PAGE_CONTENT = scrapePortfolio();
   const SYSTEM_PROMPT = `You are a helpful, concise portfolio assistant. Use only the provided page content. Keep replies under 120 words.
