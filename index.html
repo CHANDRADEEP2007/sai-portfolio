@@ -1568,141 +1568,48 @@
 
 <script>
 (function () {
-  function initSaiChat() {
-    const ENDPOINT = '/api/sai-chat';
+  const ENDPOINT = '/api/sai-chat';
+  function scrapePortfolio() {
+    const clone = document.body.cloneNode(true);
+    clone.querySelectorAll('#sai-panel, #sai-fab, script, style, noscript').forEach(el => el.remove());
+    return (clone.innerText || '').replace(/
+{3,}/g, '
 
-    function scrapePortfolio() {
-      const clone = document.body.cloneNode(true);
-      clone.querySelectorAll('#sai-panel, #sai-fab, script, style, noscript').forEach(el => el.remove());
-      return (clone.innerText || '')
-        .replace(/\n{3,}/g, '\n\n')
-        .replace(/[ \t]{2,}/g, ' ')
-        .trim()
-        .slice(0, 6000);
-    }
-
-    const pageContent = scrapePortfolio();
-    const systemPrompt = `You are a helpful, concise portfolio assistant. Use only the provided page content. Keep replies under 120 words.\n\n${pageContent}`;
-
-    const fab = document.getElementById('sai-fab');
-    const panel = document.getElementById('sai-panel');
-    const closeB = document.getElementById('sai-close');
-    const msgsEl = document.getElementById('sp-msgs');
-    const chipsEl = document.getElementById('sp-chips');
-    const inp = document.getElementById('sai-inp');
-    const sendB = document.getElementById('sai-send');
-
-    if (!fab || !panel || !closeB || !msgsEl || !chipsEl || !inp || !sendB) {
-      console.warn('[SaiChat] Chat UI not initialized: missing DOM node(s).');
-      return;
-    }
-
-    let history = [];
-    let started = false;
-
-    function toggle() {
-      const opening = !panel.classList.contains('open');
-      panel.classList.toggle('open', opening);
-      fab.classList.toggle('open', opening);
-      if (opening) {
-        if (!started) {
-          started = true;
-          addMsg('bot', "Hi there! 👋 Ask me anything about Sai's experience, skills, or projects.");
-        }
-        setTimeout(() => inp.focus(), 180);
-      }
-    }
-
-    function addMsg(role, text) {
-      const row = document.createElement('div');
-      row.className = `sp-msg ${role}`;
-      const bub = document.createElement('div');
-      bub.className = 'sp-bub';
-      bub.textContent = text;
-      row.appendChild(bub);
-      msgsEl.appendChild(row);
-      msgsEl.scrollTop = msgsEl.scrollHeight;
-    }
-
-    function showTyping() {
-      const row = document.createElement('div');
-      row.className = 'sp-typing-row';
-      row.id = 'sp-typing';
-      row.innerHTML = '<div class="sp-typing"><div class="sp-dot"></div><div class="sp-dot"></div><div class="sp-dot"></div></div>';
-      msgsEl.appendChild(row);
-      msgsEl.scrollTop = msgsEl.scrollHeight;
-    }
-
-    function hideTyping() {
-      const t = document.getElementById('sp-typing');
-      if (t) t.remove();
-    }
-
-    async function askAssistant(userMsg) {
-      history.push({ role: 'user', content: userMsg });
-      if (history.length > 20) history = history.slice(-20);
-
-      const res = await fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ systemPrompt, messages: history })
-      });
-
-      if (!res.ok) throw new Error('Chat API error ' + res.status);
-
-      const data = await res.json();
-      const reply = (data.reply || '').trim() || 'I could not generate a response just now.';
-      history.push({ role: 'assistant', content: reply });
-      return reply;
-    }
-
-    async function send(text) {
-      const msg = (text || inp.value).trim();
-      if (!msg) return;
-
-      addMsg('user', msg);
-      inp.value = '';
-      inp.style.height = 'auto';
-      sendB.disabled = true;
-      chipsEl.style.display = 'none';
-      showTyping();
-
-      try {
-        addMsg('bot', await askAssistant(msg));
-      } catch (e) {
-        addMsg('bot', 'Chat is unavailable right now.');
-        console.error('[SaiChat]', e.message);
-      } finally {
-        hideTyping();
-        sendB.disabled = false;
-        inp.focus();
-      }
-    }
-
-    fab.addEventListener('click', toggle);
-    closeB.addEventListener('click', toggle);
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && panel.classList.contains('open')) toggle();
-    });
-    inp.addEventListener('input', function () {
-      this.style.height = 'auto';
-      this.style.height = Math.min(this.scrollHeight, 100) + 'px';
-    });
-    inp.addEventListener('keydown', e => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        send();
-      }
-    });
-    sendB.addEventListener('click', () => send());
-    document.querySelectorAll('.sp-chip').forEach(c => c.addEventListener('click', () => send(c.dataset.q)));
+').replace(/[ 	]{2,}/g, ' ').trim().slice(0, 6000);
   }
+  const PAGE_CONTENT = scrapePortfolio();
+  const SYSTEM_PROMPT = `You are a helpful, concise portfolio assistant. Use only the provided page content. Keep replies under 120 words.
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSaiChat);
-  } else {
-    initSaiChat();
+${PAGE_CONTENT}`;
+  const fab = document.getElementById('sai-fab');
+  const panel = document.getElementById('sai-panel');
+  const closeB = document.getElementById('sai-close');
+  const msgsEl = document.getElementById('sp-msgs');
+  const chipsEl = document.getElementById('sp-chips');
+  const inp = document.getElementById('sai-inp');
+  const sendB = document.getElementById('sai-send');
+  let history = []; let started = false;
+  function toggle() { const opening = !panel.classList.contains('open'); panel.classList.toggle('open', opening); fab.classList.toggle('open', opening); if (opening) { if (!started) { started = true; addMsg('bot', "Hi there! 👋 Ask me anything about Sai's experience, skills, or projects."); } setTimeout(() => inp.focus(), 180); } }
+  function addMsg(role, text) { const row = document.createElement('div'); row.className = 'sp-msg ' + role; const bub = document.createElement('div'); bub.className = 'sp-bub'; bub.textContent = text; row.appendChild(bub); msgsEl.appendChild(row); msgsEl.scrollTop = msgsEl.scrollHeight; }
+  function showTyping() { const row = document.createElement('div'); row.className = 'sp-typing-row'; row.id = 'sp-typing'; row.innerHTML = '<div class="sp-typing"><div class="sp-dot"></div><div class="sp-dot"></div><div class="sp-dot"></div></div>'; msgsEl.appendChild(row); msgsEl.scrollTop = msgsEl.scrollHeight; }
+  function hideTyping() { const t = document.getElementById('sp-typing'); if (t) t.remove(); }
+  async function askAssistant(userMsg) {
+    history.push({ role: 'user', content: userMsg });
+    if (history.length > 20) history = history.slice(-20);
+    const res = await fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ systemPrompt: SYSTEM_PROMPT, messages: history }) });
+    if (!res.ok) throw new Error('Chat API error ' + res.status);
+    const data = await res.json();
+    const reply = (data.reply || '').trim() || 'I could not generate a response just now.';
+    history.push({ role: 'assistant', content: reply });
+    return reply;
   }
+  async function send(text) { const msg = (text || inp.value).trim(); if (!msg) return; addMsg('user', msg); inp.value = ''; inp.style.height = 'auto'; sendB.disabled = true; chipsEl.style.display = 'none'; showTyping(); try { addMsg('bot', await askAssistant(msg)); } catch (e) { addMsg('bot', 'Chat is unavailable right now.'); console.error('[SaiChat]', e.message); } finally { hideTyping(); sendB.disabled = false; inp.focus(); } }
+  fab.addEventListener('click', toggle); closeB.addEventListener('click', toggle);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && panel.classList.contains('open')) toggle(); });
+  inp.addEventListener('input', function () { this.style.height = 'auto'; this.style.height = Math.min(this.scrollHeight, 100) + 'px'; });
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } });
+  sendB.addEventListener('click', () => send());
+  document.querySelectorAll('.sp-chip').forEach(c => c.addEventListener('click', () => send(c.dataset.q)));
 })();
 </script>
 
