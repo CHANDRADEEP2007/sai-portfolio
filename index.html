@@ -544,8 +544,11 @@
       background: var(--color-surface-2);
     }
     .cert-icon-wrap svg { display: block; }
-    .cert-icon-wrap.upenn { background: #011f5b; border-color: oklch(0.34 0.12 25 / 0.45); }
-    .cert-icon-wrap.aws { background: #232f3e; border-color: oklch(0.43 0.03 250 / 0.55); }
+    .cert-icon-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .cert-icon-wrap.logo-wide { width: 78px; padding: var(--space-1) var(--space-2); background: #fff; }
+    .cert-icon-wrap.google { background: #fff; padding: var(--space-2); }
+    .cert-icon-wrap.upenn { background: #fff; border-color: oklch(0.34 0.12 25 / 0.25); padding: 2px; }
+    .cert-icon-wrap.aws { border-color: oklch(0.43 0.03 250 / 0.2); }
     .cert-issuer { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-primary); line-height: 1.3; }
     .cert-source { display: block; font-weight: 500; color: var(--color-text-faint); letter-spacing: 0.04em; margin-top: 1px; }
     .cert-name { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text); line-height: 1.25; letter-spacing: 0.02em; }
@@ -1275,13 +1278,8 @@
         <div class="certs-grid">
           <article class="cert-card fade-in" aria-labelledby="cert-1">
             <div class="cert-card-header">
-              <div class="cert-icon-wrap" aria-hidden="true">
-                <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                </svg>
+              <div class="cert-icon-wrap google" aria-hidden="true">
+                <img src="assets/google-g-logo.svg" alt="">
               </div>
               <div class="cert-issuer">Google<span class="cert-source">via Coursera</span></div>
             </div>
@@ -1298,11 +1296,7 @@
           <article class="cert-card fade-in fade-in-delay-1" aria-labelledby="cert-2">
             <div class="cert-card-header">
               <div class="cert-icon-wrap upenn" aria-hidden="true">
-                <svg width="24" height="28" viewBox="0 0 22 28" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M11 1L1 5v9c0 6 4.5 10.5 10 13 5.5-2.5 10-7 10-13V5L11 1z" fill="#011F5B" stroke="#990000" stroke-width="1.2"/>
-                  <path d="M11 4L3 7.5v7.5c0 4.5 3.5 8 8 10 4.5-2 8-5.5 8-10V7.5L11 4z" fill="#011F5B"/>
-                  <text x="11" y="19" text-anchor="middle" font-size="12" font-weight="700" fill="#F2C100" font-family="Georgia,serif">P</text>
-                </svg>
+                <img src="assets/upenn-shield-with-banner.svg" alt="">
               </div>
               <div class="cert-issuer">University of Pennsylvania<span class="cert-source">via Coursera</span></div>
             </div>
@@ -1319,11 +1313,8 @@
           </article>
           <article class="cert-card fade-in fade-in-delay-2" aria-labelledby="cert-3">
             <div class="cert-card-header">
-              <div class="cert-icon-wrap" aria-hidden="true">
-                <svg width="36" height="22" viewBox="0 0 68 36" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="68" height="36" rx="4" fill="#fff"/>
-                  <text x="34" y="26" text-anchor="middle" font-size="22" font-weight="700" fill="#006CB7" font-family="Arial,sans-serif" letter-spacing="-1">SAS</text>
-                </svg>
+              <div class="cert-icon-wrap logo-wide" aria-hidden="true">
+                <img src="assets/sas-logo.svg" alt="">
               </div>
               <div class="cert-issuer">SAS &amp; University of Louisville<span class="cert-source">via Credly</span></div>
             </div>
@@ -1340,12 +1331,8 @@
           </article>
           <article class="cert-card fade-in fade-in-delay-3" aria-labelledby="cert-4">
             <div class="cert-card-header">
-              <div class="cert-icon-wrap aws" aria-hidden="true">
-                <svg width="34" height="28" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
-                  <text x="40" y="28" text-anchor="middle" font-size="18" font-weight="700" fill="#FF9900" font-family="Arial,sans-serif">aws</text>
-                  <path d="M14 40 Q40 56 66 40" fill="none" stroke="#FF9900" stroke-width="4" stroke-linecap="round"/>
-                  <polygon points="63,36 70,42 62,47" fill="#FF9900"/>
-                </svg>
+              <div class="cert-icon-wrap logo-wide aws" aria-hidden="true">
+                <img src="assets/aws-logo.svg" alt="">
               </div>
               <div class="cert-issuer">Amazon Web Services<span class="cert-source">via Credly</span></div>
             </div>
