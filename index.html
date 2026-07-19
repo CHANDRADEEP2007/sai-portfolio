@@ -1340,7 +1340,59 @@
         <article class="case-study fade-in" aria-labelledby="sandbox-1-title">
           <div>
             <div class="case-number">R&amp;D-01 / Sandbox</div>
-            <h3 class="case-title" id="sandbox-1-title">ApexApply — Autonomous Agent Benchmarking<br><span style="font-size:0.7em; color:var(--color-text-muted); font-style:normal;">Independent Build · Python + Gemini API / Ollama / xAI · 2026 – Present</span></h3>
+            <h3 class="case-title" id="sandbox-1-title">Feedback-to-Backlog AI Copilot<br><span style="font-size:0.7em; color:var(--color-text-muted); font-style:normal;">Independent Build · Python + Streamlit + Gemini API / RapidFuzz / Jira REST · 2026</span></h3>
+            <p class="case-context">A working AI-assisted pipeline that turns messy customer noise from support tickets, calls, and reviews into a ranked, explainable product backlog — with full provenance, transparent RICE scoring, and optional Jira Cloud sync. Runs entirely without API keys; Gemini, semantic matching, and Jira integrations are optional.</p>
+            <div class="problem-solution-grid">
+              <div class="ps-block">
+                <div class="ps-label">Problem</div>
+                <div class="ps-text">Product managers receive feedback through disconnected channels (support tickets, calls, reviews), and important signals get lost because manually converting that feedback into a prioritized backlog is slow and inconsistent.</div>
+              </div>
+              <div class="ps-block">
+                <div class="ps-label">Solution</div>
+                <div class="ps-text">Built a pipeline that extracts the core issue from raw tickets, merges duplicates via layered RapidFuzz + optional Gemini embedding matching, scores every item with a fully traceable RICE formula, and syncs reviewed backlog items to Jira through the REST API.</div>
+              </div>
+              <div class="impact-block">
+                <div class="impact-label">Impact</div>
+                <ul class="impact-list" role="list">
+                  <li>Measured evaluation harness on a labeled 40-ticket gold set: 100% extraction accuracy and 100% dedup precision in the credential-free baseline</li>
+                  <li>Explainable drag-to-reorder re-ranking adjusts Confidence by a fixed 5 percentage points per position and logs every reviewer change, with one-click reset to the AI baseline</li>
+                  <li>Full provenance via SQLite links every backlog item back to its source feedback, with guardrails that retry and safely skip malformed AI output</li>
+                  <li>Bulk Jira sync processes reviewed items independently so a single failure never blocks the batch</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tech-focus">Technical Focus: LLM-assisted extraction with deterministic fallback · Layered semantic deduplication · Transparent RICE prioritization · Jira Cloud REST sync · Streamlit dashboard · Python</div>
+            <div class="tech-focus" style="margin-top: var(--space-3);">
+              <a href="https://feedback-to-backlog-ai-copilot-2yjwwtb5usuqzep3muvdzg.streamlit.app" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">Project page →</a>
+              &nbsp;·&nbsp;
+              <a href="https://github.com/CHANDRADEEP2007/feedback-to-backlog-ai-copilot" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">GitHub repo →</a>
+              &nbsp;·&nbsp;
+              <a href="https://www.kaggle.com/datasets/tobiasbueck/multilingual-customer-support-tickets/versions/10" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">Dataset source →</a>
+            </div>
+          </div>
+          <div>
+            <div class="arch-viz" aria-label="Feedback-to-Backlog AI Copilot architecture layers">
+              <div class="arch-viz-title">Feedback-to-Backlog — Pipeline Architecture</div>
+              <div class="arch-layer">Raw Feedback (Tickets, Calls, Reviews)</div>
+              <div class="arch-edge" aria-hidden="true"><span class="arch-edge-line"></span>↓ extract<span class="arch-edge-line"></span></div>
+              <div class="arch-layer">AI Extraction (Gemini / Local Fallback)</div>
+              <div class="arch-protocol">Deterministic Metadata Extractor</div>
+              <div class="arch-edge" aria-hidden="true"><span class="arch-edge-line"></span>↓ dedup<span class="arch-edge-line"></span></div>
+              <div class="arch-layer">Layered Deduplication</div>
+              <div class="arch-protocol">RapidFuzz + Optional Gemini Embeddings</div>
+              <div class="arch-edge" aria-hidden="true"><span class="arch-edge-line"></span>↓ score<span class="arch-edge-line"></span></div>
+              <div class="arch-layer">Transparent RICE Scoring Engine</div>
+              <div class="arch-protocol">Reach × Impact × Confidence ÷ Effort</div>
+              <div class="arch-edge" aria-hidden="true"><span class="arch-edge-line"></span>↓ review<span class="arch-edge-line"></span></div>
+              <div class="arch-layer">PM Review + Explainable Re-Rank</div>
+              <div class="arch-edge" aria-hidden="true"><span class="arch-edge-line"></span>↓ sync<span class="arch-edge-line"></span></div>
+              <div class="arch-layer">Jira Cloud Sync (Bulk, Fault-Tolerant)</div>
+            </div>
+          </div>
+        </article><article class="case-study fade-in" aria-labelledby="sandbox-2-title">
+          <div>
+            <div class="case-number">R&amp;D-02 / Sandbox</div>
+            <h3 class="case-title" id="sandbox-2-title">ApexApply — Autonomous Agent Benchmarking<br><span style="font-size:0.7em; color:var(--color-text-muted); font-style:normal;">Independent Build · Python + Gemini API / Ollama / xAI · 2026 – Present</span></h3>
             <p class="case-context">A solo-built benchmarking environment measuring token efficiency, tool-calling latency, and multi-step state machine performance across model families — reading live web pages, classifying form fields by intent, and completing multi-step workflows end-to-end.</p>
             <div class="problem-solution-grid">
               <div class="ps-block">
@@ -1382,6 +1434,8 @@
             </div>
           </div>
         </article>
+        
+
       </div>
     </section>
 
@@ -1974,16 +2028,17 @@ const intents = [
   {
     tag: "ai",
     patterns: [
-      /\b(ai|artificial intelligence|machine learning|ml|llm|gpt|automation|generative|chatbot|apexapply|agent|agentic|ollama|gemini|xai|grok)\b/i,
+      /\b(ai|artificial intelligence|machine learning|ml|llm|gpt|automation|generative|chatbot|apexapply|feedback.?to.?backlog|rice|backlog|agent|agentic|ollama|gemini|xai|grok|jira)\b/i,
       /ai.*(product|work|experience|background)/i
     ],
     replies: [
       "Sai delivered a generative AI authoring tool at JPMorgan Chase that let non-engineers manage complex configuration changes, cutting engineering tickets by 80%.",
       "He's also the founder and engineer behind ApexApply, an autonomous AI agent (Python + Gemini API) that reads live web interfaces, classifies UI elements in real time, and executes multi-step workflows with a persistent memory architecture.",
-      "His AI focus spans agentic AI system design, LLM tool-calling, prompt engineering, and retrieval-augmented workflows — applied both inside JPMorgan's platform and in independent builds like ApexApply.",
+      "He built the Feedback-to-Backlog AI Copilot, a Streamlit app that turns raw support tickets into a ranked, explainable product backlog — using Gemini-powered extraction, RapidFuzz/semantic deduplication, transparent RICE scoring, and optional Jira Cloud sync.",
+      "His AI focus spans agentic AI system design, LLM tool-calling, prompt engineering, and retrieval-augmented workflows — applied both inside JPMorgan's platform and in independent builds like ApexApply and the Feedback-to-Backlog AI Copilot.",
       "He's worked hands-on across multiple LLM providers — Google Gemini API, Ollama (for local/self-hosted model experimentation), and xAI — comparing tool-calling behavior and reasoning performance across models for agentic workflows."
     ],
-    followUps: ["ApexApply project", "Workflow automation", "Case studies", "Contact him"]
+    followUps: ["ApexApply project", "Feedback-to-Backlog Copilot", "Workflow automation", "Case studies", "Contact him"]
   },
   {
     tag: "casestudies",
